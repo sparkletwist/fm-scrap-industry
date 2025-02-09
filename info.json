@@ -1,0 +1,14 @@
+{
+  "name": "scrap-industry",
+  "title": "Scrappy Industry",
+  "description": "",
+  "author": "SafTheLamb",
+  "version": "0.0.1",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base >= 2.0.32",
+    "? space-age",
+    "? quality",
+    "fdsl >= 0.1.8"
+  ]
+}
