@@ -9,6 +9,7 @@
     "base >= 2.0.32",
     "? space-age",
     "? quality",
-    "fdsl >= 0.1.8"
+    "fdsl >= 0.2.0",
+    "? aai-industry"
   ]
 }

@@ -63,6 +63,6 @@ data:extend({
       {type="item", name="circuit-scrap", amount=2},
       {type="item", name="copper-cable", amount=1}
     },
-    results = {{type="item", name="electronic-circuit", amount=1}}
+    results = {{type="item", name="electronic-circuit", amount=2}}
   },
 })
