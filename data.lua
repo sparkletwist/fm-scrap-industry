@@ -1,4 +1,4 @@
-require("api-data")
+require("api-base-data")
 
 if mods["space-age"] then
   require("prototypes.compat.space-age")
