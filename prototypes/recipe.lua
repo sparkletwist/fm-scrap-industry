@@ -1,10 +1,11 @@
 data:extend({
   {
     type = "recipe",
-    name = "iron-scrap-smelting",
+    name = "iron-plate-from-scrap",
+    localised_name = {"recipe-name.iron-plate-from-scrap"},
     icons = {
       {icon="__scrap-industry__/graphics/icons/iron-scrap.png", shift={-12, -12}, scale=0.4},
-      {icon="__base__/graphics/icons/iron-plate.png"}
+      {icon="__base__/graphics/icons/iron-plate.png", draw_background=true}
     },
     category = "smelting",
     subgroup = "production-scrap",
@@ -18,10 +19,11 @@ data:extend({
   },
   {
     type = "recipe",
-    name = "copper-scrap-smelting",
+    name = "copper-plate-from-scrap",
+    localised_name = {"recipe-name.copper-plate-from-scrap"},
     icons = {
       {icon="__scrap-industry__/graphics/icons/copper-scrap.png", shift={-12, -12}, scale=0.4},
-      {icon="__base__/graphics/icons/copper-plate.png"}
+      {icon="__base__/graphics/icons/copper-plate.png", draw_background=true}
     },
     category = "smelting",
     subgroup = "production-scrap",
@@ -35,10 +37,11 @@ data:extend({
   },
   {
     type = "recipe",
-    name = "steel-scrap-smelting",
+    name = "steel-plate-from-scrap",
+    localised_name = {"recipe-name.steel-plate-from-scrap"},
     icons = {
       {icon="__scrap-industry__/graphics/icons/steel-scrap.png", shift={-12, -12}, scale=0.4},
-      {icon="__base__/graphics/icons/steel-plate.png"}
+      {icon="__base__/graphics/icons/steel-plate.png", draw_background=true}
     },
     category = "smelting",
     subgroup = "production-scrap",
@@ -54,9 +57,10 @@ data:extend({
   {
     type = "recipe",
     name = "electronic-circuit-from-scrap",
+    localised_name = {"recipe-name.electronic-circuit-from-scrap"},
     icons = {
-      {icon="__scrap-industry__/graphics/icons/circuit-scrap.png", shift={-12, -12}, scale=0.4},
-      {icon="__base__/graphics/icons/electronic-circuit.png"}
+      {icon="__scrap-industry__/graphics/icons/circuit-scrap-3.png", shift={-12, -12}, scale=0.4},
+      {icon="__base__/graphics/icons/electronic-circuit.png", draw_background=true}
     },
     category = mods["space-age"] and "electronics" or "crafting",
     subgroup = "production-scrap",
@@ -75,9 +79,10 @@ data:extend({
   {
     type = "recipe",
     name = "advanced-circuit-from-scrap",
+    localised_name = {"recipe-name.advanced-circuit-from-scrap"},
     icons = {
-      {icon="__scrap-industry__/graphics/icons/circuit-scrap.png", shift={-12, -12}, scale=0.4},
-      {icon="__base__/graphics/icons/advanced-circuit.png"}
+      {icon="__scrap-industry__/graphics/icons/circuit-scrap-1.png", shift={-12, -12}, scale=0.4},
+      {icon="__base__/graphics/icons/advanced-circuit.png", draw_background=true}
     },
     category = mods["space-age"] and "electronics" or "crafting",
     subgroup = "production-scrap",
@@ -101,11 +106,12 @@ if mods["space-age"] then
     {
       type = "recipe",
       name = "tungsten-carbide-from-scrap",
+      localised_name = {"recipe-name.tungsten-carbide-from-scrap"},
       icons = {
         {icon="__scrap-industry__/graphics/icons/tungsten-scrap.png", shift={-12, -12}, scale=0.4},
-        {icon="__space-age__/graphics/icons/tungsten-carbide.png"}
+        {icon="__space-age__/graphics/icons/tungsten-carbide.png", draw_background=true}
       },
-      category = mods["wood-industry"] and "kiln-smelting" or nil,
+      category = mods["wood-industry"] and "kiln-smelting" or "crafting-with-fluid",
       subgroup = "vulcanus-processes",
       order = "c[tungsten]b-d[tungsten-carbide-from-scrap]",
       enabled = false,
@@ -123,9 +129,10 @@ if mods["space-age"] then
     {
       type = "recipe",
       name = "tungsten-plate-from-scrap",
+      localised_name = {"recipe-name.tungsten-plate-from-scrap"},
       icons = {
         {icon="__scrap-industry__/graphics/icons/tungsten-scrap.png", shift={-12, -12}, scale=0.4},
-        {icon="__space-age__/graphics/icons/tungsten-plate.png"}
+        {icon="__space-age__/graphics/icons/tungsten-plate.png", draw_background=true}
       },
       category = "metallurgy",
       subgroup = "vulcanus-processes",
@@ -144,9 +151,10 @@ if mods["space-age"] then
     {
       type = "recipe",
       name = "holmium-solution-from-scrap",
+      localised_name = {"recipe-name.holmium-plate-from-scrap"},
       icons = {
         {icon="__scrap-industry__/graphics/icons/holmium-scrap.png", shift={-12, -12}, scale=0.4},
-        {icon="__space-age__/graphics/icons/fluid/holmium-solution.png"}
+        {icon="__space-age__/graphics/icons/fluid/holmium-solution.png", draw_background=true}
       },
       category = "chemistry",
       subgroup = "fulgora-processes",
@@ -170,10 +178,11 @@ if mods["bzlead"] then
   data:extend({
     {
       type = "recipe",
-      name = "lead-scrap-smelting",
+      name = "lead-plate-from-scrap",
+      localised_name = {"recipe-name.lead-plate-from-scrap"},
       icons = {
         {icon="__scrap-industry__/graphics/icons/lead-scrap.png", shift={-12, -12}, scale=0.4},
-        {icon="__bzlead__/graphics/icons/lead-plate.png"}
+        {icon="__bzlead__/graphics/icons/lead-plate.png", draw_background=true}
       },
       category = "smelting",
       subgroup = "production-scrap",
@@ -183,8 +192,8 @@ if mods["bzlead"] then
       auto_recycle = false,
       allow_decomposition = false,
       energy_required = 6.4,
-      ingredients = {{type="item", name="lead-scrap", amount=3}},
-      results = {{type="item", name="lead-plate", amount=2}}
+      ingredients = {{type="item", name="lead-scrap", amount=2}},
+      results = {{type="item", name="lead-plate", amount=1}}
     },
   })
 end

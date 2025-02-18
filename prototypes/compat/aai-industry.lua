@@ -1,5 +1,5 @@
 -- overrides the data in prototypes.compat.base
-ScrapIndustry.products["sand"] = {priority=0}
+ScrapIndustry.products["sand"] = {priority=0.5}
 ScrapIndustry.items["stone"] = {scrap="sand", scale=0.01, failrate=0.03}
 ScrapIndustry.items["stone-brick"] = {scrap="sand", scale=0.02, failrate=0.02}
 ScrapIndustry.items["concrete"] = {scrap="sand", scale=0.04, failrate=0.01}

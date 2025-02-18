@@ -13,12 +13,13 @@ ScrapIndustry.recipes["iron-gear-wheel"] = {ignore=true}
 ScrapIndustry.recipes["iron-stick"] = {ignore=true}
 ScrapIndustry.recipes["copper-cable"] = {ignore=true}
 
-ScrapIndustry.products["stone"] = {priority=0}
+ScrapIndustry.products["stone"] = {priority=0.5}
 ScrapIndustry.items["stone"] = {scrap="stone", scale=0.01, failrate=0.03}
 ScrapIndustry.items["stone-brick"] = {scrap="stone", scale=0.01, failrate=0.02}
 ScrapIndustry.items["concrete"] = {scrap="stone", scale=0.02, failrate=0.01}
 ScrapIndustry.items["refined-concrete"] = {scrap="stone", scale=0.04}
 ScrapIndustry.items["landfill"] = {scrap="stone", scale=0.1, failrate=0.01}
+ScrapIndustry.recipes["landfill"] = {ignore=true}
 ScrapIndustry.recipes["hazard-concrete"] = {ignore=true}
 ScrapIndustry.recipes["refined-hazard-concrete"] = {ignore=true}
 
@@ -29,11 +30,12 @@ ScrapIndustry.recipes["kovarex-enrichment-process"] = {no_fail=true}
 ScrapIndustry.recipes["electronic-circuit"] = {self_scrap=true}
 ScrapIndustry.recipes["advanced-circuit"] = {self_scrap=true}
 ScrapIndustry.recipes["processing-unit"] = {self_scrap=true}
+ScrapIndustry.recipes["assembling-machine-2"] = {failrate=0.02}
 
 ScrapIndustry.products["circuit-scrap"] = {priority=4}
-ScrapIndustry.items["electronic-circuit"] = {scrap="circuit-scrap", scale=0.01, failrate=0.03}
-ScrapIndustry.items["advanced-circuit"] = {scrap="circuit-scrap", scale=0.02, failrate=0.02}
-ScrapIndustry.items["processing-unit"] = {scrap="circuit-scrap", scale=0.04, failrate=0.01}
+ScrapIndustry.items["electronic-circuit"] = {scrap="circuit-scrap", scale=0.02, failrate=0.03}
+ScrapIndustry.items["advanced-circuit"] = {scrap="circuit-scrap", scale=0.04, failrate=0.02}
+ScrapIndustry.items["processing-unit"] = {scrap="circuit-scrap", scale=0.06, failrate=0.01}
 
 ScrapIndustry.items["speed-module"] = {scrap="circuit-scrap", scale=0.03, failrate=-0.01}
 ScrapIndustry.items["efficiency-module"] = {scrap="circuit-scrap", scale=0.03, failrate=-0.01}

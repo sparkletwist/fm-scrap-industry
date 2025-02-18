@@ -8,18 +8,21 @@ ScrapIndustry.items["holmium-plate"] = {scrap="holmium-scrap", scale=0.02, failr
 ScrapIndustry.items["superconductor"] = {scrap="holmium-scrap", scale=0.02, failrate=0.02}
 ScrapIndustry.items["supercapacitor"] = {scrap="circuit-scrap", scale=0.04, failrate=0.01}
 
-ScrapIndustry.products["spoilage"] = {priority=0}
+ScrapIndustry.products["spoilage"] = {priority=0.1}
 ScrapIndustry.items["nutrients"] = {scrap="spoilage", scale=0.02, failrate=0.04}
 ScrapIndustry.items["yumako-mash"] = {scrap="spoilage", scale=0.01, failrate=0.03}
 ScrapIndustry.items["jelly"] = {scrap="spoilage", scale=0.02, failrate=0.02}
 ScrapIndustry.items["bioflux"] = {scrap="spoilage", scale=0.03, failrate=0.01}
 ScrapIndustry.items["biter-egg"] = {scrap="spoilage", scale=0.1, failrate=0.01}
 ScrapIndustry.items["pentapod-egg"] = {scrap="spoilage", scale=0.1, failrate=0.01}
+ScrapIndustry.recipes["iron-bacteria"] = {ignore=true}
+ScrapIndustry.recipes["copper-bacteria"] = {ignore=true}
 
-ScrapIndustry.recipes["lithium"] = {ignore=true} -- ???
+ScrapIndustry.items["lithium-plate"] = {scrap="holmium-scrap", scale=0.01, failrate=0.02}
+ScrapIndustry.recipes["lithium"] = {ignore=true}
+ScrapIndustry.recipes["foundation"] = {ignore=true}
 
 ScrapIndustry.items["quantum-processor"] = {scrap="circuit-scrap", scale=0.08, failrate=-0.01}
-
 ScrapIndustry.recipes["quantum-processor"] = {failrate=0.01}
 
 ScrapIndustry.items["quality-module"] = {scrap="circuit-scrap", scale=0.03, failrate=-0.01}

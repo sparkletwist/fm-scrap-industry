@@ -1,3 +1,2 @@
 # TODO:
-- Add support for Roc's Rusting Iron
-- Limit number of scrap results to 3
+- Add support for Roc's Rusting Iron?

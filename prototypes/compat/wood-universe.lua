@@ -1,5 +1,5 @@
 if mods["wood-industry"] then
-  ScrapIndustry.products["woodchips"] = {priority=0}
+  ScrapIndustry.products["woodchips"] = {priority=0.2}
   ScrapIndustry.items["wood"] = {scrap="woodchips", scale=0.02, failrate=0.02}
   ScrapIndustry.items["lumber"] = {scrap="woodchips", scale=0.04, failrate=0.01}
 end

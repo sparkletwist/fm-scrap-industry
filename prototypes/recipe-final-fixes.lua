@@ -63,25 +63,39 @@ for _,recipe in pairs(data.raw.recipe) do
 
     if recipe_metadata and type(recipe_metadata.failrate) == "number" then
       out.success_penalty = recipe_metadata.failrate
-    else
+    elseif out.total_scrap > 0 then
       local failrate_scale = 1 / (4 * out.total_scrap)
       if failrate_scale < 1 then
         out.success_penalty = math.max(math.ceil(failrate_scale * out.success_penalty * 100) / 100, 0.01)
       end
+      out.success_penalty = math.max(out.success_penalty, 0.01)
     end
   
     if out.success_penalty > 0 then
       for _,result in pairs(recipe.results) do
         if result.type == "item" then
-          result.probability = (result.probability or 1) - out.success_penalty
+          if result.probability then
+            result.probability = result.probability * out.success_penalty
+          else
+            result.probability = 1 - out.success_penalty
+          end
         end
       end
     end
 
     if out.results ~= {} then
+      local excluded_result = ""
       if table_size(out.results) > 3 then
-        -- first sort by result type
-        sdfsdfjlkjldf
+        -- if there are a lot of scrap results, get rid of the least important one (biased by scrap amount)
+        local lowest_priority = 1
+        for scrap_name,scrap_amount in pairs(out.results) do
+          local scrap_metadata = ScrapIndustry.products[scrap_name]
+          local priority = (scrap_metadata and scrap_metadata.priority or 1) + scrap_amount
+          if priority < lowest_priority then
+            lowest_priority = priority
+            excluded_result = scrap_name
+          end
+        end
       end
       if not recipe.main_product then
         local main_product = util.get_recipe_main_product(recipe)
@@ -90,7 +104,7 @@ for _,recipe in pairs(data.raw.recipe) do
         end
       end
       for scrap_name,scrap_amount in pairs(out.results) do
-        if scrap_amount > 0 then
+        if scrap_name ~= excluded_result and scrap_amount > 0 then
           local final_amount = math.ceil(scrap_amount / 0.5)
           local probability = math.floor(100 * scrap_amount / final_amount) / 100
           table.insert(recipe.results, {type="item", name=scrap_name, amount=final_amount, probability=probability})
