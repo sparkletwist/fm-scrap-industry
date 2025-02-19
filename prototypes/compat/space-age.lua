@@ -25,10 +25,6 @@ ScrapIndustry.recipes["foundation"] = {ignore=true}
 ScrapIndustry.items["quantum-processor"] = {scrap="circuit-scrap", scale=0.08, failrate=-0.01}
 ScrapIndustry.recipes["quantum-processor"] = {failrate=0.01}
 
-ScrapIndustry.items["quality-module"] = {scrap="circuit-scrap", scale=0.03, failrate=-0.01}
-ScrapIndustry.items["quality-module-2"] = {scrap="circuit-scrap", scale=0.06, failrate=-0.02}
-ScrapIndustry.items["quality-module-3"] = {scrap="circuit-scrap", scale=0.06, failrate=-0.03}
-
 ScrapIndustry.recipes["speed-module-3"] = {failrate=0.01}
 ScrapIndustry.recipes["productivity-module-3"] = {failrate=0.01}
 ScrapIndustry.recipes["efficiency-module-3"] = {failrate=0.01}

@@ -1,0 +1,17 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+  Changes:
+    - Increase steel scrap yields from recipes by 50% across the board (steel plates: 0.0
+    - Increase copper scrap yield from copper plates by 50% (0.02 -> 0.03)
+    - Increase copper scrap yield from copper cables by 100% (0.01 -> 0.02)
+    - Engine units and Flying robot frames now yield steel scrap
+    - Electric engine units now yield circuit scrap
+    - Properly set failrate to 0 for Kovarex enrichment process
+  Bugfixes:
+    - Recycling and rocket building recipes are now ignored
+    - Fix priority for nuclear ore byproducts not being set (was applying to "nuclear-scrap" which doesn't exist)
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+  Major Features:
+    - Initial release.

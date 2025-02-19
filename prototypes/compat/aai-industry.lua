@@ -10,6 +10,6 @@ ScrapIndustry.recipes["sand"] = {ignore=true}
 ScrapIndustry.recipes["glass"] = {self_scrap=true}
 
 ScrapIndustry.items["motor"] = {scrap="iron-scrap", scale=0.04, failrate=0.02}
-ScrapIndustry.items["engine-unit"] = {scrap="steel-scrap", scale=0.08, failrate=0.01}
+ScrapIndustry.items["engine-unit"] = {scrap="steel-scrap", scale=0.12, failrate=0.01}
 ScrapIndustry.items["electric-motor"] = {scrap="circuit-scrap", scale=0.04, failrate=0.02}
 ScrapIndustry.items["electric-engine-unit"] = {scrap="circuit-scrap", scale=0.08, failrate=0.01}

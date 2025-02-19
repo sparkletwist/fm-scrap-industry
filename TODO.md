@@ -1,2 +1,3 @@
 # TODO:
-- Add support for Roc's Rusting Iron?
+- Add Lithium scrap
+- Add Plastic pellets

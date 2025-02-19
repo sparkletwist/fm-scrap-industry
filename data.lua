@@ -1,6 +1,9 @@
 require("api")
 
 require("prototypes.compat.base")
+if mods["quality"] then
+  require("prototypes.compat.quality")
+end
 if mods["space-age"] then
   require("prototypes.compat.space-age")
 end
