@@ -74,6 +74,28 @@ data:extend({
   }
 })
 
+if settings.startup["scrap-industry-plastic"].value then
+  data:extend({
+    {
+      type = "item",
+      name = "plastic-bits",
+      icon = "__scrap-industry__/graphics/icons/plastic-bits.png",
+      pictures = {
+        {size = 64, filename = "__scrap-industry__/graphics/icons/plastic-bits.png",   scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/plastic-bits-1.png", scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/plastic-bits-2.png", scale = 0.5, mipmap_count = 4},
+      },
+      subgroup = "production-scrap",
+      order = "c[product]-b[plastic]",
+      inventory_move_sound = item_sounds.resource_inventory_move,
+      pick_sound = item_sounds.resource_inventory_pickup,
+      drop_sound = item_sounds.resource_inventory_move,
+      stack_size = 50,
+      weight = 2*kg
+    }
+  })
+end
+
 if mods["space-age"] then
   data:extend({
     {
@@ -109,7 +131,7 @@ if mods["space-age"] then
       drop_sound = item_sounds.metal_small_inventory_move,
       stack_size = 50,
       weight = 2*kg
-    },
+    }
   })
 end
 

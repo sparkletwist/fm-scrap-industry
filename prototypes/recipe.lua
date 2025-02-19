@@ -101,6 +101,33 @@ data:extend({
   }
 })
 
+if settings.startup["scrap-industry-plastic"].value then
+  data:extend({
+    {
+      type = "recipe",
+      name = "plastic-bar-from-bits",
+      localised_name = {"recipe-name.plastic-bar-from-bits"},
+      icons = {
+        {icon="__scrap-industry__/graphics/icons/plastic-bits.png", shift={-12, -12}, scale=0.4},
+        {icon="__base__/graphics/icons/plastic-bar.png", draw_background=true}
+      },
+      category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+      subgroup = "production-scrap",
+      order = "d[crafting]-c[plastic-bar]",
+      enabled = false,
+      allow_productivity = true,
+      auto_recycle = false,
+      allow_decomposition = false,
+      energy_required = 9,
+      ingredients = {
+        {type="item", name="plastic-bits", amount=3},
+        {type="fluid", name="petroleum-gas", amount=10}
+      },
+      results = {{type="item", name="plastic-bar", amount=2}}
+    }
+  })
+end
+
 if mods["space-age"] then
   data:extend({
     {

@@ -33,13 +33,20 @@ ScrapIndustry.items["electronic-circuit"] = {scrap="circuit-scrap", scale=0.02, 
 ScrapIndustry.items["advanced-circuit"] = {scrap="circuit-scrap", scale=0.04, failrate=0.02}
 ScrapIndustry.items["processing-unit"] = {scrap="circuit-scrap", scale=0.06, failrate=0.01}
 ScrapIndustry.recipes["electronic-circuit"] = {self_scrap=true}
-ScrapIndustry.recipes["advanced-circuit"] = {self_scrap=true}
-ScrapIndustry.recipes["processing-unit"] = {self_scrap=true}
+ScrapIndustry.recipes["advanced-circuit"] = {failrate=0.02}
+ScrapIndustry.recipes["processing-unit"] = {failrate=0.01}
 
-ScrapIndustry.items["engine-unit"] = {scrap="steel-scrap", scale=0.09, failrate=0.02}
-ScrapIndustry.items["electric-engine-unit"] = {scrap="circuit-scrap", scale=0.04, failrate=0.02}
-ScrapIndustry.items["flying-robot-frame"] = {scrap="steel-scrap", scale=0.12, failrate=0.01}
+ScrapIndustry.items["low-density-structure"] = {scrap={"copper-scrap"}, scale=0.05, failrate=0.01}
+ScrapIndustry.items["engine-unit"] = {scrap={"iron-scrap", "steel-scrap"}, scale=0.04, failrate=0.02}
+ScrapIndustry.items["electric-engine-unit"] = {scrap={"steel-scrap", "circuit-scrap"}, scale=0.06, failrate=0.02}
+ScrapIndustry.items["flying-robot-frame"] = {scrap={"steel-scrap", "circuit-scrap"}, scale=0.08, failrate=0.01}
 ScrapIndustry.recipes["assembling-machine-2"] = {failrate=0.02}
+
+if settings.startup["scrap-industry-plastic"].value then
+  ScrapIndustry.products["plastic-bits"] = {priority=3}
+  ScrapIndustry.items["plastic-bar"] = {scrap="plastic-bits", scale=0.02, failrate=0.02}
+  table.insert(ScrapIndustry.items["low-density-structure"].scrap, "plastic-bits")
+end
 
 ScrapIndustry.items["speed-module"] = {scrap="circuit-scrap", scale=0.03, failrate=-0.01}
 ScrapIndustry.items["efficiency-module"] = {scrap="circuit-scrap", scale=0.03, failrate=-0.01}

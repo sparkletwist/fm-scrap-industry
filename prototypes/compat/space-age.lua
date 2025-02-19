@@ -2,11 +2,16 @@ ScrapIndustry.products["tungsten-scrap"] = {priority=3}
 ScrapIndustry.items["tungsten-carbide"] = {scrap="tungsten-scrap", scale=0.02, failrate=0.03}
 ScrapIndustry.items["tungsten-plate"] = {scrap="tungsten-scrap", scale=0.04, failrate=0.02}
 ScrapIndustry.recipes["tungsten-carbide"] = {self_scrap=true}
+ScrapIndustry.recipes["casting-low-density-structure"] = {ignore=true}
 
 ScrapIndustry.products["holmium-scrap"] = {priority=3}
 ScrapIndustry.items["holmium-plate"] = {scrap="holmium-scrap", scale=0.02, failrate=0.02}
-ScrapIndustry.items["superconductor"] = {scrap="holmium-scrap", scale=0.02, failrate=0.02}
-ScrapIndustry.items["supercapacitor"] = {scrap="circuit-scrap", scale=0.04, failrate=0.01}
+ScrapIndustry.items["superconductor"] = {scrap={"holmium-scrap", "copper-scrap"}, scale=0.02, failrate=0.02}
+ScrapIndustry.items["supercapacitor"] = {scrap={"holmium-scrap", "circuit-scrap"}, scale=0.04, failrate=0.01}
+
+if settings.startup["scrap-industry-plastic"].value then
+  table.insert(ScrapIndustry.items["superconductor"].scrap, "plastic-bits")
+end
 
 ScrapIndustry.products["spoilage"] = {priority=0.1}
 ScrapIndustry.items["nutrients"] = {scrap="spoilage", scale=0.02, failrate=0.04}

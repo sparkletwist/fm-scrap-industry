@@ -4,6 +4,10 @@ ftech.add_unlock("steel-processing", "steel-plate-from-scrap")
 ftech.add_unlock("electronics", "electronic-circuit-from-scrap")
 ftech.add_unlock("advanced-circuit", "advanced-circuit-from-scrap")
 
+if settings.startup["scrap-industry-plastic"].value then
+  ftech.add_unlock("plastics", "plastic-bar-from-bits")
+end
+
 if mods["space-age"] then
   ftech.add_unlock("tungsten-carbide", "tungsten-carbide-from-scrap")
   ftech.add_unlock("tungsten-steel", "tungsten-plate-from-scrap")

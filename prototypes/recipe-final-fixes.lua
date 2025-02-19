@@ -4,8 +4,15 @@ local function get_ingredient_scrap(ingredient, out)
     if item_metadata then
       -- TODO: better assert messages here
       local amount = item_metadata.scale * (ingredient.amount or ((ingredient.amount_min + ingredient.amount_max)/2))
-      out.results[item_metadata.scrap] = (out.results[item_metadata.scrap] or 0) + amount
-      out.total_scrap = out.total_scrap + amount
+      if type(item_metadata.scrap) == "string" then
+        out.results[item_metadata.scrap] = (out.results[item_metadata.scrap] or 0) + amount
+        out.total_scrap = out.total_scrap + amount
+      else
+        for _,scrap_name in pairs(item_metadata.scrap) do
+          out.results[scrap_name] = (out.results[scrap_name] or 0) + amount
+          out.total_scrap = out.total_scrap + amount
+        end
+      end
       if item_metadata.failrate then
         out.success_penalty = (out.success_penalty or 0) + item_metadata.failrate
       end

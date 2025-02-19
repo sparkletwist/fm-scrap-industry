@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+  Major Features:
+    - Add API support for multiple scrap results from a single item
+    - Add plastic bits as scrap from plastic bars and LDS
+    - LDS now yields copper scrap and plastic bits
+    - Superconductors now yield holmium scrap, copper scrap, and plastic bits if enabled
+    - Supercapacitors now yield holmium scrap and circuit scrap
+    - Engine units now yield iron and steel scrap
+    - Electric engine units and Flying robot frames now yield steel and circuit scrap
+  Changes:
+    - Remove self_scrap from advanced circuit and processing unit recipes
+    - Change Low density structure casting to be ignored
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
   Changes:
     - Increase steel scrap yields from recipes by 50% across the board (steel plates: 0.0
@@ -9,7 +23,7 @@ Version: 0.1.1
     - Properly set failrate to 0 for Kovarex enrichment process
   Bugfixes:
     - Recycling and rocket building recipes are now ignored
-    - Fix priority for nuclear ore byproducts not being set (was applying to "nuclear-scrap" which doesn't exist)
+    - Fix priority for nuclear ore byproducts not being set (thanks s6x!)
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.0
