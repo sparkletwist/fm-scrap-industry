@@ -198,6 +198,31 @@ if mods["space-age"] then
       results = {{type="fluid", name="holmium-solution", amount=mods["aai-industry"] and 100 or 150}}
     },
   })
+  if settings.startup["scrap-industry-plastic"].value then
+    data:extend({
+      {
+        type = "recipe",
+        name = "bioplastic-from-bits",
+        icons = {
+          {icon="__space-age__/graphics/icons/yumako-mash.png", shift={4, -6}, scale=0.35, draw_background=true},
+          {icon="__scrap-industry__/graphics/icons/bioplastic-from-bits-top.png", draw_background=true}
+        },
+        category = "organic",
+        subgroup = "agriculture-products",
+        order = "a[organic-products]-c[bioplastic]b",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        allow_decomposition = false,
+        energy_required = 2,
+        ingredients = {
+          {type="item", name="plastic-bits", amount=4},
+          {type="item", name="yumako-mash", amount=3}
+        },
+        results = {{type="item", name="plastic-bar", amount=3}}
+      }
+    })
+  end
 end
 
 if mods["bzlead"] then

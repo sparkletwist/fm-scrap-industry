@@ -6,6 +6,9 @@ ftech.add_unlock("advanced-circuit", "advanced-circuit-from-scrap")
 
 if settings.startup["scrap-industry-plastic"].value then
   ftech.add_unlock("plastics", "plastic-bar-from-bits")
+  if mods["space-age"] then
+    ftech.add_unlock("bioflux-processing", "bioplastic-from-bits")
+  end
 end
 
 if mods["space-age"] then

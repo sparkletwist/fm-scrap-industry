@@ -1,11 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+  Minor Features:
+    - New Bioplastic from bits recipe for using your Plastic bits on Gleba
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
   Major Features:
     - Add API support for multiple scrap results from a single item
-    - Add plastic bits as scrap from plastic bars and LDS
+    - Add new Plastic bits as scrap from plastic bars and LDS
+  Minor Features:
     - LDS now yields copper scrap and plastic bits
-    - Superconductors now yield holmium scrap, copper scrap, and plastic bits if enabled
-    - Supercapacitors now yield holmium scrap and circuit scrap
+    - Superconductors now yield holmium and copper scrap, and plastic bits if enabled
+    - Supercapacitors now yield holmium and circuit scrap
     - Engine units now yield iron and steel scrap
     - Electric engine units and Flying robot frames now yield steel and circuit scrap
   Changes:
