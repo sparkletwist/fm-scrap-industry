@@ -1,22 +1,37 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.1
+  Bugfixes:
+    - Hotfix for load error on 2.0.32 due to missing new signal-fire.png icon
+
+---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+  Major Features:
+    - [space-age] Add Lithium dust as scrap from lithium and lithium plates. Unstable!
+  Changes:
+    - [space-age] Slightly nerfed Bioplastic from bits ratio to match Plastic bars from bits (4:3:3 -> 3:2:2)
+  Modding:
+    - ScrapIndustry.recipes[] can now have ignore=false, bypassing category-based restrictions
+
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1
   Minor Features:
-    - New Bioplastic from bits recipe for using your Plastic bits on Gleba
+    - [space-age] New Bioplastic from bits recipe for using your Plastic bits on Gleba
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
   Major Features:
-    - Add API support for multiple scrap results from a single item
     - Add new Plastic bits as scrap from plastic bars and LDS
   Minor Features:
     - LDS now yields copper scrap and plastic bits
-    - Superconductors now yield holmium and copper scrap, and plastic bits if enabled
-    - Supercapacitors now yield holmium and circuit scrap
+    - [space-age] Superconductors now yield holmium and copper scrap, and plastic bits if enabled
+    - [space-age] Supercapacitors now yield holmium and circuit scrap
     - Engine units now yield iron and steel scrap
     - Electric engine units and Flying robot frames now yield steel and circuit scrap
   Changes:
     - Remove self_scrap from advanced circuit and processing unit recipes
     - Change Low density structure casting to be ignored
+  Modding:
+    - Add API support for multiple scrap results from a single item
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1

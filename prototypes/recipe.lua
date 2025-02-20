@@ -216,10 +216,40 @@ if mods["space-age"] then
         allow_decomposition = false,
         energy_required = 2,
         ingredients = {
-          {type="item", name="plastic-bits", amount=4},
-          {type="item", name="yumako-mash", amount=3}
+          {type="item", name="plastic-bits", amount=3},
+          {type="item", name="yumako-mash", amount=2}
         },
-        results = {{type="item", name="plastic-bar", amount=3}}
+        results = {{type="item", name="plastic-bar", amount=2}}
+      }
+    })
+  end
+  if settings.startup["scrap-industry-lithium"].value then
+    data:extend({
+      {
+        type = "recipe",
+        name = "lithium-dust-neutralization",
+        icons = {
+          {icon="__base__/graphics/icons/fluid/sulfuric-acid.png", shift={-8, -14}, scale=0.4},
+          {icon="__space-age__/graphics/icons/lithium.png", draw_background = true},
+          {icon="__scrap-industry__/graphics/icons/lithium-dust-neutralization-top.png", draw_background=true}
+        },
+        category = "chemistry-or-cryogenics",
+        subgroup = "aquilo-processes",
+        order = "c[lithium]-e[lithium-dust-neutralization]",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        allow_decomposition = false,
+        energy_required = 4,
+        ingredients = {
+          {type="item", name="lithium-dust", amount=1},
+          {type="fluid", name="sulfuric-acid", amount=20}
+        },
+        results = {
+          {type="item", name="lithium", amount=1, probability=0.47},
+          {type="item", name="sulfur", amount=1, probability=0.03}
+        },
+        main_product = "lithium"
       }
     })
   end

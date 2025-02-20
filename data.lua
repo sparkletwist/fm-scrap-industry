@@ -13,6 +13,8 @@ end
 require("prototypes.compat.bzores")
 require("prototypes.compat.wood-universe")
 
+require("prototypes.entity.fire")
+
 require("prototypes.item-groups")
 require("prototypes.item")
 require("prototypes.recipe")

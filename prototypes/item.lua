@@ -133,6 +133,64 @@ if mods["space-age"] then
       weight = 2*kg
     }
   })
+  if settings.startup["scrap-industry-lithium"].value then
+    data:extend({
+      {
+        type = "item",
+        name = "lithium-dust",
+        icon = "__scrap-industry__/graphics/icons/lithium-dust.png",
+        pictures = {
+          {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-dust.png",   scale = 0.5, mipmap_count = 4},
+          {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-dust-1.png", scale = 0.5, mipmap_count = 4},
+          {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-dust-2.png", scale = 0.5, mipmap_count = 4},
+        },
+        subgroup = "aquilo-processes",
+        order = "c[lithium]-c[lithium-dust]",
+        inventory_move_sound = item_sounds.resource_inventory_move,
+        pick_sound = item_sounds.resource_inventory_pickup,
+        drop_sound = item_sounds.resource_inventory_move,
+        stack_size = 50,
+        weight = 2*kg,
+        spoil_ticks = 1 * minute,
+        spoil_to_trigger_result = {
+          items_per_trigger = 1,
+          trigger = {
+            type = "direct",
+            action_delivery = {
+              type = "instant",
+              target_effects = {
+                {
+                  type = "create-entity",
+                  entity_name = "explosion"
+                },
+                {
+                  type = "create-fire",
+                  entity_name = "lithium-flame",
+                  show_in_tooltip = true,
+                  as_enemy = true,
+                  initial_ground_flame_count = 3
+                },
+                {
+                  type = "nested-result",
+                  action = {
+                    type = "area",
+                    radius = 0.5,
+                    action_delivery = {
+                      type = "instant",
+                      target_effects = {
+                        type = "damage",
+                        damage = {amount = 25, type = "explosion"}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+  end
 end
 
 if mods["bzlead"] then

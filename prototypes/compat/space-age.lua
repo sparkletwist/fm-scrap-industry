@@ -23,9 +23,15 @@ ScrapIndustry.items["pentapod-egg"] = {scrap="spoilage", scale=0.1, failrate=0.0
 ScrapIndustry.recipes["iron-bacteria"] = {ignore=true}
 ScrapIndustry.recipes["copper-bacteria"] = {ignore=true}
 
-ScrapIndustry.items["lithium-plate"] = {scrap="holmium-scrap", scale=0.01, failrate=0.02}
-ScrapIndustry.recipes["lithium"] = {ignore=true}
-ScrapIndustry.recipes["foundation"] = {ignore=true}
+if settings.startup["scrap-industry-lithium"].value then
+  ScrapIndustry.products["lithium-dust"] = {priority=10}
+  ScrapIndustry.items["lithium-plate"] = {scrap="lithium-dust", scale=0.02, failrate=0.01}
+  ScrapIndustry.items["lithium"] = {scrap="lithium-dust", scale=0.01, failrate=0.02}
+  ScrapIndustry.recipes["lithium-plate"] = {self_scrap=true}
+  ScrapIndustry.recipes["lithium"] = {self_scrap=true}
+else
+  ScrapIndustry.recipes["lithium"] = {ignore=true}
+end
 
 ScrapIndustry.items["quantum-processor"] = {scrap="circuit-scrap", scale=0.08, failrate=-0.01}
 ScrapIndustry.recipes["quantum-processor"] = {failrate=0.01}

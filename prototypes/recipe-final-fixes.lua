@@ -27,8 +27,9 @@ local function can_modify_recipe(recipe)
 
   local recipe_metadata = ScrapIndustry.recipes[recipe.name]
   if recipe_metadata then
-    if recipe_metadata.ignore then
-      return false
+    -- ignore=false forces a recipe to be modified, even if the category is ignored
+    if type(recipe_metadata.ignore) == "boolean" then
+      return not recipe_metadata.ignore
     end
 
     if recipe_metadata.self_scrap then
@@ -48,6 +49,7 @@ local function can_modify_recipe(recipe)
       return true
     end
   end
+  return false
 end
 
 for _,recipe in pairs(data.raw.recipe) do
