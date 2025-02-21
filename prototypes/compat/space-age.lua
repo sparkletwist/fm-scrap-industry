@@ -25,8 +25,8 @@ ScrapIndustry.recipes["copper-bacteria"] = {ignore=true}
 
 if settings.startup["scrap-industry-lithium"].value then
   ScrapIndustry.products["lithium-dust"] = {priority=10}
-  ScrapIndustry.items["lithium-plate"] = {scrap="lithium-dust", scale=0.02, failrate=0.01}
-  ScrapIndustry.items["lithium"] = {scrap="lithium-dust", scale=0.01, failrate=0.02}
+  ScrapIndustry.items["lithium-plate"] = {scrap="lithium-dust", scale=0.03, failrate=0.01}
+  ScrapIndustry.items["lithium"] = {scrap="lithium-dust", scale=0.02, failrate=0.02}
   ScrapIndustry.recipes["lithium-plate"] = {self_scrap=true}
   ScrapIndustry.recipes["lithium"] = {self_scrap=true}
 else

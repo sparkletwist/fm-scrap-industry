@@ -16,6 +16,13 @@ if mods["space-age"] then
       setting_type = "startup",
       default_value = true,
       order = "b[space-age]-d[lithium]"
+    },
+    {
+      type = "bool-setting",
+      name = "scrap-industry-volatile-lithium",
+      setting_type = "startup",
+      default_value = true,
+      order = "b[space-age]-d[lithium]-b[volatile]"
     }
   })
 end

@@ -125,18 +125,18 @@ local function create_lithium_fire_pictures(opts)
 end
 
 
-if mods["space-age"] and settings.startup["scrap-industry-lithium"].value then
+if mods["space-age"] and settings.startup["scrap-industry-lithium"].value and settings.startup["scrap-industry-volatile-lithium"].value then
   data:extend({
     fireutil.add_basic_fire_graphics_and_effects_definitions{
       type = "fire",
       name = "lithium-flame",
-      -- icon = "__base__/graphics/icons/signal/signal-fire.png",
+      icon = (mods["base"] >= "2.0.34") and "__base__/graphics/icons/signal/signal-fire.png" or nil,
       flags = {"placeable-off-grid", "not-on-map"},
       hidden = true,
       damage_per_tick = {amount = 26 / 60, type = "fire"},
       maximum_damage_multiplier = 6,
       damage_multiplier_increase_per_added_fuel = 1,
-      damage_multiplier_decrease_per_tick = 0.005,
+      damage_multiplier_decrease_per_tick = 0.001,
     
       spawn_entity = "fire-flame-on-tree",
       spread_delay = 300,

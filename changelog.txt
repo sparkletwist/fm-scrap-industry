@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.2
+  Minor Features:
+    - [space-age] Added setting to disable Lithium scrap being volatile
+    - Fish now yield Plastic bits! Yeah, it makes me sad too
+  Changes:
+    - [space-age] Increase lithium dust yield from lithium plates by 50% (0.02 -> 0.03)
+    - [space-age] Increase lithium dust yield from lithium by 100% (0.01 -> 0.02)
+    - [space-age] Reintroduce using the fire signal icon when >= 2.0.34
+    - [space-age] Buffed lithium fire slightly (damage falls off much slower)
+
+---------------------------------------------------------------------------------------------------
 Version: 0.3.1
   Bugfixes:
     - Hotfix for load error on 2.0.32 due to missing new signal-fire.png icon

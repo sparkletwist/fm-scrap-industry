@@ -46,6 +46,7 @@ if settings.startup["scrap-industry-plastic"].value then
   ScrapIndustry.products["plastic-bits"] = {priority=3}
   ScrapIndustry.items["plastic-bar"] = {scrap="plastic-bits", scale=0.02, failrate=0.02}
   table.insert(ScrapIndustry.items["low-density-structure"].scrap, "plastic-bits")
+  ScrapIndustry.items["raw-fish"] = {scrap="plastic-bits", scale=0.04, failrate=0.01} -- microplastics, it makes me sad too
 end
 
 ScrapIndustry.items["speed-module"] = {scrap="circuit-scrap", scale=0.03, failrate=-0.01}

@@ -134,6 +134,7 @@ if mods["space-age"] then
     }
   })
   if settings.startup["scrap-industry-lithium"].value then
+    local volatile = settings.startup["scrap-industry-volatile-lithium"].value
     data:extend({
       {
         type = "item",
@@ -151,8 +152,10 @@ if mods["space-age"] then
         drop_sound = item_sounds.resource_inventory_move,
         stack_size = 50,
         weight = 2*kg,
-        spoil_ticks = 1 * minute,
-        spoil_to_trigger_result = {
+        fuel_category = not volatile and "chemical" or nil,
+        fuel_value = not volatile and "1MJ" or nil,
+        spoil_ticks = volatile and 1 * minute or nil,
+        spoil_to_trigger_result = volatile and {
           items_per_trigger = 1,
           trigger = {
             type = "direct",
@@ -168,7 +171,7 @@ if mods["space-age"] then
                   entity_name = "lithium-flame",
                   show_in_tooltip = true,
                   as_enemy = true,
-                  initial_ground_flame_count = 3
+                  initial_ground_flame_count = 2
                 },
                 {
                   type = "nested-result",
@@ -187,7 +190,7 @@ if mods["space-age"] then
               }
             }
           }
-        }
+        } or nil
       }
     })
   end
