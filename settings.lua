@@ -5,6 +5,13 @@ data:extend({
     setting_type = "startup",
     default_value = true,
     order = "a[base]-a[plastic]"
+  },
+  {
+    type = "bool-setting",
+    name = "scrap-industry-handcraft",
+    setting_type = "startup",
+    default_value = true,
+    order = "m[misc]-a[handcraft]"
   }
 })
 

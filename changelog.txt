@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.0
+  Major Features:
+    - Add Hand-crafting friendly setting (enabled by default) that makes hand-crafting things easier.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.3.2
   Minor Features:
     - [space-age] Added setting to disable Lithium scrap being volatile

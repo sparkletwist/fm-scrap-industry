@@ -1,3 +1,5 @@
+local ftech = require("__fdsl__.lib.technology")
+
 local function get_ingredient_scrap(ingredient, out)
   if ingredient.type == "item" then
     local item_metadata = ScrapIndustry.items[ingredient.name]
@@ -52,6 +54,96 @@ local function can_modify_recipe(recipe)
   return false
 end
 
+-- if a recipe has an ingredient whose recipe was modified to have a % failrate, it can't be considered as an intermediate for the hand-crafting queue
+-- to resolve this, we create hidden duplicates for these recipes
+local handcraft_recipes = {}
+local handcraft_categories = {}
+local handcraft_recipe_map = {}
+if settings.startup["scrap-industry-handcraft"].value then
+  for _,category in pairs(data.raw.character.character.crafting_categories) do
+    handcraft_categories[category] = true
+  end
+end
+
+local function should_duplicate_for_hand_crafting(recipe, recipe_metadata, out)
+  if not settings.startup["scrap-industry-handcraft"].value then
+    return false
+  end
+  if recipe.allow_as_intermediate == false then
+    return false
+  end
+  if recipe_metadata and type(recipe_metadata.force_handcraft) == "boolean" then
+    return recipe_metadata.force_handcraft
+  end
+  if out.success_penalty == 0 then
+    return false
+  end
+  local category = recipe.category or "crafting"
+  return handcraft_categories[category] == true
+end
+
+-- copied from recycling.lua
+local function get_prototype(base_type, name)
+  for type_name in pairs(defines.prototypes[base_type]) do
+    local prototypes = data.raw[type_name]
+    if prototypes and prototypes[name] then
+      return prototypes[name]
+    end
+  end
+end
+
+local function get_item_localised_name(name)
+  local item = get_prototype("item", name)
+  if not item then return end
+  if item.localised_name then
+    return item.localised_name
+  end
+  local prototype
+  local type_name = "item"
+  if item.place_result then
+    prototype = get_prototype("entity", item.place_result)
+    type_name = "entity"
+  elseif item.place_as_equipment_result then
+    prototype = get_prototype("equipment", item.place_as_equipment_result)
+    type_name = "equipment"
+  elseif item.place_as_tile then
+    -- Tiles with variations don't have a localised name
+    local tile_prototype = data.raw.tile[item.place_as_tile.result]
+    if tile_prototype and tile_prototype.localised_name then
+      prototype = tile_prototype
+      type_name = "tile"
+    end
+  end
+  return prototype and prototype.localised_name or {type_name.."-name."..name}
+end
+
+local function duplicate_for_hand_crafting(recipe)
+  local duplicate_recipe = util.table.deepcopy(recipe)
+  duplicate_recipe.name = "hand-crafted-"..recipe.name
+  
+  if not duplicate_recipe.localised_name then
+    local main_product = util.get_recipe_main_product(recipe)
+    if main_product then
+      duplicate_recipe.localised_name = get_item_localised_name(main_product.name)
+      for _,result in pairs(duplicate_recipe.results) do
+        if result.name == main_product.name then
+          result.probability = nil
+        end
+      end
+    else
+      duplicate_recipe.localised_name = {"recipe-name."..recipe.name}
+    end
+  end
+  duplicate_recipe.localised_name = {"recipe-name.hand-crafted", duplicate_recipe.localised_name}
+  duplicate_recipe.category = "hand-crafting"
+  duplicate_recipe.hidden = true
+  table.insert(handcraft_recipes, duplicate_recipe)
+  handcraft_recipe_map[recipe.name] = duplicate_recipe.name
+  return duplicate_recipe
+end
+
+--------------------------------------------------------------------------------------------------
+---
 for _,recipe in pairs(data.raw.recipe) do
   if can_modify_recipe(recipe) then
     local out = {
@@ -116,9 +208,37 @@ for _,recipe in pairs(data.raw.recipe) do
         if scrap_name ~= excluded_result and scrap_amount > 0 then
           local final_amount = math.ceil(scrap_amount / 0.5)
           local probability = math.floor(100 * scrap_amount / final_amount) / 100
-          table.insert(recipe.results, {type="item", name=scrap_name, amount=final_amount, probability=probability})
+          local result = {type="item", name=scrap_name, amount=final_amount, probability=probability}
+          table.insert(recipe.results, result)
         end
       end
     end
+
+    if should_duplicate_for_hand_crafting(recipe, recipe_metadata, out) then
+      duplicate_for_hand_crafting(recipe)
+    end
   end
+end
+
+--------------------------------------------------------------------------------------------------
+
+if table_size(handcraft_recipes) > 0 then
+  if not handcraft_categories["hand-crafting"] then
+    data:extend({
+      {
+        type = "recipe-category",
+        name = "hand-crafting"
+      }
+    })
+    table.insert(data.raw.character.character.crafting_categories, "hand-crafting")
+  end
+  for _,tech in pairs(data.raw.technology) do
+    for _,effect in pairs(tech.effects or {}) do
+      local new_recipe = effect.type == "unlock-recipe" and handcraft_recipe_map[effect.recipe]
+      if new_recipe then
+        table.insert(tech.effects, {type="unlock-recipe", recipe=new_recipe, hidden=true})
+      end
+    end
+  end
+  data:extend(handcraft_recipes)
 end
