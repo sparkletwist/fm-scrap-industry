@@ -6,6 +6,8 @@ if mods["Rocs-Rusting-Iron"] and not data.raw.item["rocs-rusting-iron-iron-scrap
   local base_game = not mods["aai-industry"]
   local item_sounds = require("__base__.prototypes.item_sounds")
   local item_tints = require("__base__.prototypes.item-tints")
+  data.raw.item["iron-scrap"].spoil_ticks = 0.5 * minute * settings.startup["rocs-rusting-iron-time-minutes"].value
+  data.raw.item["iron-scrap"].spoil_result = "rocs-rusting-iron-iron-scrap-rusty"
   data:extend({
     {
       type = "item",
@@ -132,4 +134,16 @@ if mods["Rocs-Rusting-Iron"] and not data.raw.item["rocs-rusting-iron-iron-scrap
   ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-gear-wheel-chemical-derusting")
   ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-stick-chemical-derusting")
   ftech.add_unlock("sulfur-processing", base_game and "rocs-rusting-iron-engine-unit-chemical-derusting" or "rocs-rusting-iron-motor-chemical-derusting")
+
+  ScrapIndustry.items["rocs-rusting-iron-iron-plate-rusty"] = {scrap="rocs-rusting-iron-iron-scrap-rusty", scale=0.04, failrate=0.02, recycle=2}
+  ScrapIndustry.items["rocs-rusting-iron-iron-gear-rusty"] = {scrap="rocs-rusting-iron-iron-scrap-rusty", scale=0.06, failrate=0.04}
+  ScrapIndustry.items["rocs-rusting-iron-iron-stick-rusty"] = {scrap="rocs-rusting-iron-iron-stick-rusty", scale=0.06, failrate=0.04}
+  ScrapIndustry.items["rocs-rusting-iron-engine-unit"] = {scrap={"rocs-rusting-iron-iron-scrap", "steel-scrap"}, scale=0.08, failrate=0.08}
+  ScrapIndustry.items["rocs-rusting-iron-motor"] = {scrap="rocs-rusting-iron-iron-scrap", scale=0.08, failrate=0.08}
+  ScrapIndustry.recipes["rocs-rusting-iron-iron-scrap-chemical-derusting"] = {failrate=0.99}
+  ScrapIndustry.recipes["rocs-rusting-iron-iron-plate-chemical-derusting"] = {failrate=0.99}
+  ScrapIndustry.recipes["rocs-rusting-iron-iron-gear-chemical-derusting"] = {failrate=0.98}
+  ScrapIndustry.recipes["rocs-rusting-iron-iron-stick-chemical-derusting"] = {failrate=0.98}
+  ScrapIndustry.recipes["rocs-rusting-iron-engine-unit-chemical-derusting"] = {failrate=0.98}
+  ScrapIndustry.recipes["rocs-rusting-iron-motor-chemical-derusting"] = {failrate=0.98}
 end

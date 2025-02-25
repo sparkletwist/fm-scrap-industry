@@ -19,6 +19,11 @@ if mods["space-age"] then
   if settings.startup["scrap-industry-lithium"].value then
     ftech.add_unlock("lithium-processing", "lithium-dust-neutralization")
   end
+  if settings.startup["scrap-industry-metallurgy"].value then
+    ftech.add_unlock("foundry", "molten-iron-from-scrap")
+    ftech.add_unlock("foundry", "molten-copper-from-scrap")
+    ftech.add_unlock("foundry", "molten-iron-from-steel-scrap")
+  end
 end
 
 if mods["bzlead"] then
@@ -26,4 +31,12 @@ if mods["bzlead"] then
   if needs_research then
     ftech.add_unlock("wood-pyrolysis", "lead-plate-from-scrap")
   end
+  if mods["space-age"] and settings.startup["scrap-industry-metallurgy"].value then
+    ftech.add_unlock("foundry", "molten-lead-from-scrap")
+  end
 end
+
+if mods["bztitanium"] then
+  ftech.add_unlock("titanium-processing", "titanium-plate-from-scrap")
+end
+

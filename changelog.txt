@@ -1,4 +1,24 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.0
+  Major Features:
+    - Add new ScrapIndustry.products[].ignore flag, for denylisting any recipes that have the given item in its results
+    - Add new ScrapIndustry.items[].recycle variable. When set, an item->scrap recycling recipe will be auto-generated to replace the self-recycling recipe
+    - Add new recipes for reprocessing scrap metals into molten metal
+  Minor Features:
+    - Add "No mercy" mode which makes gears, cables, and sticks produce scrap
+    - Add setting to scale how much scrap is produced by recipes
+    - Add slight random variance to the amount of scrap produced
+  Compatibility:
+    - Vanilla/SA Galore's recipes are now more effectively supported with the new API and algorithm changes
+    - Add compatibility for brevven's BZ Titanium with Titanium scrap
+  Changes:
+    - Increased the scale of scrap byproducts by about a factor of 5
+  Bugfixes:
+    - Fix Iron scrap not actually rusting, rusts at half the time
+    - If a recipe already contains a scrap byproduct in its results, it won't be added and the failrate won't be applied
+    - Fix existing probabilities being handled incorrectly by failrate / success_penalty
+
+---------------------------------------------------------------------------------------------------
 Version: 0.4.1
   Compatibility:
     - Add support for Roc's Rusting Iron with Rusty iron scrap

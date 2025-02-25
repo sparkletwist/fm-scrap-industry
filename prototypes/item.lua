@@ -217,3 +217,25 @@ if mods["bzlead"] then
     },
   })
 end
+
+if mods["bztitanium"] then
+  data:extend({
+    {
+      type = "item",
+      name = "titanium-scrap",
+      icon = "__scrap-industry__/graphics/icons/titanium-scrap.png",
+      pictures = {
+        {size = 64, filename = "__scrap-industry__/graphics/icons/titanium-scrap.png",   scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/titanium-scrap-1.png", scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/titanium-scrap-2.png", scale = 0.5, mipmap_count = 4},
+      },
+      subgroup = "production-scrap",
+      order = "a[material]-e[titanium]",
+      inventory_move_sound = item_sounds.metal_small_inventory_move,
+      pick_sound = item_sounds.metal_small_inventory_pickup,
+      drop_sound = item_sounds.metal_small_inventory_move,
+      stack_size = 50,
+      weight = 2*kg
+    }
+  })
+end

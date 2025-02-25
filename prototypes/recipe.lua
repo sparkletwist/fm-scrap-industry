@@ -2,7 +2,7 @@ data:extend({
   {
     type = "recipe",
     name = "iron-plate-from-scrap",
-    localised_name = {"recipe-name.iron-plate-from-scrap"},
+    localised_name = {"recipe-name.item-from-scrap", {"item-name.iron-plate"}},
     icons = {
       {icon="__scrap-industry__/graphics/icons/iron-scrap.png", shift={-12, -12}, scale=0.4},
       {icon="__base__/graphics/icons/iron-plate.png", draw_background=true}
@@ -20,7 +20,7 @@ data:extend({
   {
     type = "recipe",
     name = "copper-plate-from-scrap",
-    localised_name = {"recipe-name.copper-plate-from-scrap"},
+    localised_name = {"recipe-name.item-from-scrap", {"item-name.copper-plate"}},
     icons = {
       {icon="__scrap-industry__/graphics/icons/copper-scrap.png", shift={-12, -12}, scale=0.4},
       {icon="__base__/graphics/icons/copper-plate.png", draw_background=true}
@@ -38,7 +38,7 @@ data:extend({
   {
     type = "recipe",
     name = "steel-plate-from-scrap",
-    localised_name = {"recipe-name.steel-plate-from-scrap"},
+    localised_name = {"recipe-name.item-from-scrap", {"item-name.steel-plate"}},
     icons = {
       {icon="__scrap-industry__/graphics/icons/steel-scrap.png", shift={-12, -12}, scale=0.4},
       {icon="__base__/graphics/icons/steel-plate.png", draw_background=true}
@@ -57,7 +57,7 @@ data:extend({
   {
     type = "recipe",
     name = "electronic-circuit-from-scrap",
-    localised_name = {"recipe-name.electronic-circuit-from-scrap"},
+    localised_name = {"recipe-name.item-from-scrap", {"item-name.electronic-circuit"}},
     icons = {
       {icon="__scrap-industry__/graphics/icons/circuit-scrap-3.png", shift={-12, -12}, scale=0.4},
       {icon="__base__/graphics/icons/electronic-circuit.png", draw_background=true}
@@ -79,7 +79,7 @@ data:extend({
   {
     type = "recipe",
     name = "advanced-circuit-from-scrap",
-    localised_name = {"recipe-name.advanced-circuit-from-scrap"},
+    localised_name = {"recipe-name.item-from-scrap", {"item-name.advanced-circuit"}},
     icons = {
       {icon="__scrap-industry__/graphics/icons/circuit-scrap-1.png", shift={-12, -12}, scale=0.4},
       {icon="__base__/graphics/icons/advanced-circuit.png", draw_background=true}
@@ -133,7 +133,7 @@ if mods["space-age"] then
     {
       type = "recipe",
       name = "tungsten-carbide-from-scrap",
-      localised_name = {"recipe-name.tungsten-carbide-from-scrap"},
+      localised_name = {"recipe-name.item-from-scrap", {"item-name.tungsten-carbide"}},
       icons = {
         {icon="__scrap-industry__/graphics/icons/tungsten-scrap.png", shift={-12, -12}, scale=0.4},
         {icon="__space-age__/graphics/icons/tungsten-carbide.png", draw_background=true}
@@ -156,7 +156,7 @@ if mods["space-age"] then
     {
       type = "recipe",
       name = "tungsten-plate-from-scrap",
-      localised_name = {"recipe-name.tungsten-plate-from-scrap"},
+      localised_name = {"recipe-name.item-from-scrap", {"item-name.tungsten-plate"}},
       icons = {
         {icon="__scrap-industry__/graphics/icons/tungsten-scrap.png", shift={-12, -12}, scale=0.4},
         {icon="__space-age__/graphics/icons/tungsten-plate.png", draw_background=true}
@@ -178,7 +178,7 @@ if mods["space-age"] then
     {
       type = "recipe",
       name = "holmium-solution-from-scrap",
-      localised_name = {"recipe-name.holmium-plate-from-scrap"},
+      localised_name = {"recipe-name.item-from-scrap", {"fluid-name.holmium-solution"}},
       icons = {
         {icon="__scrap-industry__/graphics/icons/holmium-scrap.png", shift={-12, -12}, scale=0.4},
         {icon="__space-age__/graphics/icons/fluid/holmium-solution.png", draw_background=true}
@@ -253,6 +253,81 @@ if mods["space-age"] then
       }
     })
   end
+
+  if settings.startup["scrap-industry-metallurgy"].value then
+    data:extend({
+      {
+        type = "recipe",
+        name = "molten-iron-from-scrap",
+        localised_name = {"recipe-name.item-from-scrap", {"fluid-name.molten-iron"}},
+        icons = {
+          {icon="__scrap-industry__/graphics/icons/iron-scrap.png", shift={-8,-8}, scale=0.35},
+          {icon="__space-age__/graphics/icons/fluid/molten-iron.png", draw_background=true}
+        },
+        category = "metallurgy",
+        subgroup = "production-scrap",
+        order = "e[melting]-a[molten-iron]",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        hide_from_signal_gui = false,
+        ingredients = {
+          {type="item", name="iron-scrap", amount=50},
+          {type="item", name="calcite", amount=1}
+        },
+        energy_required = 64,
+        results = {
+          {type="fluid", name="molten-iron", amount=250}
+        }
+      },
+      {
+        type = "recipe",
+        name = "molten-copper-from-scrap",
+        localised_name = {"recipe-name.item-from-scrap", {"fluid-name.molten-copper"}},
+        icons = {
+          {icon="__scrap-industry__/graphics/icons/copper-scrap.png", shift={-8,-8}, scale=0.35},
+          {icon="__space-age__/graphics/icons/fluid/molten-copper.png", draw_background=true}
+        },
+        category = "metallurgy",
+        subgroup = "production-scrap",
+        order = "e[melting]-b[molten-copper]",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        hide_from_signal_gui = false,
+        ingredients = {
+          {type="item", name="copper-scrap", amount=50},
+          {type="item", name="calcite", amount=1}
+        },
+        energy_required = 64,
+        results = {
+          {type="fluid", name="molten-copper", amount=250}
+        }
+      },
+      {
+        type = "recipe",
+        name = "molten-iron-from-steel-scrap",
+        icons = {
+          {icon="__scrap-industry__/graphics/icons/steel-scrap.png", shift={-8,-8}, scale=0.35},
+          {icon="__space-age__/graphics/icons/fluid/molten-iron.png", draw_background=true}
+        },
+        category = "metallurgy",
+        subgroup = "production-scrap",
+        order = "e[melting]-c[molten-steel]",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        hide_from_signal_gui = false,
+        ingredients = {
+          {type="item", name="steel-scrap", amount=50}
+        },
+        energy_required = 64,
+        results = {
+          {type="fluid", name="molten-iron", amount=500}
+        }
+      },
+    })
+  end
 end
 
 if mods["bzlead"] then
@@ -261,7 +336,7 @@ if mods["bzlead"] then
     {
       type = "recipe",
       name = "lead-plate-from-scrap",
-      localised_name = {"recipe-name.lead-plate-from-scrap"},
+      localised_name = {"recipe-name.item-from-scrap", {"item-name.lead-plate"}},
       icons = {
         {icon="__scrap-industry__/graphics/icons/lead-scrap.png", shift={-12, -12}, scale=0.4},
         {icon="__bzlead__/graphics/icons/lead-plate.png", draw_background=true}
@@ -276,6 +351,58 @@ if mods["bzlead"] then
       energy_required = 6.4,
       ingredients = {{type="item", name="lead-scrap", amount=2}},
       results = {{type="item", name="lead-plate", amount=1}}
+    },
+  })
+  if mods["space-age"] and settings.startup["scrap-industry-metallurgy"].value then
+    data:extend({
+      {
+        type = "recipe",
+        name = "molten-lead-from-scrap",
+        localised_name = {"recipe-name.item-from-scrap", {"fluid-name.molten-lead"}},
+        icons = {
+          {icon="__scrap-industry__/graphics/icons/lead-scrap.png", shift={-8,-8}, scale=0.35},
+          {icon="__bzlead__/graphics/icons/molten-lead-sa.png", draw_background=true}
+        },
+        category = "metallurgy",
+        subgroup = "production-scrap",
+        order = "e[melting]-d[molten-lead]",
+        enabled = false,
+        allow_productivity = true,
+        auto_recycle = false,
+        hide_from_signal_gui = false,
+        ingredients = {
+          {type="item", name="lead-scrap", amount=50},
+          {type="item", name="calcite", amount=1}
+        },
+        energy_required = 64,
+        results = {
+          {type="fluid", name="molten-lead", amount=250}
+        }
+      }
+    })
+  end
+end
+
+if mods["bztitanium"] then
+  data:extend({
+    {
+      type = "recipe",
+      name = "titanium-plate-from-scrap",
+      localised_name = {"recipe-name.item-from-scrap", {"item-name.titanium-plate"}},
+      icons = {
+        {icon="__scrap-industry__/graphics/icons/titanium-scrap.png", shift={-12, -12}, scale=0.4},
+        {icon="__bztitanium__/graphics/icons/titanium-plate.png", draw_background=true}
+      },
+      category = "smelting",
+      subgroup = "production-scrap",
+      order = "b[smelting]-e[titanium]",
+      enabled = false,
+      allow_productivity = true,
+      auto_recycle = false,
+      allow_decomposition = false,
+      energy_required = 6.4,
+      ingredients = {{type="item", name="titanium-scrap", amount=5}},
+      results = {{type="item", name="titanium-plate", amount=1}}
     },
   })
 end

@@ -1,18 +1,24 @@
 local ftech = require("__fdsl__.lib.technology")
 
+local global_byproduct_scale = settings.startup["scrap-industry-byproduct-scale"].value
+
 local function get_ingredient_scrap(ingredient, out)
   if ingredient.type == "item" then
     local item_metadata = ScrapIndustry.items[ingredient.name]
-    if item_metadata then
-      -- TODO: better assert messages here
-      local amount = item_metadata.scale * (ingredient.amount or ((ingredient.amount_min + ingredient.amount_max)/2))
-      if type(item_metadata.scrap) == "string" then
-        out.results[item_metadata.scrap] = (out.results[item_metadata.scrap] or 0) + amount
-        out.total_scrap = out.total_scrap + amount
-      else
-        for _,scrap_name in pairs(item_metadata.scrap) do
-          out.results[scrap_name] = (out.results[scrap_name] or 0) + amount
+    if item_metadata and not out.recipe_results[item_metadata.scrap] then
+      if item_metadata.scale then
+        local amount = item_metadata.scale * (ingredient.amount or ((ingredient.amount_min + ingredient.amount_max)/2))
+        amount = global_byproduct_scale * amount
+        local random_scale = 1 + 0.12 * (1 - 2 * math.random())
+        amount = math.floor(100 * random_scale * amount + 0.5) / 100
+        if type(item_metadata.scrap) == "string" then
+          out.byproducts[item_metadata.scrap] = (out.byproducts[item_metadata.scrap] or 0) + amount
           out.total_scrap = out.total_scrap + amount
+        else
+          for _,scrap_name in pairs(item_metadata.scrap) do
+            out.byproducts[scrap_name] = (out.byproducts[scrap_name] or 0) + amount
+            out.total_scrap = out.total_scrap + amount
+          end
         end
       end
       if item_metadata.failrate then
@@ -47,6 +53,10 @@ local function can_modify_recipe(recipe)
   end
   
   for _,result in pairs(recipe.results) do
+    local product_metadata = ScrapIndustry.products[result.name]
+    if product_metadata and product_metadata.ignore then
+      return false
+    end
     if result.type == "item" then
       return true
     end
@@ -147,16 +157,21 @@ end
 for _,recipe in pairs(data.raw.recipe) do
   if can_modify_recipe(recipe) then
     local out = {
-      results = {},
+      byproducts = {},
+      recipe_results = {},
       total_scrap = 0,
       success_penalty = 0
     }
+
     local recipe_metadata = ScrapIndustry.recipes[recipe.name]
     if recipe_metadata and recipe_metadata.self_scrap then
       for _,result in pairs(recipe.results) do
         get_ingredient_scrap(result, out)
       end
     else
+      for _,result in pairs(recipe.results) do
+        out.recipe_results[result.name] = true
+      end
       for _,ingredient in pairs(recipe.ingredients or {}) do
         get_ingredient_scrap(ingredient, out)
       end
@@ -175,21 +190,22 @@ for _,recipe in pairs(data.raw.recipe) do
     if out.success_penalty > 0 then
       for _,result in pairs(recipe.results) do
         if result.type == "item" then
+          local new_probability = 1 - out.success_penalty
           if result.probability then
-            result.probability = result.probability * out.success_penalty
+            result.probability = result.probability * new_probability
           else
-            result.probability = 1 - out.success_penalty
+            result.probability = new_probability
           end
         end
       end
     end
 
-    if out.results ~= {} then
+    if out.byproducts ~= {} then
       local excluded_result = ""
-      if table_size(out.results) > 3 then
+      if table_size(out.byproducts) > 3 then
         -- if there are a lot of scrap results, get rid of the least important one (biased by scrap amount)
         local lowest_priority = 1
-        for scrap_name,scrap_amount in pairs(out.results) do
+        for scrap_name,scrap_amount in pairs(out.byproducts) do
           local scrap_metadata = ScrapIndustry.products[scrap_name]
           local priority = (scrap_metadata and scrap_metadata.priority or 1) + scrap_amount
           if priority < lowest_priority then
@@ -204,7 +220,7 @@ for _,recipe in pairs(data.raw.recipe) do
           recipe.main_product = main_product.name
         end
       end
-      for scrap_name,scrap_amount in pairs(out.results) do
+      for scrap_name,scrap_amount in pairs(out.byproducts) do
         if scrap_name ~= excluded_result and scrap_amount > 0 then
           local final_amount = math.ceil(scrap_amount / 0.5)
           local probability = math.floor(100 * scrap_amount / final_amount) / 100
@@ -241,4 +257,38 @@ if table_size(handcraft_recipes) > 0 then
     end
   end
   data:extend(handcraft_recipes)
+end
+
+-------------------------------------------------------------------------- Recycling recipe overrides
+
+if mods["quality"] then
+  for item_name,scrap_metadata in pairs(ScrapIndustry.items) do
+    local item = data.raw.item[item_name]
+    if scrap_metadata.recycle and item then
+      local icons = generate_recycling_recipe_icons_from_item(item)
+      local default_machine_tints = {primary = {0.125,0.125,0.125,0.125}, secondary = {0.125,0.125,0.125,0.125}, tertiary = {0.125,0.125,0.125,0.125}, quaternary = {0.125,0.125,0.125,0.125}}
+      local crafting_machine_tint = data.raw.recipe[item.name] and data.raw.recipe[item.name].crafting_machine_tint or default_machine_tints
+      local amount = math.ceil(scrap_metadata.recycle/4)
+      local probability = 0.25*(scrap_metadata.recycle/4)/amount
+      probability = math.ceil(probability*1000)/1000
+      data:extend({
+        {
+          type = "recipe",
+          name = item.name.."-recycling",
+          localised_name = {"recipe-name.recycling", get_item_localised_name(item.name)},
+          icons = icons,
+          category = "recycling",
+          subgroup = item.subgroup,
+          hidden = true,
+          enabled = true,
+          unlock_results = false,
+          allow_decomposition = false,
+          ingredients = {{type="item", name=item.name, amount=1, ignored_by_stats=1}},
+          results = {{type="item", name=scrap_metadata.scrap, amount=amount, probability=probability, ignored_by_stats=1}},
+          energy_required = (data.raw.recipe[item.name] and data.raw.recipe[item.name].energy_required or 0.5 )/16,
+          crafting_machine_tint = crafting_machine_tint
+        },
+      })
+    end
+  end
 end
