@@ -1,6 +1,8 @@
 local ftech = require("__fdsl__.lib.technology")
 
 local global_byproduct_scale = settings.startup["scrap-industry-byproduct-scale"].value
+local global_failrate_scale = settings.startup["scrap-industry-failrate-scale"].value
+local global_failrate_min = settings.startup["scrap-industry-failrate-min"].value
 
 local function get_ingredient_scrap(ingredient, out)
   if ingredient.type == "item" then
@@ -9,8 +11,7 @@ local function get_ingredient_scrap(ingredient, out)
       if item_metadata.scale then
         local amount = item_metadata.scale * (ingredient.amount or ((ingredient.amount_min + ingredient.amount_max)/2))
         amount = global_byproduct_scale * amount
-        local random_scale = 1 + 0.12 * (1 - 2 * math.random())
-        amount = math.floor(100 * random_scale * amount + 0.5) / 100
+        amount = math.floor(100 * amount + 0.5) / 100
         if type(item_metadata.scrap) == "string" then
           out.byproducts[item_metadata.scrap] = (out.byproducts[item_metadata.scrap] or 0) + amount
           out.total_scrap = out.total_scrap + amount
@@ -180,11 +181,11 @@ for _,recipe in pairs(data.raw.recipe) do
     if recipe_metadata and type(recipe_metadata.failrate) == "number" then
       out.success_penalty = recipe_metadata.failrate
     elseif out.total_scrap > 0 then
-      local failrate_scale = 1 / (4 * out.total_scrap)
+      local failrate_scale = 1 / (out.total_scrap / (2*ScrapIndustry.LEGENDARY))
       if failrate_scale < 1 then
-        out.success_penalty = math.max(math.ceil(failrate_scale * out.success_penalty * 100) / 100, 0.01)
+        out.success_penalty = math.max(math.ceil(failrate_scale * out.success_penalty * 100) / 100, global_failrate_min)
       end
-      out.success_penalty = math.max(out.success_penalty, 0.01)
+      out.success_penalty = math.max(global_failrate_scale * out.success_penalty, global_failrate_min)
     end
   
     if out.success_penalty > 0 then
@@ -223,8 +224,17 @@ for _,recipe in pairs(data.raw.recipe) do
       for scrap_name,scrap_amount in pairs(out.byproducts) do
         if scrap_name ~= excluded_result and scrap_amount > 0 then
           local final_amount = math.ceil(scrap_amount / 0.5)
-          local probability = math.floor(100 * scrap_amount / final_amount) / 100
-          local result = {type="item", name=scrap_name, amount=final_amount, probability=probability}
+          local random_scale = 1 + 0.12 * (1 - 2 * math.random())
+          local probability = math.floor(100 * random_scale * scrap_amount / final_amount) / 100
+          local amount_min = math.ceil(0.9 * final_amount + 0.5)
+          local amount_max = math.ceil(1.1 * final_amount + 0.5)
+          local result = {type="item", name=scrap_name, probability=probability}
+          if amount_min ~= amount_max then
+            result.amount_min = amount_min
+            result.amount_max = amount_max
+          else
+            result.amount = final_amount
+          end
           table.insert(recipe.results, result)
         end
       end

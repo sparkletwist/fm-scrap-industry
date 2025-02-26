@@ -28,7 +28,25 @@ data:extend({
     minimum_value = 0.1,
     maximum_value = 2,
     order = "m[misc]-b[byproduct-scale]"
-  }
+  },
+  {
+    type = "double-setting",
+    name = "scrap-industry-failrate-scale",
+    setting_type = "startup",
+    default_value = 1,
+    minimum_value = 0.1,
+    maximum_value = 5,
+    order = "m[misc]-c[failrate-scale]"
+  },
+  {
+    type = "double-setting",
+    name = "scrap-industry-failrate-min",
+    setting_type = "startup",
+    default_value = 0.01,
+    minimum_value = 0,
+    maximum_value = 0.2,
+    order = "m[misc]-d[failrate-min]"
+  },
 })
 
 if mods["space-age"] then
