@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.2
+  Changes:
+    - Scrap amount is now reduced for very expensive recipes (applies sqrt when amount is greater than 1)
+  Bugfixes:
+    - Add migrations for technology unlocks
+
+---------------------------------------------------------------------------------------------------
 Version: 0.5.1
   Minor Features:
     - Add setting to scale the failrate and also tune the minimum failrate value

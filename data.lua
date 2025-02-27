@@ -11,6 +11,7 @@ if mods["aai-industry"] then
   require("prototypes.compat.aai-industry")
 end
 require("prototypes.compat.bzores")
+require("prototypes.compat.rusting-iron")
 require("prototypes.compat.wood-universe")
 
 require("prototypes.entity.fire")

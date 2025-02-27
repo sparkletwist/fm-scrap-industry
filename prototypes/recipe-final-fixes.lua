@@ -154,7 +154,7 @@ local function duplicate_for_hand_crafting(recipe)
 end
 
 --------------------------------------------------------------------------------------------------
----
+
 for _,recipe in pairs(data.raw.recipe) do
   if can_modify_recipe(recipe) then
     local out = {
@@ -223,17 +223,19 @@ for _,recipe in pairs(data.raw.recipe) do
       end
       for scrap_name,scrap_amount in pairs(out.byproducts) do
         if scrap_name ~= excluded_result and scrap_amount > 0 then
-          local final_amount = math.ceil(scrap_amount / 0.5)
+          local halved_amount = scrap_amount / 0.5
           local random_scale = 1 + 0.12 * (1 - 2 * math.random())
-          local probability = math.floor(100 * random_scale * scrap_amount / final_amount) / 100
-          local amount_min = math.ceil(0.9 * final_amount + 0.5)
-          local amount_max = math.ceil(1.1 * final_amount + 0.5)
+          local probability = math.floor(100 * random_scale * scrap_amount / math.ceil(halved_amount)) / 100
+          local final_amount = halved_amount / 0.5
+          if final_amount > 1 then final_amount = math.sqrt(final_amount) end
+          local amount_min = math.max(1, math.floor(0.9 * final_amount + 0.5))
+          local amount_max = math.max(1, math.floor(1.1 * final_amount + 0.5))
           local result = {type="item", name=scrap_name, probability=probability}
           if amount_min ~= amount_max then
             result.amount_min = amount_min
             result.amount_max = amount_max
           else
-            result.amount = final_amount
+            result.amount = math.ceil(final_amount)
           end
           table.insert(recipe.results, result)
         end
