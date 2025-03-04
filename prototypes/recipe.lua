@@ -13,6 +13,7 @@ data:extend({
     allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
+    result_is_always_fresh = true,
     energy_required = 3.2,
     ingredients = {{type="item", name="iron-scrap", amount=2}},
     results = {{type="item", name="iron-plate", amount=1}}

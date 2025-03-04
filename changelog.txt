@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.4
+  Changes:
+    - With Roc's Rusting Iron, smelted scrap is always fresh
+    - Set show_details_in_recipe_tooltip to false for byproducts to reduce UI clutter
+
+---------------------------------------------------------------------------------------------------
 Version: 0.5.3
   Changes:
     - Updated icons for Steel scrap to make them more distinct from iron scrap (suggested by S6X)

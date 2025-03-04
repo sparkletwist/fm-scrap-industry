@@ -230,7 +230,7 @@ for _,recipe in pairs(data.raw.recipe) do
           if final_amount > 1 then final_amount = math.sqrt(final_amount) end
           local amount_min = math.max(1, math.floor(0.9 * final_amount + 0.5))
           local amount_max = math.max(1, math.floor(1.1 * final_amount + 0.5))
-          local result = {type="item", name=scrap_name, probability=probability}
+          local result = {type="item", name=scrap_name, probability=probability, show_details_in_recipe_tooltip=false}
           if amount_min ~= amount_max then
             result.amount_min = amount_min
             result.amount_max = amount_max
