@@ -350,7 +350,7 @@ if mods["space-age"] then
 end
 
 if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value then
-  local derusting_material = mods["aai-industry"] and "sand" or "stone"
+  local derusting_material = (mods["aai-industry"] or mods["Glass"]) and "sand" or "stone"
   data:extend({
     {
       type = "recipe",

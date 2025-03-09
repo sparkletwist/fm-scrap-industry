@@ -196,7 +196,7 @@ if mods["space-age"] then
   end
 end
 
-if mods["Rocs-Rusting-Iron"] then
+if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value then
   data:extend({
     {
       type = "item",

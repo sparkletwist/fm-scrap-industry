@@ -1,18 +1,8 @@
 require("api")
 
 require("prototypes.compat.base")
-if mods["quality"] then
-  require("prototypes.compat.quality")
-end
-if mods["space-age"] then
-  require("prototypes.compat.space-age")
-end
-if mods["aai-industry"] then
-  require("prototypes.compat.aai-industry")
-end
-require("prototypes.compat.bzores")
-require("prototypes.compat.rusting-iron")
-require("prototypes.compat.wood-universe")
+require("prototypes.compat.quality")
+require("prototypes.compat.space-age")
 
 require("prototypes.entity.fire")
 
@@ -21,3 +11,8 @@ require("prototypes.item")
 require("prototypes.recipe")
 
 require("base-data-changes")
+
+require("prototypes.compat.aai-industry")
+require("prototypes.compat.bzores")
+require("prototypes.compat.rusting-iron")
+require("prototypes.compat.wood-universe")

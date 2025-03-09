@@ -74,3 +74,15 @@ if mods["space-age"] then
     }
   })
 end
+
+if mods["Rocs-Rusting-Iron"] then
+  data:extend({
+    {
+      type = "bool-setting",
+      name = "scrap-industry-rust",
+      setting_type = "startup",
+      default_value = true,
+      order = "c[mods]-a[rust]"
+    }
+  })
+end

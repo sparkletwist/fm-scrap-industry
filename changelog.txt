@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.6
+  Changes:
+    - Make rusty scrap optional with a new setting
+    - Mirror support for Glass from Rusting Iron
+    - Reduce Copper cable cost when Tin is installed for Electronic circuits from scrap
+    - When Tin is installed, also update recipe for Advanced circuits from scrap to match
+
+---------------------------------------------------------------------------------------------------
+Version: 0.5.5
+  Changes:
+    - Make rusty scrap optional with a new setting
+  Bugfixes:
+    - Fix priority on Titanium scrap
+
+---------------------------------------------------------------------------------------------------
 Version: 0.5.4
   Changes:
     - With Roc's Rusting Iron, smelted scrap is always fresh
