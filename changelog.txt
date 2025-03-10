@@ -1,5 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.7
+  Changes:
+    - Version bump
+
+---------------------------------------------------------------------------------------------------
 Version: 0.5.6
+  Major Features:
+    - Add recipe tints (thanks to s6x!)
   Changes:
     - Make rusty scrap optional with a new setting
     - Mirror support for Glass from Rusting Iron
