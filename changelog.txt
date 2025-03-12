@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.8
+  Minor Features:
+    - Added new recipe for processing units from scrap
+  Changes:
+    - Reduced amount of molten metal yielded from melting scrap (250 -> 100), (500 -> 250 for steel)
+    - Replaced stone with water in holmium solution from scrap recipe
+    - Updated more recipes for Expensive Mode
+  Bugfixes:
+    - Improve migration code to properly enable recipes that should already be researched
+
+---------------------------------------------------------------------------------------------------
 Version: 0.5.7
   Changes:
     - Version bump

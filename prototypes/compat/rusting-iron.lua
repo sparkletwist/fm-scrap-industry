@@ -15,14 +15,4 @@ if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value t
 
   data.raw.item["iron-scrap"].spoil_ticks = 0.5 * minute * settings.startup["rocs-rusting-iron-time-minutes"].value
   data.raw.item["iron-scrap"].spoil_result = "rocs-rusting-iron-iron-scrap-rusty"
-  
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-scrap-chemical-derusting")
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-plate-chemical-derusting")
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-gear-wheel-chemical-derusting")
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-stick-chemical-derusting")
-  if mods["aai-industry"] then
-    ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-motor-chemical-derusting")
-  else
-    ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-engine-unit-chemical-derusting")
-  end
 end

@@ -15,7 +15,7 @@ data:extend({
     allow_decomposition = false,
     result_is_always_fresh = true,
     energy_required = 3.2,
-    ingredients = {{type="item", name="iron-scrap", amount=2}},
+    ingredients = {{type="item", name="iron-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
     results = {{type="item", name="iron-plate", amount=1}}
   },
   {
@@ -33,7 +33,7 @@ data:extend({
     auto_recycle = false,
     allow_decomposition = false,
     energy_required = 3.2,
-    ingredients = {{type="item", name="copper-scrap", amount=2}},
+    ingredients = {{type="item", name="copper-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
     results = {{type="item", name="copper-plate", amount=1}}
   },
   {
@@ -99,6 +99,29 @@ data:extend({
       {type="item", name="plastic-bar", amount=mods["Expensive-Mode"] and 2 or 1}
     },
     results = {{type="item", name="advanced-circuit", amount=1}}
+  },
+  {
+    type = "recipe",
+    name = "processing-unit-from-scrap",
+    localised_name = {"recipe-name.item-from-scrap", {"item-name.advanced-circuit"}},
+    icons = {
+      {icon="__scrap-industry__/graphics/icons/circuit-scrap.png", shift={-12, -12}, scale=0.4},
+      {icon="__base__/graphics/icons/processing-unit.png", draw_background=true}
+    },
+    category = mods["space-age"] and "electronics" or "crafting",
+    subgroup = "production-scrap",
+    order = "d[crafting]-c[processing-unit]",
+    enabled = false,
+    allow_productivity = true,
+    auto_recycle = false,
+    allow_decomposition = false,
+    energy_required = 30,
+    ingredients = {
+      {type="item", name="circuit-scrap", amount=40},
+      {type="item", name="copper-cable", amount=mods["Expensive-Mode"] and 80 or 20},
+      {type="fluid", name="sulfuric-acid", amount=10}
+    },
+    results = {{type="item", name="processing-unit", amount=1}}
   }
 })
 
@@ -114,14 +137,14 @@ if settings.startup["scrap-industry-plastic"].value then
       },
       category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
       subgroup = "production-scrap",
-      order = "d[crafting]-c[plastic-bar]",
+      order = "d[crafting]-d[plastic-bar]",
       enabled = false,
       allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
       energy_required = 9,
       ingredients = {
-        {type="item", name="plastic-bits", amount=3},
+        {type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
         {type="fluid", name="petroleum-gas", amount=10}
       },
       results = {{type="item", name="plastic-bar", amount=2}},
@@ -200,9 +223,9 @@ if mods["space-age"] then
       energy_required = 6.4,
       ingredients = {
         {type="item", name="holmium-scrap", amount=mods["Expensive-Mode"] and 5 or 3},
-        {type="item", name=mods["aai-industry"] and "sand" or "stone", amount=1}
+        {type="fluid", name="water", amount=10}
       },
-      results = {{type="fluid", name="holmium-solution", amount=mods["aai-industry"] and 100 or 150}},
+      results = {{type="fluid", name="holmium-solution", amount=50}},
       crafting_machine_tint = {
         primary = {r = 0.598, g = 0.274, b = 0.501, a = 0.502}, -- #98457f80
         secondary = {r = 0.524, g = 0.499, b = 0.521, a = 0.502}, -- #857f8480
@@ -229,7 +252,7 @@ if mods["space-age"] then
         allow_decomposition = false,
         energy_required = 2,
         ingredients = {
-          {type="item", name="plastic-bits", amount=3},
+          {type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
           {type="item", name="yumako-mash", amount=2}
         },
         results = {{type="item", name="plastic-bar", amount=2}}
@@ -291,12 +314,12 @@ if mods["space-age"] then
         auto_recycle = false,
         hide_from_signal_gui = false,
         ingredients = {
-          {type="item", name="iron-scrap", amount=50},
+          {type="item", name="iron-scrap", amount=mods["Expensive-Mode"] and 75 or 50},
           {type="item", name="calcite", amount=1}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-iron", amount=250}
+          {type="fluid", name="molten-iron", amount=100}
         }
       },
       {
@@ -315,12 +338,12 @@ if mods["space-age"] then
         auto_recycle = false,
         hide_from_signal_gui = false,
         ingredients = {
-          {type="item", name="copper-scrap", amount=50},
+          {type="item", name="copper-scrap", amount=mods["Expensive-Mode"] and 75 or 50},
           {type="item", name="calcite", amount=1}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-copper", amount=250}
+          {type="fluid", name="molten-copper", amount=100}
         }
       },
       {
@@ -338,11 +361,11 @@ if mods["space-age"] then
         auto_recycle = false,
         hide_from_signal_gui = false,
         ingredients = {
-          {type="item", name="steel-scrap", amount=50}
+          {type="item", name="steel-scrap", amount=mods["Expensive-Mode"] and 75 or 50}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-iron", amount=500}
+          {type="fluid", name="molten-iron", amount=250}
         }
       },
     })
@@ -428,7 +451,7 @@ if mods["bzlead"] then
       auto_recycle = false,
       allow_decomposition = false,
       energy_required = 6.4,
-      ingredients = {{type="item", name="lead-scrap", amount=2}},
+      ingredients = {{type="item", name="lead-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
       results = {{type="item", name="lead-plate", amount=1}}
     },
   })
@@ -450,12 +473,12 @@ if mods["bzlead"] then
         auto_recycle = false,
         hide_from_signal_gui = false,
         ingredients = {
-          {type="item", name="lead-scrap", amount=50},
+          {type="item", name="lead-scrap", amount=mods["Expensive-Mode"] and 75 or 50},
           {type="item", name="calcite", amount=1}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-lead", amount=250}
+          {type="fluid", name="molten-lead", amount=100}
         }
       }
     })
@@ -480,7 +503,7 @@ if mods["bztitanium"] then
       auto_recycle = false,
       allow_decomposition = false,
       energy_required = 6.4,
-      ingredients = {{type="item", name="titanium-scrap", amount=5}},
+      ingredients = {{type="item", name="titanium-scrap", amount=mods["Expensive-Mode"] and 10 or 5}},
       results = {{type="item", name="titanium-plate", amount=1}}
     },
   })

@@ -3,6 +3,44 @@ for _,force in pairs(game.forces) do
   local recipes = force.recipes
   local mods = script.active_mods
 
+  recipes["steel-plate-from-scrap"].enabled = technologies["steel-processing"].researched
+  recipes["electronic-circuit-from-scrap"].enabled = technologies["electronics"].researched
+  recipes["advanced-circuit-from-scrap"].enabled = technologies["advanced-circuit"].researched
+  recipes["processing-unit-from-scrap"].enabled = technologies["processing-unit"].researched
+
+  if settings.startup["scrap-industry-plastic"].value then
+    recipes["plastic-bar-from-bits"].enabled = technologies["plastics"].researched
+    if mods["space-age"] then
+      recipes["bioplastic-from-bits"].enabled = technologies["bioflux-processing"].researched
+    end
+  end
+
+  if mods["space-age"] then
+    recipes["tungsten-carbide-from-scrap"].enabled = technologies["tungsten-carbide"].researched
+    recipes["tungsten-plate-from-scrap"].enabled = technologies["tungsten-steel"].researched
+    recipes["holmium-solution-from-scrap"].enabled = technologies["holmium-processing"].researched
+    if settings.startup["scrap-industry-lithium"].value then
+      recipes["lithium-dust-neutralization"].enabled = technologies["lithium-processing"].researched
+    end
+    if settings.startup["scrap-industry-metallurgy"].value then
+      recipes["molten-iron-from-scrap"].enabled = technologies["foundry"].researched
+      recipes["molten-copper-from-scrap"].enabled = technologies["foundry"].researched
+      recipes["molten-iron-from-steel-scrap"].enabled = technologies["foundry"].researched
+    end
+  end
+
+  if mods["bzlead"] then
+    local needs_research = mods["aai-industry"] and mods["wood-industry"] and settings.startup["wood-industry-lead"].value
+    recipes["lead-plate-from-scrap"].enabled = not needs_research or technologies["wood-pyrolysis"].researched
+    if mods["space-age"] and settings.startup["scrap-industry-metallurgy"].value then
+      recipes["molten-lead-from-scrap"].enabled = technologies["foundry"].researched
+    end
+  end
+
+  if mods["bztitanium"] then
+    recipes["titanium-plate-from-scrap"].enabled = technologies["titanium-processing"].researched
+  end
+
   if mods["Rocs-Rusting-Iron"] and technologies["sulfur-processing"].researched then
     local base_game = not mods["aai-industry"]
     recipes["rocs-rusting-iron-iron-scrap-chemical-derusting"].enabled = true
