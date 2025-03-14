@@ -1,0 +1,9 @@
+{
+  "item":[
+    ["rocs-rusting-iron-iron-scrap-rusty", "iron-scrap-rusty"]
+  ],
+  "recipe": [
+    ["rocs-rusting-iron-iron-scrap-derusting", "iron-scrap-derusting"],
+    ["rocs-rusting-iron-iron-scrap-chemical-derusting", "iron-scrap-chemical-derusting"]
+  ]
+}

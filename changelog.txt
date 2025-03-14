@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.6.0
+  Minor Features:
+    - Added new "fake_results" option to ScrapIndustry.recipes[], which can be used to custom-tailor the scrap byproducts
+  Compatibility:
+    - Improve compat with Rusting Iron by usng the new API introduced in version 1.2.0
+  Changes:
+    - Add Pipes to mercy mode, as they're an ingredient for many other items, including engine units
+    - Nerf scrap byproducts to be ignored by productivity
+  Bugfixes:
+    - Fix load error when running without Space Age
+    - Add variant pictures for rusty iron scrap
+
+---------------------------------------------------------------------------------------------------
 Version: 0.5.8
   Minor Features:
     - Added new recipe for processing units from scrap

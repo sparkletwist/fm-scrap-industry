@@ -13,6 +13,10 @@ if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value t
   ScrapIndustry.recipes["rocs-rusting-iron-engine-unit-chemical-derusting"] = {failrate=0.01}
   ScrapIndustry.recipes["rocs-rusting-iron-motor-chemical-derusting"] = {failrate=0.01}
 
-  data.raw.item["iron-scrap"].spoil_ticks = 0.5 * minute * settings.startup["rocs-rusting-iron-time-minutes"].value
-  data.raw.item["iron-scrap"].spoil_result = "rocs-rusting-iron-iron-scrap-rusty"
+  RustingIron.rusting_items["iron-scrap"] = {
+    rust_timescale = RustingIron.RUSTING_FAST,
+    derust_timescale = RustingIron.DERUST_EASY,
+    derust_amount = 2,
+    icon_root = "__scrap-industry__/graphics/icons/iron-scrap",
+  }
 end

@@ -108,7 +108,7 @@ data:extend({
       {icon="__scrap-industry__/graphics/icons/circuit-scrap.png", shift={-12, -12}, scale=0.4},
       {icon="__base__/graphics/icons/processing-unit.png", draw_background=true}
     },
-    category = mods["space-age"] and "electronics" or "crafting",
+    category = mods["space-age"] and "electronics" or "crafting-with-fluid",
     subgroup = "production-scrap",
     order = "d[crafting]-c[processing-unit]",
     enabled = false,
@@ -370,66 +370,6 @@ if mods["space-age"] then
       },
     })
   end
-end
-
-if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value then
-  local derusting_material = (mods["aai-industry"] or mods["Glass"]) and "sand" or "stone"
-  data:extend({
-    {
-      type = "recipe",
-      name = "rocs-rusting-iron-iron-scrap-derusting",
-      localised_name = {"recipe-name.rocs-rusting-iron-derust", {"item-name.iron-scrap"}},
-      icon = "__scrap-industry__/graphics/icons/iron-scrap-derust.png",
-      icon_size = 64,
-      order = "e[derusting]-A[derust-iron-scrap]",
-      enabled = true,
-      subgroup = "derusting",
-      category = "crafting",
-      energy_required = 1 / 4,
-      ingredients = {
-        {type="item", name="rocs-rusting-iron-iron-scrap-rusty", amount=1,ignored_by_stats=1},
-        {type="item", name=derusting_material,amount=1}
-      },
-      results = {{type="item", name="iron-scrap", amount=1, ignored_by_productivity=1, ignored_by_stats=1}},
-      allow_quality = false,
-      result_is_always_fresh = true,
-      allow_decomposition = false,
-      allow_as_intermediate = false,
-      always_show_made_in = true,
-      auto_recycle = false
-    },
-    {
-      type = "recipe",
-      name = "rocs-rusting-iron-iron-scrap-chemical-derusting",
-      localised_name = {"recipe-name.rocs-rusting-iron-chemical-derusting", {"item-name.iron-scrap"}},
-      icons = {
-        {icon="__scrap-industry__/graphics/icons/iron-scrap-derust.png", shift={2, 2}, scale=0.65},
-        {icon="__base__/graphics/icons/fluid/sulfuric-acid.png", shift={-11, -11}, scale=0.45, draw_background=true}
-      },
-      order = "e[derusting]-A[chemical-derust-iron-scrap]",
-      enabled = true,
-      subgroup = "derusting",
-      category = "chemistry",
-      energy_required = 0.25,
-      ingredients = {
-        {type="item", name="rocs-rusting-iron-iron-scrap-rusty", amount=1, ignored_by_stats=1},
-        {type="fluid", name="sulfuric-acid", amount=5},
-        {type="fluid", name="water", amount=15}
-      },
-      results = {{type="item", name="iron-scrap", amount=1, ignored_by_productivity=1, ignored_by_stats=1}},
-      crafting_machine_tint = {
-        primary = {r=0.7, g=0.7, b=0.1},
-        secondary = {r=0.8, g=0.8, b=0.1},
-        tertiary = {r=0.7, g=0.7, b=0.1}
-      },
-      allow_quality = false,
-      result_is_always_fresh = true,
-      allow_decomposition = false,
-      allow_as_intermediate = false,
-      always_show_made_in = true,
-      auto_recycle = false
-    }
-  })
 end
 
 if mods["bzlead"] then

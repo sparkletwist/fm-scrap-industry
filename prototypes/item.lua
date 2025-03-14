@@ -196,26 +196,6 @@ if mods["space-age"] then
   end
 end
 
-if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value then
-  data:extend({
-    {
-      type = "item",
-      name = "rocs-rusting-iron-iron-scrap-rusty",
-      localised_name = {"item-name.rocs-rusting-iron-rusty", {"item-name.iron-scrap"}},
-      icon = "__scrap-industry__/graphics/icons/iron-scrap-rusty.png",
-      icon_size = 64,
-      subgroup = "production-scrap",
-      order = "a[material]-a[iron]b",
-      inventory_move_sound = item_sounds.metal_small_inventory_move,
-      pick_sound = item_sounds.metal_small_inventory_pickup,
-      drop_sound = item_sounds.metal_small_inventory_move,
-      stack_size = 100,
-      random_tint_color = item_tints.iron_rust,
-      spoil_level = 1,
-    }
-  })
-end
-
 if mods["bzlead"] then
   data:extend({
     {

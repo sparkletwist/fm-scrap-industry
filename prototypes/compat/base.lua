@@ -17,6 +17,7 @@ if mercy_mode then
   ScrapIndustry.recipes["iron-gear-wheel"] = {ignore=true}
   ScrapIndustry.recipes["iron-stick"] = {ignore=true}
   ScrapIndustry.recipes["copper-cable"] = {ignore=true}
+  ScrapIndustry.recipes["pipe"] = {ignore=true}
 end
 
 ScrapIndustry.products["stone"] = {priority=0.5}

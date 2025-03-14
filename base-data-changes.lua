@@ -53,15 +53,3 @@ end
 if mods["bztitanium"] then
   ftech.add_unlock("titanium-processing", "titanium-plate-from-scrap")
 end
-
-if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value then
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-scrap-chemical-derusting")
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-plate-chemical-derusting")
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-gear-wheel-chemical-derusting")
-  ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-iron-stick-chemical-derusting")
-  if mods["aai-industry"] then
-    ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-motor-chemical-derusting")
-  else
-    ftech.add_unlock("sulfur-processing", "rocs-rusting-iron-engine-unit-chemical-derusting")
-  end
-end

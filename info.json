@@ -3,15 +3,15 @@
   "title": "Scrappy Industry",
   "description": "Repurpose the waste from the imprecise assembly of machines for new materials. No process is ever truly perfect.",
   "author": "SafTheLamb",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "factorio_version": "2.0",
   "dependencies": [
     "base >= 2.0.32",
     "fdsl >= 0.1.8",
     "? space-age",
+    "? Rocs-Rusting-Iron >= 1.2.0",
     "? wood-industry",
     "? aai-industry",
-    "? Rocs-Rusting-Iron",
     "? bzlead",
     "? quality"
   ]

@@ -169,6 +169,10 @@ for _,recipe in pairs(data.raw.recipe) do
       for _,result in pairs(recipe.results) do
         get_ingredient_scrap(result, out)
       end
+    elseif recipe_metadata and recipe_metadata.fake_results then
+      for _,result in pairs(recipe_metadata.fake_results) do
+        get_ingredient_scrap(result, out)
+      end
     else
       for _,result in pairs(recipe.results) do
         out.recipe_results[result.name] = true
@@ -234,8 +238,10 @@ for _,recipe in pairs(data.raw.recipe) do
           if amount_min ~= amount_max then
             result.amount_min = amount_min
             result.amount_max = amount_max
+            result.ignored_by_productivity=amount_max
           else
             result.amount = math.ceil(final_amount)
+            result.ignored_by_productivity=result.amount
           end
           table.insert(recipe.results, result)
         end
@@ -273,12 +279,13 @@ end
 
 -------------------------------------------------------------------------- Recycling recipe overrides
 
+local default_machine_tints = {primary = {0.125,0.125,0.125,0.125}, secondary = {0.125,0.125,0.125,0.125}, tertiary = {0.125,0.125,0.125,0.125}, quaternary = {0.125,0.125,0.125,0.125}}
+
 if mods["quality"] then
   for item_name,scrap_metadata in pairs(ScrapIndustry.items) do
     local item = data.raw.item[item_name]
-    if scrap_metadata.recycle and item then
+    if item and scrap_metadata.recycle then
       local icons = generate_recycling_recipe_icons_from_item(item)
-      local default_machine_tints = {primary = {0.125,0.125,0.125,0.125}, secondary = {0.125,0.125,0.125,0.125}, tertiary = {0.125,0.125,0.125,0.125}, quaternary = {0.125,0.125,0.125,0.125}}
       local crafting_machine_tint = data.raw.recipe[item.name] and data.raw.recipe[item.name].crafting_machine_tint or default_machine_tints
       local amount = math.ceil(scrap_metadata.recycle/4)
       local probability = 0.25*(scrap_metadata.recycle/4)/amount
