@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.6.2
+  Bugfixes:
+    - Rename fake_results to fake_ingredients, name was misleading!
+
+---------------------------------------------------------------------------------------------------
+Version: 0.6.1
+  Bugfixes:
+    - Fix blue chips from scrap being labeled incorrectly.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.6.0
   Minor Features:
     - Added new "fake_results" option to ScrapIndustry.recipes[], which can be used to custom-tailor the scrap byproducts

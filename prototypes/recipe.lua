@@ -103,7 +103,7 @@ data:extend({
   {
     type = "recipe",
     name = "processing-unit-from-scrap",
-    localised_name = {"recipe-name.item-from-scrap", {"item-name.advanced-circuit"}},
+    localised_name = {"recipe-name.item-from-scrap", {"item-name.processing-unit"}},
     icons = {
       {icon="__scrap-industry__/graphics/icons/circuit-scrap.png", shift={-12, -12}, scale=0.4},
       {icon="__base__/graphics/icons/processing-unit.png", draw_background=true}

@@ -169,8 +169,8 @@ for _,recipe in pairs(data.raw.recipe) do
       for _,result in pairs(recipe.results) do
         get_ingredient_scrap(result, out)
       end
-    elseif recipe_metadata and recipe_metadata.fake_results then
-      for _,result in pairs(recipe_metadata.fake_results) do
+    elseif recipe_metadata and recipe_metadata.fake_ingredients then
+      for _,result in pairs(recipe_metadata.fake_ingredients) do
         get_ingredient_scrap(result, out)
       end
     else
