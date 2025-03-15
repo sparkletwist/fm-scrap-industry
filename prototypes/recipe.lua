@@ -14,6 +14,7 @@ data:extend({
     auto_recycle = false,
     allow_decomposition = false,
     result_is_always_fresh = true,
+    hide_from_signal_gui = false,
     energy_required = 3.2,
     ingredients = {{type="item", name="iron-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
     results = {{type="item", name="iron-plate", amount=1}}
@@ -32,6 +33,7 @@ data:extend({
     allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
+    hide_from_signal_gui = false,
     energy_required = 3.2,
     ingredients = {{type="item", name="copper-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
     results = {{type="item", name="copper-plate", amount=1}}
@@ -51,6 +53,7 @@ data:extend({
     allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
+    hide_from_signal_gui = false,
     energy_required = 16,
     ingredients = {{type="item", name="steel-scrap", amount=mods["Expensive-Mode"] and 10 or 5}},
     results = {{type="item", name="steel-plate", amount=1}}
@@ -70,6 +73,7 @@ data:extend({
     allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
+    hide_from_signal_gui = false,
     energy_required = 1.5,
     ingredients = {
       {type="item", name="circuit-scrap", amount=2},
@@ -92,6 +96,7 @@ data:extend({
     allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
+    hide_from_signal_gui = false,
     energy_required = 9,
     ingredients = {
       {type="item", name="circuit-scrap", amount=3},
@@ -115,6 +120,7 @@ data:extend({
     allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
+    hide_from_signal_gui = false,
     energy_required = 30,
     ingredients = {
       {type="item", name="circuit-scrap", amount=40},
@@ -142,6 +148,7 @@ if settings.startup["scrap-industry-plastic"].value then
       allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
+      hide_from_signal_gui = false,
       energy_required = 9,
       ingredients = {
         {type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -175,6 +182,7 @@ if mods["space-age"] then
       allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
+      hide_from_signal_gui = false,
       energy_required = 3.2,
       ingredients = {
         {type="item", name="tungsten-scrap", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -198,6 +206,7 @@ if mods["space-age"] then
       allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
+      hide_from_signal_gui = false,
       energy_required = 15,
       ingredients = {
         {type="item", name="tungsten-scrap", amount=mods["Expensive-Mode"] and 8 or 4},
@@ -220,6 +229,7 @@ if mods["space-age"] then
       allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
+      hide_from_signal_gui = false,
       energy_required = 6.4,
       ingredients = {
         {type="item", name="holmium-scrap", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -250,6 +260,7 @@ if mods["space-age"] then
         allow_productivity = true,
         auto_recycle = false,
         allow_decomposition = false,
+        hide_from_signal_gui = false,
         energy_required = 2,
         ingredients = {
           {type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -276,6 +287,7 @@ if mods["space-age"] then
         allow_productivity = true,
         auto_recycle = false,
         allow_decomposition = false,
+        hide_from_signal_gui = false,
         energy_required = 4,
         ingredients = {
           {type="item", name="lithium-dust", amount=1},
@@ -390,6 +402,7 @@ if mods["bzlead"] then
       allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
+      hide_from_signal_gui = false,
       energy_required = 6.4,
       ingredients = {{type="item", name="lead-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
       results = {{type="item", name="lead-plate", amount=1}}
@@ -442,6 +455,7 @@ if mods["bztitanium"] then
       allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
+      hide_from_signal_gui = false,
       energy_required = 6.4,
       ingredients = {{type="item", name="titanium-scrap", amount=mods["Expensive-Mode"] and 10 or 5}},
       results = {{type="item", name="titanium-plate", amount=1}}
