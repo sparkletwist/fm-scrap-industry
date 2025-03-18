@@ -183,7 +183,7 @@ for _,recipe in pairs(data.raw.recipe) do
       end
     end
 
-    if recipe_metadata.failrate and type(recipe_metadata.failrate) == "number" then
+    if type(recipe_metadata.failrate) == "number" then
       out.success_penalty = recipe_metadata.failrate
     elseif out.total_scrap > 0 then
       local failrate_scale = 1 / (out.total_scrap / (2*ScrapIndustry.LEGENDARY))

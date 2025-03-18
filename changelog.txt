@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.6.4
+  Minor Features:
+    - Make self_scrap optional and definable for entire crafting categories (thanks S6X!)
+  Changes:
+    - Productivity is disabled on scrap smelting recipes when No Mercy is enabled
+
+---------------------------------------------------------------------------------------------------
 Version: 0.6.3
   Bugfixes:
     - Add hide_from_signal_gui=false to recipes for crafting from scrap.
