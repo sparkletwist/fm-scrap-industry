@@ -12,11 +12,12 @@ data:extend({
     category = "smelting",
     subgroup = "production-scrap",
     order = "b[smelting]-a[iron]",
-    allow_productivity = mercy_mode,
+    allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
     result_is_always_fresh = true,
     hide_from_signal_gui = false,
+    hide_from_player_crafting = true,
     energy_required = 3.2,
     ingredients = {{type="item", name="iron-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
     results = {{type="item", name="iron-plate", amount=1}}
@@ -32,10 +33,11 @@ data:extend({
     category = "smelting",
     subgroup = "production-scrap",
     order = "b[smelting]-b[copper]",
-    allow_productivity = mercy_mode,
+    allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
     hide_from_signal_gui = false,
+    hide_from_player_crafting = true,
     energy_required = 3.2,
     ingredients = {{type="item", name="copper-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
     results = {{type="item", name="copper-plate", amount=1}}
@@ -52,10 +54,11 @@ data:extend({
     subgroup = "production-scrap",
     order = "b[smelting]-c[steel]",
     enabled = false,
-    allow_productivity = mercy_mode,
+    allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
     hide_from_signal_gui = false,
+    hide_from_player_crafting = true,
     energy_required = 16,
     ingredients = {{type="item", name="steel-scrap", amount=mods["Expensive-Mode"] and 10 or 5}},
     results = {{type="item", name="steel-plate", amount=1}}
@@ -72,10 +75,11 @@ data:extend({
     subgroup = "production-scrap",
     order = "d[crafting]-a[electronic-circuit]",
     enabled = false,
-    allow_productivity = mercy_mode,
+    allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
     hide_from_signal_gui = false,
+    hide_from_player_crafting = true,
     energy_required = 1.5,
     ingredients = {
       {type="item", name="circuit-scrap", amount=2},
@@ -95,10 +99,11 @@ data:extend({
     subgroup = "production-scrap",
     order = "d[crafting]-b[advanced-circuit]",
     enabled = false,
-    allow_productivity = mercy_mode,
+    allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
     hide_from_signal_gui = false,
+    hide_from_player_crafting = true,
     energy_required = 9,
     ingredients = {
       {type="item", name="circuit-scrap", amount=3},
@@ -119,15 +124,16 @@ data:extend({
     subgroup = "production-scrap",
     order = "d[crafting]-c[processing-unit]",
     enabled = false,
-    allow_productivity = mercy_mode,
+    allow_productivity = true,
     auto_recycle = false,
     allow_decomposition = false,
     hide_from_signal_gui = false,
+    hide_from_player_crafting = true,
     energy_required = 30,
     ingredients = {
       {type="item", name="circuit-scrap", amount=40},
       {type="item", name="copper-cable", amount=mods["Expensive-Mode"] and 80 or 20},
-      {type="fluid", name="sulfuric-acid", amount=10}
+      {type="fluid", name="sulfuric-acid", amount=5}
     },
     results = {{type="item", name="processing-unit", amount=1}}
   }
@@ -147,10 +153,11 @@ if settings.startup["scrap-industry-plastic"].value then
       subgroup = "production-scrap",
       order = "d[crafting]-d[plastic-bar]",
       enabled = false,
-      allow_productivity = mercy_mode,
+      allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
       hide_from_signal_gui = false,
+      hide_from_player_crafting = true,
       energy_required = 9,
       ingredients = {
         {type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -177,7 +184,7 @@ if mods["space-age"] then
         {icon="__scrap-industry__/graphics/icons/tungsten-scrap.png", shift={-12, -12}, scale=0.4},
         {icon="__space-age__/graphics/icons/tungsten-carbide.png", draw_background=true}
       },
-      category = mods["wood-industry"] and "kiln-smelting" or "crafting-with-fluid",
+      category = mods["alloy-smelting"] and "kiln-smelting" or "crafting-with-fluid",
       subgroup = "vulcanus-processes",
       order = "c[tungsten]b-d[tungsten-carbide-from-scrap]",
       enabled = false,
@@ -185,6 +192,7 @@ if mods["space-age"] then
       auto_recycle = false,
       allow_decomposition = false,
       hide_from_signal_gui = false,
+      hide_from_player_crafting = true,
       energy_required = 3.2,
       ingredients = {
         {type="item", name="tungsten-scrap", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -209,6 +217,7 @@ if mods["space-age"] then
       auto_recycle = false,
       allow_decomposition = false,
       hide_from_signal_gui = false,
+      hide_from_player_crafting = true,
       energy_required = 15,
       ingredients = {
         {type="item", name="tungsten-scrap", amount=mods["Expensive-Mode"] and 8 or 4},
@@ -232,6 +241,7 @@ if mods["space-age"] then
       auto_recycle = false,
       allow_decomposition = false,
       hide_from_signal_gui = false,
+      hide_from_player_crafting = true,
       energy_required = 6.4,
       ingredients = {
         {type="item", name="holmium-scrap", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -259,10 +269,11 @@ if mods["space-age"] then
         subgroup = "agriculture-products",
         order = "a[organic-products]-c[bioplastic]b",
         enabled = false,
-        allow_productivity = mercy_mode,
+        allow_productivity = true,
         auto_recycle = false,
         allow_decomposition = false,
         hide_from_signal_gui = false,
+        hide_from_player_crafting = true,
         energy_required = 2,
         ingredients = {
           {type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
@@ -277,19 +288,16 @@ if mods["space-age"] then
       {
         type = "recipe",
         name = "lithium-dust-neutralization",
-        icons = {
-          {icon="__base__/graphics/icons/fluid/sulfuric-acid.png", shift={-8, -14}, scale=0.4},
-          {icon="__space-age__/graphics/icons/lithium.png", draw_background = true},
-          {icon="__scrap-industry__/graphics/icons/lithium-dust-neutralization-top.png", draw_background=true}
-        },
+        icon = "__scrap-industry__/graphics/icons/lithium-dust-neutralization.png",
         category = "chemistry-or-cryogenics",
         subgroup = "aquilo-processes",
         order = "c[lithium]-e[lithium-dust-neutralization]",
         enabled = false,
-        allow_productivity = mercy_mode,
+        allow_productivity = true,
         auto_recycle = false,
         allow_decomposition = false,
         hide_from_signal_gui = false,
+        hide_from_player_crafting = true,
         energy_required = 4,
         ingredients = {
           {type="item", name="lithium-dust", amount=1},
@@ -327,13 +335,14 @@ if mods["space-age"] then
         allow_productivity = mercy_mode,
         auto_recycle = false,
         hide_from_signal_gui = false,
+        hide_from_player_crafting = true,
         ingredients = {
           {type="item", name="iron-scrap", amount=mods["Expensive-Mode"] and 75 or 50},
           {type="item", name="calcite", amount=1}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-iron", amount=100}
+          {type="fluid", name="molten-iron", amount=200}
         }
       },
       {
@@ -351,13 +360,14 @@ if mods["space-age"] then
         allow_productivity = mercy_mode,
         auto_recycle = false,
         hide_from_signal_gui = false,
+        hide_from_player_crafting = true,
         ingredients = {
           {type="item", name="copper-scrap", amount=mods["Expensive-Mode"] and 75 or 50},
           {type="item", name="calcite", amount=1}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-copper", amount=100}
+          {type="fluid", name="molten-copper", amount=200}
         }
       },
       {
@@ -374,12 +384,13 @@ if mods["space-age"] then
         allow_productivity = mercy_mode,
         auto_recycle = false,
         hide_from_signal_gui = false,
+        hide_from_player_crafting = true,
         ingredients = {
           {type="item", name="steel-scrap", amount=mods["Expensive-Mode"] and 75 or 50}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-iron", amount=250}
+          {type="fluid", name="molten-iron", amount=300}
         }
       },
     })
@@ -387,24 +398,25 @@ if mods["space-age"] then
 end
 
 if mods["bzlead"] then
-  local needs_research = mods["aai-industry"] and mods["wood-industry"] and settings.startup["wood-industry-lead"].value
+  local needs_research = mods["alloy-smelting"]
   data:extend({
     {
       type = "recipe",
       name = "lead-plate-from-scrap",
       localised_name = {"recipe-name.item-from-scrap", {"item-name.lead-plate"}},
       icons = {
-        {icon="__scrap-industry__/graphics/icons/lead-scrap.png", shift={-12, -12}, scale=0.4},
+        {icon="__scrap-industry__/graphics/icons/compat/lead-scrap.png", shift={-12, -12}, scale=0.4},
         {icon="__bzlead__/graphics/icons/lead-plate.png", draw_background=true}
       },
       category = "smelting",
       subgroup = "production-scrap",
       order = "b[smelting]-d[lead]",
       enabled = not needs_research,
-      allow_productivity = mercy_mode,
+      allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
       hide_from_signal_gui = false,
+      hide_from_player_crafting = true,
       energy_required = 6.4,
       ingredients = {{type="item", name="lead-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
       results = {{type="item", name="lead-plate", amount=1}}
@@ -417,7 +429,7 @@ if mods["bzlead"] then
         name = "molten-lead-from-scrap",
         localised_name = {"recipe-name.item-from-scrap", {"fluid-name.molten-lead"}},
         icons = {
-          {icon="__scrap-industry__/graphics/icons/lead-scrap.png", shift={-8,-8}, scale=0.35},
+          {icon="__scrap-industry__/graphics/icons/compat/lead-scrap.png", shift={-8,-8}, scale=0.35},
           {icon="__bzlead__/graphics/icons/molten-lead-sa.png", draw_background=true}
         },
         category = "metallurgy",
@@ -427,13 +439,14 @@ if mods["bzlead"] then
         allow_productivity = mercy_mode,
         auto_recycle = false,
         hide_from_signal_gui = false,
+        hide_from_player_crafting = true,
         ingredients = {
           {type="item", name="lead-scrap", amount=mods["Expensive-Mode"] and 75 or 50},
           {type="item", name="calcite", amount=1}
         },
         energy_required = 64,
         results = {
-          {type="fluid", name="molten-lead", amount=100}
+          {type="fluid", name="molten-lead", amount=200}
         }
       }
     })
@@ -447,17 +460,18 @@ if mods["bztitanium"] then
       name = "titanium-plate-from-scrap",
       localised_name = {"recipe-name.item-from-scrap", {"item-name.titanium-plate"}},
       icons = {
-        {icon="__scrap-industry__/graphics/icons/titanium-scrap.png", shift={-12, -12}, scale=0.4},
+        {icon="__scrap-industry__/graphics/icons/compat/titanium-scrap.png", shift={-12, -12}, scale=0.4},
         {icon="__bztitanium__/graphics/icons/titanium-plate.png", draw_background=true}
       },
       category = "smelting",
       subgroup = "production-scrap",
       order = "b[smelting]-e[titanium]",
       enabled = false,
-      allow_productivity = mercy_mode,
+      allow_productivity = true,
       auto_recycle = false,
       allow_decomposition = false,
       hide_from_signal_gui = false,
+      hide_from_player_crafting = true,
       energy_required = 6.4,
       ingredients = {{type="item", name="titanium-scrap", amount=mods["Expensive-Mode"] and 10 or 5}},
       results = {{type="item", name="titanium-plate", amount=1}}

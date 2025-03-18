@@ -41,10 +41,7 @@ if mods["bztin"] then
 end
 
 if mods["bzlead"] then
-  local needs_research = mods["aai-industry"] and mods["wood-industry"] and settings.startup["wood-industry-lead"].value
-  if needs_research then
-    ftech.add_unlock("wood-pyrolysis", "lead-plate-from-scrap")
-  end
+  ftech.add_unlock("kiln-smelting", "lead-plate-from-scrap")
   if mods["space-age"] and settings.startup["scrap-industry-metallurgy"].value then
     ftech.add_unlock("foundry", "molten-lead-from-scrap")
   end

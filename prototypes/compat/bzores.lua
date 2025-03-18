@@ -12,8 +12,6 @@ end
 if mods["bztitanium"] then
   ScrapIndustry.products["titanium-scrap"] = {priority=3}
   ScrapIndustry.items["titanium-plate"] = {scrap="titanium-scrap", scale=ScrapIndustry.UNCOMMON, failrate=0.01, recycle=5}
-  if mods["space-age"] then
-    ScrapIndustry.items["express-transport-belt"] = {scrap="titanium-scrap", scale=ScrapIndustry.UNCOMMON}
-  end
-    table.insert(ScrapIndustry.items["low-density-structure"].scrap, "titanium-scrap")
+  ScrapIndustry.recipes["titanium-sublimation"] = {ignore=true}
+  table.insert(ScrapIndustry.items["low-density-structure"].scrap, "titanium-scrap")
 end

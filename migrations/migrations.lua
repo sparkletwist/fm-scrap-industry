@@ -30,8 +30,8 @@ for _,force in pairs(game.forces) do
   end
 
   if mods["bzlead"] then
-    local needs_research = mods["aai-industry"] and mods["wood-industry"] and settings.startup["wood-industry-lead"].value
-    recipes["lead-plate-from-scrap"].enabled = not needs_research or technologies["wood-pyrolysis"].researched
+    local needs_research = mods["alloy-smelting"]
+    recipes["lead-plate-from-scrap"].enabled = not needs_research or technologies["kiln-smelting"].researched
     if mods["space-age"] and settings.startup["scrap-industry-metallurgy"].value then
       recipes["molten-lead-from-scrap"].enabled = technologies["foundry"].researched
     end

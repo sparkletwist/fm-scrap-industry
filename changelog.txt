@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.0
+  Changes:
+    - Changed No Mercy to only disable productivity for molten metal recipes
+    - Buff molten metal from scrap (100 -> 200)
+    - Buff molten metal from steel scrap (200 -> 300)
+    - Hide scrap recipes from player crafting to reduce clutter
+  Graphics:
+    - Redo lithium dust neutralization icon
+    - Move icons for compatibility with other mods into graphics/icons/compat subfolder
+  Compatibility:
+    - Update compatibility for Wooden Industry 2.0.0 with Alloy Smelting
+    - Add compatibility for Sand from Early Crushing
+
+---------------------------------------------------------------------------------------------------
 Version: 0.6.4
   Minor Features:
     - Make self_scrap optional and definable for entire crafting categories (thanks S6X!)

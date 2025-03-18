@@ -201,11 +201,11 @@ if mods["bzlead"] then
     {
       type = "item",
       name = "lead-scrap",
-      icon = "__scrap-industry__/graphics/icons/lead-scrap.png",
+      icon = "__scrap-industry__/graphics/icons/compat/lead-scrap.png",
       pictures = {
-        {size = 64, filename = "__scrap-industry__/graphics/icons/lead-scrap.png",   scale = 0.5, mipmap_count = 4},
-        {size = 64, filename = "__scrap-industry__/graphics/icons/lead-scrap-1.png", scale = 0.5, mipmap_count = 4},
-        {size = 64, filename = "__scrap-industry__/graphics/icons/lead-scrap-2.png", scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/compat/lead-scrap.png",   scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/compat/lead-scrap-1.png", scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/compat/lead-scrap-2.png", scale = 0.5, mipmap_count = 4},
       },
       subgroup = "production-scrap",
       order = "a[material]-d[lead]",
@@ -223,11 +223,11 @@ if mods["bztitanium"] then
     {
       type = "item",
       name = "titanium-scrap",
-      icon = "__scrap-industry__/graphics/icons/titanium-scrap.png",
+      icon = "__scrap-industry__/graphics/icons/compat/titanium-scrap.png",
       pictures = {
-        {size = 64, filename = "__scrap-industry__/graphics/icons/titanium-scrap.png",   scale = 0.5, mipmap_count = 4},
-        {size = 64, filename = "__scrap-industry__/graphics/icons/titanium-scrap-1.png", scale = 0.5, mipmap_count = 4},
-        {size = 64, filename = "__scrap-industry__/graphics/icons/titanium-scrap-2.png", scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/compat/titanium-scrap.png",   scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/compat/titanium-scrap-1.png", scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/compat/titanium-scrap-2.png", scale = 0.5, mipmap_count = 4},
       },
       subgroup = "production-scrap",
       order = "a[material]-e[titanium]",

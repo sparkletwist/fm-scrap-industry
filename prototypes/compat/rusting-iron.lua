@@ -17,6 +17,6 @@ if mods["Rocs-Rusting-Iron"] and settings.startup["scrap-industry-rust"].value t
     rust_timescale = RustingIron.RUSTING_FAST,
     derust_timescale = RustingIron.DERUST_EASY,
     derust_amount = 2,
-    icon_root = "__scrap-industry__/graphics/icons/iron-scrap",
+    icon_root = "__scrap-industry__/graphics/icons/compat/iron-scrap",
   }
 end
