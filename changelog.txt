@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.1
+  Compatibility:
+    - Reduce smelting time of lead scrap from 6.4 to 3.2 to parity ratios from BZ Lead (-50%)
+
+---------------------------------------------------------------------------------------------------
 Version: 0.7.0
   Changes:
     - Changed No Mercy to only disable productivity for molten metal recipes

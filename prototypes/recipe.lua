@@ -417,7 +417,7 @@ if mods["bzlead"] then
       allow_decomposition = false,
       hide_from_signal_gui = false,
       hide_from_player_crafting = true,
-      energy_required = 6.4,
+      energy_required = 3.2,
       ingredients = {{type="item", name="lead-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
       results = {{type="item", name="lead-plate", amount=1}}
     },
