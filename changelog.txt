@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.4
+  Bugfixes:
+    - Fix crash when character skin from another mod does not have any crafting categories defined
+
+---------------------------------------------------------------------------------------------------
 Version: 0.7.3
   Compatibility:
     - Add hand crafting recipe categories to all characters, to support skin swapping mods
