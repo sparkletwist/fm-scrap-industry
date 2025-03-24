@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.3
+  Compatibility:
+    - Add hand crafting recipe categories to all characters, to support skin swapping mods
+
+---------------------------------------------------------------------------------------------------
+Version: 0.7.2
+  Changes:
+    - Add scrap smelting recipes to productivity techs
+
+---------------------------------------------------------------------------------------------------
 Version: 0.7.1
   Compatibility:
     - Reduce smelting time of lead scrap from 6.4 to 3.2 to parity ratios from BZ Lead (-50%)
