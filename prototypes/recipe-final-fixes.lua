@@ -83,6 +83,9 @@ local function should_duplicate_for_hand_crafting(recipe, recipe_metadata, out)
   if recipe.allow_as_intermediate == false then
     return false
   end
+  if recipe.hide_from_player_crafting then
+    return false
+  end
   if recipe_metadata and type(recipe_metadata.force_handcraft) == "boolean" then
     return recipe_metadata.force_handcraft
   end
@@ -130,7 +133,7 @@ end
 
 local function duplicate_for_hand_crafting(recipe)
   local duplicate_recipe = util.table.deepcopy(recipe)
-  duplicate_recipe.name = "hand-crafted-"..recipe.name
+  duplicate_recipe.name = recipe.name.."-hand-crafted"
   
   if not duplicate_recipe.localised_name then
     local main_product = util.get_recipe_main_product(recipe)
