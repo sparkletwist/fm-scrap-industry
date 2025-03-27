@@ -133,67 +133,65 @@ if mods["space-age"] then
       weight = 2*kg
     }
   })
-  if settings.startup["scrap-industry-lithium"].value then
-    local volatile = settings.startup["scrap-industry-volatile-lithium"].value
-    data:extend({
-      {
-        type = "item",
-        name = "lithium-dust",
-        icon = "__scrap-industry__/graphics/icons/lithium-dust.png",
-        pictures = {
-          {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-dust.png",   scale = 0.5, mipmap_count = 4},
-          {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-dust-1.png", scale = 0.5, mipmap_count = 4},
-          {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-dust-2.png", scale = 0.5, mipmap_count = 4},
-        },
-        subgroup = "aquilo-processes",
-        order = "c[lithium]-c[lithium-dust]",
-        inventory_move_sound = item_sounds.resource_inventory_move,
-        pick_sound = item_sounds.resource_inventory_pickup,
-        drop_sound = item_sounds.resource_inventory_move,
-        stack_size = 50,
-        weight = 2*kg,
-        fuel_category = not volatile and "chemical" or nil,
-        fuel_value = not volatile and "1MJ" or nil,
-        spoil_ticks = volatile and 1 * minute or nil,
-        spoil_to_trigger_result = volatile and {
-          items_per_trigger = 1,
-          trigger = {
-            type = "direct",
-            action_delivery = {
-              type = "instant",
-              target_effects = {
-                {
-                  type = "create-entity",
-                  entity_name = "explosion"
-                },
-                {
-                  type = "create-fire",
-                  entity_name = "lithium-flame",
-                  show_in_tooltip = true,
-                  as_enemy = true,
-                  initial_ground_flame_count = 2
-                },
-                {
-                  type = "nested-result",
-                  action = {
-                    type = "area",
-                    radius = 0.5,
-                    action_delivery = {
-                      type = "instant",
-                      target_effects = {
-                        type = "damage",
-                        damage = {amount = 25, type = "explosion"}
-                      }
+
+  local volatile_lithium = settings.startup["scrap-industry-volatile-lithium"].value
+  data:extend({
+    {
+      type = "item",
+      name = "lithium-dust",
+      icon = "__scrap-industry__/graphics/icons/lithium-powder.png",
+      pictures = {
+        {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-powder.png",   scale = 0.5, mipmap_count = 4},
+        {size = 64, filename = "__scrap-industry__/graphics/icons/lithium-powder-1.png", scale = 0.5, mipmap_count = 4},
+      },
+      subgroup = "aquilo-processes",
+      order = "c[lithium]-c[lithium-powder]",
+      inventory_move_sound = item_sounds.resource_inventory_move,
+      pick_sound = item_sounds.resource_inventory_pickup,
+      drop_sound = item_sounds.resource_inventory_move,
+      stack_size = 50,
+      weight = 2*kg,
+      fuel_category = not volatile_lithium and "chemical" or nil,
+      fuel_value = not volatile_lithium and "1MJ" or nil,
+      spoil_ticks = volatile_lithium and 3*minute or nil,
+      spoil_to_trigger_result = volatile_lithium and {
+        items_per_trigger = 1,
+        trigger = {
+          type = "direct",
+          action_delivery = {
+            type = "instant",
+            target_effects = {
+              {
+                type = "create-entity",
+                entity_name = "explosion"
+              },
+              {
+                type = "create-fire",
+                entity_name = "lithium-flame",
+                show_in_tooltip = true,
+                as_enemy = true,
+                initial_ground_flame_count = 2
+              },
+              {
+                type = "nested-result",
+                action = {
+                  type = "area",
+                  radius = 0.5,
+                  action_delivery = {
+                    type = "instant",
+                    target_effects = {
+                      type = "damage",
+                      damage = {amount = 25, type = "explosion"}
                     }
                   }
                 }
               }
             }
           }
-        } or nil
-      }
-    })
-  end
+        }
+      } or nil
+    }
+  })
 end
 
 if mods["bzlead"] then

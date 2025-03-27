@@ -1,131 +1,131 @@
 local fireutil = require("__base__.prototypes.fire-util")
 
-local function create_lithium_fire_pictures(opts)
-  local fire_blend_mode = opts.blend_mode or "normal"
-  local fire_animation_speed1 = opts.animation_speed1 or 0.5
-  local fire_animation_speed2 = opts.animation_speed2 or 0.9
-  local fire_scale1 =  opts.scale1 or 0.55
-  local fire_scale2 =  opts.scale2 or 0.35
-  local fire_tint = {r=0.9,g=0.9,b=0.9,a=1}
-  local fire_flags = nil
-  local retval =
-  {
+if mods["space-age"] and settings.startup["scrap-industry-volatile-lithium"].value then
+
+  local function create_lithium_fire_pictures(opts)
+    local fire_blend_mode = opts.blend_mode or "normal"
+    local fire_animation_speed1 = opts.animation_speed1 or 0.5
+    local fire_animation_speed2 = opts.animation_speed2 or 0.9
+    local fire_scale1 =  opts.scale1 or 0.55
+    local fire_scale2 =  opts.scale2 or 0.35
+    local fire_tint = {r=0.9,g=0.9,b=0.9,a=1}
+    local fire_flags = nil
+    local retval =
     {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-01.png",
-      line_length = 10,
-      width = 84,
-      height = 130,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed1,
-      scale = fire_scale1,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.7 }
-    },
-    {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-02.png",
-      line_length = 10,
-      width = 82,
-      height = 106,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed1,
-      scale = fire_scale1,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.7 }
-    },
-    {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-03.png",
-      line_length = 10,
-      width = 84,
-      height = 124,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed1,
-      scale = fire_scale1,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.7 }
-    },
-    {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-04.png",
-      line_length = 10,
-      width = 84,
-      height = 94,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed1,
-      scale = fire_scale1,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.25 }
-    },
-    {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-01.png",
-      line_length = 10,
-      width = 84,
-      height = 130,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed2,
-      scale = fire_scale2,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.7 }
-    },
-    {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-02.png",
-      line_length = 10,
-      width = 82,
-      height = 106,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed2,
-      scale = fire_scale2,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.7 }
-    },
-    {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-03.png",
-      line_length = 10,
-      width = 84,
-      height = 124,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed2,
-      scale = fire_scale2,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.7 }
-    },
-    {
-      filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-04.png",
-      line_length = 10,
-      width = 84,
-      height = 94,
-      frame_count = 90,
-      blend_mode = fire_blend_mode,
-      animation_speed = fire_animation_speed2,
-      scale = fire_scale2,
-      tint = fire_tint,
-      flags = fire_flags,
-      shift = { 0, -0.25 }
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-01.png",
+        line_length = 10,
+        width = 84,
+        height = 130,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed1,
+        scale = fire_scale1,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.7 }
+      },
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-02.png",
+        line_length = 10,
+        width = 82,
+        height = 106,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed1,
+        scale = fire_scale1,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.7 }
+      },
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-03.png",
+        line_length = 10,
+        width = 84,
+        height = 124,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed1,
+        scale = fire_scale1,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.7 }
+      },
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-04.png",
+        line_length = 10,
+        width = 84,
+        height = 94,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed1,
+        scale = fire_scale1,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.25 }
+      },
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-01.png",
+        line_length = 10,
+        width = 84,
+        height = 130,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed2,
+        scale = fire_scale2,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.7 }
+      },
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-02.png",
+        line_length = 10,
+        width = 82,
+        height = 106,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed2,
+        scale = fire_scale2,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.7 }
+      },
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-03.png",
+        line_length = 10,
+        width = 84,
+        height = 124,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed2,
+        scale = fire_scale2,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.7 }
+      },
+      {
+        filename = "__scrap-industry__/graphics/entity/lithium-flame/lithium-flame-04.png",
+        line_length = 10,
+        width = 84,
+        height = 94,
+        frame_count = 90,
+        blend_mode = fire_blend_mode,
+        animation_speed = fire_animation_speed2,
+        scale = fire_scale2,
+        tint = fire_tint,
+        flags = fire_flags,
+        shift = { 0, -0.25 }
+      }
     }
-  }
-  retval = fireutil.foreach(retval, function(tab)
-    if tab.shift and tab.scale then tab.shift = { tab.shift[1] * tab.scale, tab.shift[2] * tab.scale } end
-  end)
-  for k, layer in pairs (retval) do
-    retval[k] = util.draw_as_glow(layer)
+    retval = fireutil.foreach(retval, function(tab)
+      if tab.shift and tab.scale then tab.shift = { tab.shift[1] * tab.scale, tab.shift[2] * tab.scale } end
+    end)
+    for k, layer in pairs (retval) do
+      retval[k] = util.draw_as_glow(layer)
+    end
+    return retval
   end
-  return retval
-end
 
-
-if mods["space-age"] and settings.startup["scrap-industry-lithium"].value and settings.startup["scrap-industry-volatile-lithium"].value then
   data:extend({
     fireutil.add_basic_fire_graphics_and_effects_definitions{
       type = "fire",

@@ -3,7 +3,7 @@ if mods["bzlead"] then
   ScrapIndustry.items["lead-plate"] = {scrap="lead-scrap", scale=ScrapIndustry.COMMON, failrate=0.02, recycle=2}
   ScrapIndustry.items["lead-expansion-bolt"] = {scrap={"lead-scrap", "iron-scrap"}, scale=ScrapIndustry.COMMON, failrate=-0.01}
   
-  if mods["space-age"] and settings.startup["scrap-industry-lithium"].value then
+  if mods["space-age"] then
     ScrapIndustry.items["lead-lithium-eutectic"] = {scrap={"lead-scrap"}, scale=ScrapIndustry.UNCOMMON, failrate=0.01}
     table.insert(ScrapIndustry.items["lead-lithium-eutectic"].scrap, "lithium-dust")
   end

@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.0
+  Changes:
+    - Lithium dust has been renamed to Lithium powder (internal name is still lithium-dust for compatibility reasons)
+    - Lithium powder scrap is now always enabled, though its volatility is still configurable
+    - Lithium powder is now smelted into Lithium plates instead
+  Balancing:
+    - Lithium powder volatility time has been increased from 1 to 3 minutes
+    - Lithium plates have less lithium powder byproducts
+    - Lithium no longer self-scraps
+
+---------------------------------------------------------------------------------------------------
 Version: 0.7.5
   Bugfixes:
     - Tentative fix for hand crafted recipes affecting priority order for recipes

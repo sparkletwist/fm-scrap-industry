@@ -23,9 +23,7 @@ if mods["space-age"] then
   ftech.add_unlock("tungsten-carbide", "tungsten-carbide-from-scrap")
   ftech.add_unlock("tungsten-steel", "tungsten-plate-from-scrap")
   ftech.add_unlock("holmium-processing", "holmium-solution-from-scrap")
-  if settings.startup["scrap-industry-lithium"].value then
-    ftech.add_unlock("lithium-processing", "lithium-dust-neutralization")
-  end
+  ftech.add_unlock("lithium-processing", "lithium-plate-from-powder")
   if settings.startup["scrap-industry-metallurgy"].value then
     ftech.add_unlock("foundry", "molten-iron-from-scrap")
     ftech.add_unlock("foundry", "molten-copper-from-scrap")

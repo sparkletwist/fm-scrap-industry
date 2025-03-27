@@ -24,14 +24,9 @@ if mods["space-age"] then
   ScrapIndustry.products["iron-bacteria"] = {ignore=true}
   ScrapIndustry.products["copper-bacteria"] = {ignore=true}
 
-  if settings.startup["scrap-industry-lithium"].value then
-    ScrapIndustry.products["lithium-dust"] = {priority=10}
-    ScrapIndustry.items["lithium"] = {scrap="lithium-dust", scale=ScrapIndustry.CHEAP, failrate=0.02, recycle=1}
-    ScrapIndustry.items["lithium-plate"] = {scrap="lithium-dust", scale=ScrapIndustry.COMMON, failrate=0.01, recycle=1}
-    ScrapIndustry.recipes["lithium"] = {self_scrap=true}
-  else
-    ScrapIndustry.recipes["lithium"] = {ignore=true}
-  end
+  ScrapIndustry.products["lithium-dust"] = {priority=10}
+  ScrapIndustry.items["lithium"] = {scrap="lithium-dust", scale=ScrapIndustry.CHEAP, failrate=0.02, recycle=1}
+  ScrapIndustry.items["lithium-plate"] = {scrap="lithium-dust", scale=ScrapIndustry.CHEAP, failrate=0.01, recycle=1}
 
   ScrapIndustry.items["quantum-processor"] = {scrap="circuit-scrap", scale=ScrapIndustry.LEGENDARY, failrate=-0.01}
   ScrapIndustry.recipes["quantum-processor"] = {failrate=0.01}

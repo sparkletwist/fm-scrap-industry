@@ -255,6 +255,33 @@ if mods["space-age"] then
         quaternary = {r = 0.768, g = 0.487, b = 0.684, a = 0.502}, -- #c37cae80
       } 
     },
+    {
+      type = "recipe",
+      name = "lithium-plate-from-powder",
+      icons = {
+        {icon="__scrap-industry__/graphics/icons/lithium-powder.png", shift={-12, -12}, scale=0.4},
+        {icon="__space-age__/graphics/icons/lithium-plate.png", draw_background=true}
+      },
+      category = "smelting",
+      subgroup = "aquilo-processes",
+      order = "c[lithium]-b[lithium-plate-from-powder]",
+      enabled = false,
+      allow_productivity = true,
+      auto_recycle = false,
+      allow_decomposition = false,
+      hide_from_signal_gui = false,
+      hide_from_player_crafting = true,
+      energy_required = 6.4,
+      ingredients = {{type="item", name="lithium-dust", amount=1}},
+      results = {{type="item", name="lithium-plate", amount=1}},
+      main_product = "lithium-plate",
+      crafting_machine_tint = {
+        primary = {r = 0.45, g = 0.8, b = 0.5, a = 1.000}, 
+        secondary = {r = 0.8, g = 0.9, b = 0.3, a = 1.000}, 
+        tertiary = {r = 0.876, g = 0.869, b = 0.597, a = 1.000}, 
+        quaternary = {r = 1.000, g = 1.000, b = 1.000, a = 1.000},
+      }
+    }
   })
   if settings.startup["scrap-industry-plastic"].value then
     data:extend({
@@ -280,40 +307,6 @@ if mods["space-age"] then
           {type="item", name="yumako-mash", amount=2}
         },
         results = {{type="item", name="plastic-bar", amount=2}}
-      }
-    })
-  end
-  if settings.startup["scrap-industry-lithium"].value then
-    data:extend({
-      {
-        type = "recipe",
-        name = "lithium-dust-neutralization",
-        icon = "__scrap-industry__/graphics/icons/lithium-dust-neutralization.png",
-        category = "chemistry-or-cryogenics",
-        subgroup = "aquilo-processes",
-        order = "c[lithium]-e[lithium-dust-neutralization]",
-        enabled = false,
-        allow_productivity = true,
-        auto_recycle = false,
-        allow_decomposition = false,
-        hide_from_signal_gui = false,
-        hide_from_player_crafting = true,
-        energy_required = 4,
-        ingredients = {
-          {type="item", name="lithium-dust", amount=1},
-          {type="fluid", name="sulfuric-acid", amount=20}
-        },
-        results = {
-          {type="item", name="lithium", amount=1, probability=0.47},
-          {type="item", name="sulfur", amount=1, probability=0.03}
-        },
-        main_product = "lithium",
-        crafting_machine_tint = {
-          primary = {r = 0.45, g = 0.8, b = 0.5, a = 1.000}, 
-          secondary = {r = 0.8, g = 0.9, b = 0.3, a = 1.000}, 
-          tertiary = {r = 0.876, g = 0.869, b = 0.597, a = 1.000}, 
-          quaternary = {r = 1.000, g = 1.000, b = 1.000, a = 1.000},
-        }
       }
     })
   end

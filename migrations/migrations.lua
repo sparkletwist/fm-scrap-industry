@@ -19,9 +19,7 @@ for _,force in pairs(game.forces) do
     recipes["tungsten-carbide-from-scrap"].enabled = technologies["tungsten-carbide"].researched
     recipes["tungsten-plate-from-scrap"].enabled = technologies["tungsten-steel"].researched
     recipes["holmium-solution-from-scrap"].enabled = technologies["holmium-processing"].researched
-    if settings.startup["scrap-industry-lithium"].value then
-      recipes["lithium-dust-neutralization"].enabled = technologies["lithium-processing"].researched
-    end
+    recipes["lithium-plate-from-powder"].enabled = technologies["lithium-processing"].researched
     if settings.startup["scrap-industry-metallurgy"].value then
       recipes["molten-iron-from-scrap"].enabled = technologies["foundry"].researched
       recipes["molten-copper-from-scrap"].enabled = technologies["foundry"].researched
