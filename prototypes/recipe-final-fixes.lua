@@ -61,7 +61,7 @@ local function can_modify_recipe(recipe)
     if result.type == "item" then
       return true
     end
-    if result.type == "fluid" and recipe_metadata.modify_fluid_recipe then
+    if result.type == "fluid" and recipe_metadata.force then
 	    return true
 	  end
   end
