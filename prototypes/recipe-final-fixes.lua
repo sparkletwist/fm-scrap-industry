@@ -36,12 +36,10 @@ local function can_modify_recipe(recipe)
 
   local recipe_metadata = ScrapIndustry.recipes[recipe.name] or {}
   if recipe_metadata then
-    -- ignore=false forces a recipe to be modified, even if the category is ignored
-    if type(recipe_metadata.ignore) == "boolean" then
-      return not recipe_metadata.ignore
+    if recipe_metadata.ignore then
+      return false
     end
-
-    if recipe_metadata.self_scrap then
+    if recipe_metadata.force or recipe_metadata.self_scrap then
       return true
     end
   end
@@ -61,7 +59,7 @@ local function can_modify_recipe(recipe)
     if result.type == "item" then
       return true
     end
-    if result.type == "fluid" and recipe_metadata.force then
+    if result.type == "fluid" then
 	    return true
 	  end
   end
