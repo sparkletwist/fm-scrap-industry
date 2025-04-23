@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.1
+Date: ????
+  Minor Features:
+    - Add `force=true` recipe metadata flag to be the opposite of `ignore=true`
+  Compatibility:
+    - Move compatibility with Wooden Industry from here to there
+---------------------------------------------------------------------------------------------------
 Version: 0.8.0
   Changes:
     - Lithium dust has been renamed to Lithium powder (internal name is still lithium-dust for compatibility reasons)
@@ -8,32 +15,26 @@ Version: 0.8.0
     - Lithium powder volatility time has been increased from 1 to 3 minutes
     - Lithium plates have less lithium powder byproducts
     - Lithium no longer self-scraps
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.5
   Bugfixes:
     - Tentative fix for hand crafted recipes affecting priority order for recipes
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.4
   Bugfixes:
     - Fix crash when character skin from another mod does not have any crafting categories defined
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.3
   Compatibility:
     - Add hand crafting recipe categories to all characters, to support skin swapping mods
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.2
   Changes:
     - Add scrap smelting recipes to productivity techs
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.1
   Compatibility:
     - Reduce smelting time of lead scrap from 6.4 to 3.2 to parity ratios from BZ Lead (-50%)
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.0
   Changes:
@@ -47,29 +48,24 @@ Version: 0.7.0
   Compatibility:
     - Update compatibility for Wooden Industry 2.0.0 with Alloy Smelting
     - Add compatibility for Sand from Early Crushing
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.4
   Minor Features:
     - Make self_scrap optional and definable for entire crafting categories (thanks S6X!)
   Changes:
     - Productivity is disabled on scrap smelting recipes when No Mercy is enabled
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.3
   Bugfixes:
     - Add hide_from_signal_gui=false to recipes for crafting from scrap.
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.2
   Bugfixes:
     - Rename fake_results to fake_ingredients, name was misleading!
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.1
   Bugfixes:
     - Fix blue chips from scrap being labeled incorrectly.
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.0
   Minor Features:
@@ -82,7 +78,6 @@ Version: 0.6.0
   Bugfixes:
     - Fix load error when running without Space Age
     - Add variant pictures for rusty iron scrap
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.8
   Minor Features:
@@ -93,12 +88,10 @@ Version: 0.5.8
     - Updated more recipes for Expensive Mode
   Bugfixes:
     - Improve migration code to properly enable recipes that should already be researched
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.7
   Changes:
     - Version bump
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.6
   Major Features:
@@ -108,32 +101,27 @@ Version: 0.5.6
     - Mirror support for Glass from Rusting Iron
     - Reduce Copper cable cost when Tin is installed for Electronic circuits from scrap
     - When Tin is installed, also update recipe for Advanced circuits from scrap to match
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.5
   Changes:
     - Make rusty scrap optional with a new setting
   Bugfixes:
     - Fix priority on Titanium scrap
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.4
   Changes:
     - With Roc's Rusting Iron, smelted scrap is always fresh
     - Set show_details_in_recipe_tooltip to false for byproducts to reduce UI clutter
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.3
   Changes:
     - Updated icons for Steel scrap to make them more distinct from iron scrap (suggested by S6X)
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.2
   Changes:
     - Scrap amount is now reduced for very expensive recipes (applies sqrt when amount is greater than 1)
   Bugfixes:
     - Add migrations for technology unlocks
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.1
   Minor Features:
@@ -146,7 +134,6 @@ Version: 0.5.1
   Bugfixes:
     - Fix failrate calculation ratio
     - Fix issues with failrate and scrap for derusting recipes
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.0
   Major Features:
@@ -166,17 +153,14 @@ Version: 0.5.0
     - Fix Iron scrap not actually rusting, rusts at half the time
     - If a recipe already contains a scrap byproduct in its results, it won't be added and the failrate won't be applied
     - Fix existing probabilities being handled incorrectly by failrate / success_penalty
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
   Compatibility:
     - Add support for Roc's Rusting Iron with Rusty iron scrap
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.0
   Major Features:
     - Add Hand-crafting friendly setting (enabled by default) that makes hand-crafting things easier.
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.2
   Minor Features:
@@ -187,12 +171,10 @@ Version: 0.3.2
     - [space-age] Increase lithium dust yield from lithium by 100% (0.01 -> 0.02)
     - [space-age] Reintroduce using the fire signal icon when >= 2.0.34
     - [space-age] Buffed lithium fire slightly (damage falls off much slower)
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.1
   Bugfixes:
     - Hotfix for load error on 2.0.32 due to missing new signal-fire.png icon
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0
   Major Features:
@@ -201,12 +183,10 @@ Version: 0.3.0
     - [space-age] Slightly nerfed Bioplastic from bits ratio to match Plastic bars from bits (4:3:3 -> 3:2:2)
   Modding:
     - ScrapIndustry.recipes[] can now have ignore=false, bypassing category-based restrictions
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1
   Minor Features:
     - [space-age] New Bioplastic from bits recipe for using your Plastic bits on Gleba
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
   Major Features:
@@ -222,7 +202,6 @@ Version: 0.2.0
     - Change Low density structure casting to be ignored
   Modding:
     - Add API support for multiple scrap results from a single item
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
   Changes:
@@ -235,7 +214,6 @@ Version: 0.1.1
   Bugfixes:
     - Recycling and rocket building recipes are now ignored
     - Fix priority for nuclear ore byproducts not being set (thanks s6x!)
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.0
   Major Features:

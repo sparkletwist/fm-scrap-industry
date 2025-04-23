@@ -35,18 +35,16 @@ local function can_modify_recipe(recipe)
   end
 
   local recipe_metadata = ScrapIndustry.recipes[recipe.name] or {}
-  if recipe_metadata then
-    if recipe_metadata.ignore then
-      return false
-    end
-    if recipe_metadata.force or recipe_metadata.self_scrap then
-      return true
-    end
+  if recipe_metadata.ignore then
+    return false
+  end
+  if recipe_metadata.force or recipe_metadata.self_scrap then
+    return true
   end
 
   if recipe.category then
-    local category_metadata = ScrapIndustry.categories[recipe.category]
-    if category_metadata and category_metadata.ignore then
+    local category_metadata = ScrapIndustry.categories[recipe.category] or {}
+    if category_metadata.ignore then
       return false
     end
   end
@@ -59,9 +57,6 @@ local function can_modify_recipe(recipe)
     if result.type == "item" then
       return true
     end
-    if result.type == "fluid" then
-	    return true
-	  end
   end
   return false
 end
@@ -109,7 +104,7 @@ end
 
 local function get_item_localised_name(name)
   local item = get_prototype("item", name)
-  if not item then return end
+  if not item then return {"item-name."..name} end
   if item.localised_name then
     return item.localised_name
   end
