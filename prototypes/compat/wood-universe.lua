@@ -7,8 +7,10 @@ if mods["crushing-industry"] then
   ScrapIndustry.items["landfill"] = {scrap="sand", scale=5*ScrapIndustry.CHEAP, failrate=0.01}
 end
 
+ScrapIndustry.categories["astroponics"] = {ignore=true}
 ScrapIndustry.categories["kiln-smelting"] = {ignore=true}
 ScrapIndustry.categories["organic-or-kiln-smelting"] = {ignore=true}
+ScrapIndustry.categories["kiln-smelting-or-crafting"] = {ignore=true}
 
 ScrapIndustry.recipes["sulfuric-bacteria-pruning"] = {ignore=true}
 ScrapIndustry.recipes["sulfuric-bacteria-melting"] = {ignore=true}
