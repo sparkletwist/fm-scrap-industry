@@ -5,6 +5,8 @@ Date: ????
     - Add `force=true` recipe metadata flag to be the opposite of `ignore=true`
   Compatibility:
     - Move compatibility with Wooden Industry from here to there
+    - Add compatibility for Rocket Reusability
+    - Add compatibility for Intermodal Containers
 ---------------------------------------------------------------------------------------------------
 Version: 0.8.0
   Changes:

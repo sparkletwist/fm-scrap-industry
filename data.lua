@@ -14,5 +14,7 @@ require("prototypes.compat.space-age")
 
 require("prototypes.compat.aai-industry")
 require("prototypes.compat.bzores")
+require("prototypes.compat.rocket-reusability")
 require("prototypes.compat.rusting-iron")
 require("prototypes.compat.wood-universe")
+require("prototypes.compat.misc")
