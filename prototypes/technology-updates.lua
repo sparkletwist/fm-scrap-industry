@@ -20,7 +20,7 @@ end
 
 if mods["space-age"] then
   ftech.add_unlock("tungsten-carbide", "tungsten-carbide-from-scrap")
-  ftech.add_unlock("tungsten-steel", "tungsten-plate-from-scrap")
+  ftech.add_unlock("metallurgic-science-pack", "tungsten-plate-from-scrap")
   ftech.add_unlock("holmium-processing", "holmium-solution-from-scrap")
   ftech.add_unlock("lithium-processing", "lithium-plate-from-powder")
   if settings.startup["scrap-industry-metallurgy"].value then
