@@ -2,6 +2,9 @@
 Version: 0.9.1
 Date: ????
   Changes:
+    - Add CN locale (credit: Houraiji-Kyuusyou)
+    - Add RU locale (credit: Osmo)
+    - Thank you both!
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.0
 Date: 2025-04-24
