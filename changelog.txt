@@ -2,6 +2,7 @@
 Version: 0.9.3
 Date: ????
   Changes:
+    - Auto-exclude all science packs from generating scrap byproducts in their recipes
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.2
 Date: 2025-06-08
