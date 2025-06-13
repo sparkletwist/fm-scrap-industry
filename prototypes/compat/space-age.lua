@@ -35,10 +35,4 @@ if mods["space-age"] then
   ScrapIndustry.recipes["productivity-module-3"] = {failrate=0.01}
   ScrapIndustry.recipes["efficiency-module-3"] = {failrate=0.01}
   ScrapIndustry.recipes["quality-module-3"] = {failrate=0.01}
-
-  ScrapIndustry.products["metallurgic-science-pack"] = {ignore=true}
-  ScrapIndustry.products["agricultural-science-pack"] = {ignore=true}
-  ScrapIndustry.products["electromagnetic-science-pack"] = {ignore=true}
-  ScrapIndustry.products["cryogenic-science-pack"] = {ignore=true}
-  ScrapIndustry.products["promethium-science-pack"] = {ignore=true}
 end

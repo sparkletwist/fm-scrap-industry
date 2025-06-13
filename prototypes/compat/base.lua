@@ -66,12 +66,4 @@ ScrapIndustry.items["speed-module-3"] = {scrap="circuit-scrap", scale=ScrapIndus
 ScrapIndustry.items["efficiency-module-3"] = {scrap="circuit-scrap", scale=ScrapIndustry.LEGENDARY, failrate=-0.03}
 ScrapIndustry.items["productivity-module-3"] = {scrap="circuit-scrap", scale=ScrapIndustry.LEGENDARY, failrate=-0.03}
 
-ScrapIndustry.products["automation-science-pack"] = {ignore=true}
-ScrapIndustry.products["logistic-science-pack"] = {ignore=true}
-ScrapIndustry.products["chemical-science-pack"] = {ignore=true}
-ScrapIndustry.products["military-science-pack"] = {ignore=true}
-ScrapIndustry.products["production-science-pack"] = {ignore=true}
-ScrapIndustry.products["utility-science-pack"] = {ignore=true}
-ScrapIndustry.products["space-science-pack"] = {ignore=true}
-
 ScrapIndustry.categories["rocket-building"] = {ignore=true}

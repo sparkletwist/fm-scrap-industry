@@ -154,7 +154,7 @@ end
 
 --------------------------------------------------------------------------------------------------
 
---Exclude science packs
+-- exclude science packs
 local science_pack = {}
 for _,lab in pairs(data.raw.lab) do
 	if lab.inputs then
@@ -168,6 +168,8 @@ for pack,_ in pairs(science_pack) do
 		ScrapIndustry.recipes[pack] = {ignore=true}
 	end
 end
+
+--------------------------------------------------------------------------------------------------
 
 for _,recipe in pairs(data.raw.recipe) do
   if can_modify_recipe(recipe) then
