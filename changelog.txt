@@ -2,6 +2,7 @@
 Version: 0.9.4
 Date: ????
   Changes:
+    - Fix load error with recipes that have ingredients but not results
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.3
 Date: 2025-06-13

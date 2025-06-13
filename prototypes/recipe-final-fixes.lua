@@ -164,11 +164,11 @@ for _,lab in pairs(data.raw.lab) do
 	end
 end
 
-for _,recipe in pairs(data.raw.recipe) do
-  if recipe.ingredients and not ScrapIndustry.recipes[recipe.name] then
+for recipe_name,recipe in pairs(data.raw.recipe) do
+  if recipe.results and not ScrapIndustry.recipes[recipe_name] then
     for _,result in pairs(recipe.results) do
       if science_packs[result.name] then
-        ScrapIndustry.recipes[recipe.name] = {ignore=true}
+        ScrapIndustry.recipes[recipe_name] = {ignore=true}
         break
       end
     end
