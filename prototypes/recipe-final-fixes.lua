@@ -155,18 +155,24 @@ end
 --------------------------------------------------------------------------------------------------
 
 -- exclude science packs
-local science_pack = {}
+local science_packs = {}
 for _,lab in pairs(data.raw.lab) do
 	if lab.inputs then
 		for i=1,#lab.inputs do
-			science_pack[lab.inputs[i]] = true
+			science_packs[lab.inputs[i]] = true
 		end
 	end
 end
-for pack,_ in pairs(science_pack) do
-	if (data.raw.recipe[pack] and not ScrapIndustry.recipes[pack]) then 
-		ScrapIndustry.recipes[pack] = {ignore=true}
-	end
+
+for _,recipe in pairs(data.raw.recipe) do
+  if recipe.ingredients and not ScrapIndustry.recipes[recipe.name] then
+    for _,result in pairs(recipe.results) do
+      if science_packs[result.name] then
+        ScrapIndustry.recipes[recipe.name] = {ignore=true}
+        break
+      end
+    end
+  end
 end
 
 --------------------------------------------------------------------------------------------------
