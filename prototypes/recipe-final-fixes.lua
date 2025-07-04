@@ -316,7 +316,7 @@ if mods["quality"] then
       local icons = generate_recycling_recipe_icons_from_item(item)
       local crafting_machine_tint = data.raw.recipe[item.name] and data.raw.recipe[item.name].crafting_machine_tint or default_machine_tints
       local amount = math.ceil(scrap_metadata.recycle/4)
-      local probability = 0.25*(scrap_metadata.recycle/4)/amount
+      local probability = 0.5*(scrap_metadata.recycle/4)/amount
       probability = math.ceil(probability*1000)/1000
       data:extend({
         {
@@ -331,7 +331,7 @@ if mods["quality"] then
           unlock_results = false,
           allow_decomposition = false,
           ingredients = {{type="item", name=item.name, amount=1, ignored_by_stats=1}},
-          results = {{type="item", name=scrap_metadata.scrap, amount=amount, probability=probability, ignored_by_stats=1}},
+          results = {{type="item", name=scrap_metadata.scrap, amount=amount, probability=probability, ignored_by_stats=amount}},
           energy_required = (data.raw.recipe[item.name] and data.raw.recipe[item.name].energy_required or 0.5 )/16,
           crafting_machine_tint = crafting_machine_tint
         },

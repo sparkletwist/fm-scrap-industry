@@ -2,6 +2,7 @@
 Version: 0.9.5
 Date: ????
   Changes:
+    - Buff scrap from recycling (still a nerf, but less aggressive)
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.4
 Date: 2025-06-13

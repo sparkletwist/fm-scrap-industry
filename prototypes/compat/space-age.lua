@@ -1,6 +1,6 @@
 if mods["space-age"] then
   ScrapIndustry.products["tungsten-scrap"] = {priority=3}
-  ScrapIndustry.items["tungsten-carbide"] = {scrap="tungsten-scrap", scale=ScrapIndustry.UNCOMMON, failrate=0.03, recycle=1.5}
+  ScrapIndustry.items["tungsten-carbide"] = {scrap="tungsten-scrap", scale=ScrapIndustry.UNCOMMON, failrate=0.03, recycle=2}
   ScrapIndustry.items["tungsten-plate"] = {scrap="tungsten-scrap", scale=ScrapIndustry.EXPENSIVE, failrate=0.01, recycle=4}
   ScrapIndustry.recipes["tungsten-carbide"] = {self_scrap=true}
   ScrapIndustry.recipes["casting-low-density-structure"] = {ignore=true}
