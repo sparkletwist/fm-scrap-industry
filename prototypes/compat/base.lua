@@ -6,15 +6,9 @@ ScrapIndustry.products["iron-scrap"] = {priority=1}
 ScrapIndustry.products["copper-scrap"] = {priority=1}
 ScrapIndustry.products["steel-scrap"] = {priority=2}
 
-if settings.startup["scrap-industry-mech"].value then
-	ScrapIndustry.products["mech-scrap"] = {priority=3}
-	ScrapIndustry.items["iron-gear-wheel"] = {scrap="mech-scrap", scale=ScrapIndustry.COMMON, failrate=0.02}
-else
-	ScrapIndustry.items["iron-gear-wheel"] = {scrap="iron-scrap", scale=ScrapIndustry.PRODUCT, failrate=0.02}
-end
-
 ScrapIndustry.categories["smelting"] = {ignore=true}
 ScrapIndustry.items["iron-plate"] = {scrap="iron-scrap", scale=ScrapIndustry.COMMON, failrate=0.01, recycle=2}
+ScrapIndustry.items["iron-gear-wheel"] = {scrap="iron-scrap", scale=ScrapIndustry.PRODUCT, failrate=0.02}
 ScrapIndustry.items["iron-stick"] = {scrap="iron-scrap", scale=ScrapIndustry.CHEAP, failrate=0.02}
 ScrapIndustry.items["pipe"] = {scrap="iron-scrap", scale=ScrapIndustry.COMMON, failrate=0.01}
 ScrapIndustry.items["copper-plate"] = {scrap="copper-scrap", scale=ScrapIndustry.COMMON, failrate=0.01, recycle=2}
@@ -51,6 +45,7 @@ ScrapIndustry.recipes["advanced-circuit"] = {failrate=0.02}
 ScrapIndustry.recipes["processing-unit"] = {failrate=0.01}
 
 if settings.startup["scrap-industry-mech"].value then
+	ScrapIndustry.products["mech-scrap"] = {priority=3}
 	ScrapIndustry.recipes["engine-unit"] = {fake_ingredients = {{type="item", name="steel-plate", amount=1}, {type="item", name="engine-unit", amount=1}}}
 	ScrapIndustry.items["engine-unit"] = {scrap={"mech-scrap"}, scale=ScrapIndustry.UNCOMMON, failrate=0.02}
 	ScrapIndustry.items["electric-engine-unit"] = {scrap={"mech-scrap", "circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.02}

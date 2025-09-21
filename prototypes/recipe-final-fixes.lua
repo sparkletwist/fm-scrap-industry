@@ -5,26 +5,27 @@ local global_failrate_scale = settings.startup["scrap-industry-failrate-scale"].
 local global_failrate_min = settings.startup["scrap-industry-failrate-min"].value
 
 local function get_ingredient_scrap(ingredient, out)
-  if ingredient.type == "item" then
-    local item_metadata = ScrapIndustry.items[ingredient.name]
-    if item_metadata and not out.recipe_results[item_metadata.scrap] then
-      if item_metadata.scale then
-        local amount = item_metadata.scale * (ingredient.amount or ((ingredient.amount_min + ingredient.amount_max)/2))
-        amount = global_byproduct_scale * amount
-        amount = math.floor(100 * amount + 0.5) / 100
-        if type(item_metadata.scrap) == "string" then
-          out.byproducts[item_metadata.scrap] = (out.byproducts[item_metadata.scrap] or 0) + amount
+  local item_metadata = ScrapIndustry.items[ingredient.name]
+  if item_metadata and not out.recipe_results[item_metadata.scrap] then
+    if item_metadata.scale then
+      local amount = item_metadata.scale * (ingredient.amount or ((ingredient.amount_min + ingredient.amount_max)/2))
+      if ingredient.type == "fluid" then
+        amount = amount / ScrapIndustry.FLUID_SCALE
+      end
+      amount = global_byproduct_scale * amount
+      amount = math.floor(100 * amount + 0.5) / 100
+      if type(item_metadata.scrap) == "string" then
+        out.byproducts[item_metadata.scrap] = (out.byproducts[item_metadata.scrap] or 0) + amount
+        out.total_scrap = out.total_scrap + amount
+      else
+        for _,scrap_name in pairs(item_metadata.scrap) do
+          out.byproducts[scrap_name] = (out.byproducts[scrap_name] or 0) + amount
           out.total_scrap = out.total_scrap + amount
-        else
-          for _,scrap_name in pairs(item_metadata.scrap) do
-            out.byproducts[scrap_name] = (out.byproducts[scrap_name] or 0) + amount
-            out.total_scrap = out.total_scrap + amount
-          end
         end
       end
-      if item_metadata.failrate then
-        out.success_penalty = (out.success_penalty or 0) + item_metadata.failrate
-      end
+    end
+    if item_metadata.failrate then
+      out.success_penalty = (out.success_penalty or 0) + item_metadata.failrate
     end
   end
 end
@@ -61,6 +62,7 @@ local function can_modify_recipe(recipe)
     if result.type == "item" then
       return true
     end
+    -- TODO: Update for fluid scrap recipes?
   end
   return false
 end
@@ -260,14 +262,18 @@ for _,recipe in pairs(data.raw.recipe) do
       end
       for scrap_name,scrap_amount in pairs(out.byproducts) do
         if scrap_name ~= excluded_result and scrap_amount > 0 then
+          local scrap_metadata = ScrapIndustry.products[scrap_name]
           local halved_amount = scrap_amount / 0.5
           local random_scale = 1 + 0.12 * (1 - 2 * math.random())
           local probability = math.floor(100 * random_scale * scrap_amount / math.ceil(halved_amount)) / 100
           local final_amount = halved_amount / 0.5
+          if scrap_metadata.type == "fluid" then
+            final_amount = ScrapIndustry.FLUID_SCALE * final_amount
+          end
           if final_amount > 1 then final_amount = math.sqrt(final_amount) end
           local amount_min = math.max(1, math.floor(0.9 * final_amount + 0.5))
           local amount_max = math.max(1, math.floor(1.1 * final_amount + 0.5))
-          local result = {type="item", name=scrap_name, probability=probability, show_details_in_recipe_tooltip=false}
+          local result = {type=scrap_metadata.type or "item", name=scrap_name, probability=probability, show_details_in_recipe_tooltip=false}
           if amount_min ~= amount_max then
             result.amount_min = amount_min
             result.amount_max = amount_max

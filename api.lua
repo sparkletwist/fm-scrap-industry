@@ -1,6 +1,6 @@
 if not ScrapIndustry then
   ScrapIndustry = {
-    items = {},
+    items = {}, -- also fluids
     products = {},
     recipes = {},
     categories = {},
@@ -14,5 +14,6 @@ if not ScrapIndustry then
     RARE = 0.48,
     EPIC = 0.72,
     LEGENDARY = 1.44,
+    FLUID_SCALE = 10
   }
 end
