@@ -11,7 +11,7 @@
   "dependencies": [
     "base >= 2.0.69",
     "? space-age",
-    "fdsl >= 0.1.8",
+    "fdsl >= 0.2.4",
     "? crushing-industry >= 0.4.15",
     "(?) Rocs-Rusting-Iron >= 1.2.0",
     "(?) aai-industry",

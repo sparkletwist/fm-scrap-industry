@@ -54,7 +54,7 @@ if settings.startup["scrap-industry-mech"].value then
 	ScrapIndustry.products["mech-scrap"] = {priority=3}
 	ScrapIndustry.recipes["engine-unit"] = {fake_ingredients = {{type="item", name="steel-plate", amount=1}, {type="item", name="engine-unit", amount=1}}}
 	ScrapIndustry.items["engine-unit"] = {scrap={"mech-scrap"}, scale=ScrapIndustry.PRODUCT, failrate=0.02}
-	ScrapIndustry.items["electric-engine-unit"] = {scrap={"mech-scrap", "circuit-scrap"}, scale=ScrapIndustry.EXPENSIVE, failrate=0.02}
+	ScrapIndustry.items["electric-engine-unit"] = {scrap={"mech-scrap", "circuit-scrap"}, scale=ScrapIndustry.UNCOMMON, failrate=0.02}
 	ScrapIndustry.items["flying-robot-frame"] = {scrap={"mech-scrap", "circuit-scrap"}, scale=ScrapIndustry.EXPENSIVE, failrate=0.01}
 else
 	ScrapIndustry.items["engine-unit"] = {scrap={"iron-scrap", "steel-scrap"}, scale=ScrapIndustry.UNCOMMON, failrate=0.02}

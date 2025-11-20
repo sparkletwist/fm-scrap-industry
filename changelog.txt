@@ -7,8 +7,12 @@ Date: ??????
   Minor Features:
     - Add setting for mechanical scrap
   Changes:
+    - Reduce amount of mechanical scrap from recipes across the board
     - Add 1 gear wheel to recipe for making an engine unit from scrap
     - Change internal recipe name "engine-from-scrap" to "engine-unit-from-scrap"
+  Compatibility:
+    - AAI Industry: Add recipes for motor and electric motor from scrap
+    - AAI Industry: Make engine unit from scrap recipes more expensive to compensate
 ---------------------------------------------------------------------------------------------------
 Version: 0.10.4
 Date: 2025-11-04

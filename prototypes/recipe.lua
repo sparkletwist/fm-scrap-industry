@@ -234,7 +234,7 @@ if settings.startup["scrap-industry-mech"].value then
 			localised_name = {"recipe-name.item-from-scrap", {"item-name.engine-unit"}},
 			icons = {
 				{icon="__scrap-industry__/graphics/icons/mech-scrap.png", shift={-12,-12}, scale=0.4},
-				{icon="__base__/graphics/icons/engine-unit.png", draw_background=true}
+				{icon=mods["aai-industry"] and "__aai-industry__/graphics/icons/multi-cylinder-engine.png" or "__base__/graphics/icons/engine-unit.png", draw_background=true}
 			},
 			category = "advanced-crafting",
 			subgroup = "production-scrap",
@@ -258,7 +258,7 @@ if settings.startup["scrap-industry-mech"].value then
 			localised_name = {"recipe-name.item-from-scrap", {"item-name.electric-engine-unit"}},
 			icons = {
 				{icon="__scrap-industry__/graphics/icons/mech-scrap.png", shift={-12,-12}, scale=0.4},
-				{icon="__base__/graphics/icons/electric-engine-unit.png", draw_background=true}
+				{icon=mods["aai-industry"] and "__aai-industry__/graphics/icons/big-electric-motor.png" or "__base__/graphics/icons/electric-engine-unit.png", draw_background=true}
 			},
 			category = "crafting-with-fluid",
 			subgroup = "production-scrap",
@@ -280,7 +280,11 @@ if settings.startup["scrap-industry-mech"].value then
 	})
 	if no_scrap_from_scrap then
 		ScrapIndustry.recipes["sort-mech-scrap"] = {ignore=true}
-		ScrapIndustry.recipes["engine-from-scrap"] = {ignore=true}
+		ScrapIndustry.recipes["engine-unit-from-scrap"] = {ignore=true}
+		ScrapIndustry.recipes["electric-engine-unit-from-scrap"] = {ignore=true}
+	else
+		ScrapIndustry.recipes["engine-unit-from-scrap"] = {self_scrap=true}
+		ScrapIndustry.recipes["electric-engine-unit-from-scrap"] = {self_scrap=true}
 	end
 end
 
