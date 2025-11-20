@@ -10,7 +10,8 @@ if mods["space-age"] then
 end
 
 if settings.startup["scrap-industry-mech"].value then
-  ftech.add_unlock("engine", "engine-from-scrap")
+  ftech.add_unlock("engine", "engine-unit-from-scrap")
+  ftech.add_unlock("electric-engine", "electric-engine-unit-from-scrap")
 end
 
 if settings.startup["scrap-industry-plastic"].value then

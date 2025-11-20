@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.11.0
+Date: ??????
+  Major Features:
+    - Begin adding support for fluid ingredients producing scrap
+    - Add recipe for electric engine unit from scrap
+  Minor Features:
+    - Add setting for mechanical scrap
+  Changes:
+    - Add 1 gear wheel to recipe for making an engine unit from scrap
+    - Change internal recipe name "engine-from-scrap" to "engine-unit-from-scrap"
+---------------------------------------------------------------------------------------------------
 Version: 0.10.4
 Date: 2025-11-04
   Bugfixes:

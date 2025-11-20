@@ -14,34 +14,34 @@ if (settings.startup["scrap-industry-red-circuit-plastic"].value) then
 end
 
 data:extend({
-  {
-	type = "recipe",
-	name = "iron-plate-from-scrap",
-	localised_name = {"recipe-name.item-from-scrap", {"item-name.iron-plate"}},
-	icons = {
-	  {icon="__scrap-industry__/graphics/icons/iron-scrap.png", shift={-12, -12}, scale=0.4},
-	  {icon="__base__/graphics/icons/iron-plate.png", draw_background=true}
+	{
+		type = "recipe",
+		name = "iron-plate-from-scrap",
+		localised_name = {"recipe-name.item-from-scrap", {"item-name.iron-plate"}},
+		icons = {
+			{icon="__scrap-industry__/graphics/icons/iron-scrap.png", shift={-12, -12}, scale=0.4},
+			{icon="__base__/graphics/icons/iron-plate.png", draw_background=true}
+		},
+		category = "smelting",
+		subgroup = "production-scrap",
+		order = "b[smelting]-a[iron]",
+		allow_productivity = true,
+		auto_recycle = false,
+		allow_decomposition = false,
+		result_is_always_fresh = true,
+		hide_from_signal_gui = false,
+		hide_from_player_crafting = true,
+		energy_required = 3.2,
+		ingredients = {{type="item", name="iron-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
+		results = {{type="item", name="iron-plate", amount=1}}
 	},
-	category = "smelting",
-	subgroup = "production-scrap",
-	order = "b[smelting]-a[iron]",
-	allow_productivity = true,
-	auto_recycle = false,
-	allow_decomposition = false,
-	result_is_always_fresh = true,
-	hide_from_signal_gui = false,
-	hide_from_player_crafting = true,
-	energy_required = 3.2,
-	ingredients = {{type="item", name="iron-scrap", amount=mods["Expensive-Mode"] and 4 or 2}},
-	results = {{type="item", name="iron-plate", amount=1}}
-  },
   {
 	type = "recipe",
 	name = "copper-plate-from-scrap",
 	localised_name = {"recipe-name.item-from-scrap", {"item-name.copper-plate"}},
 	icons = {
-	  {icon="__scrap-industry__/graphics/icons/copper-scrap.png", shift={-12, -12}, scale=0.4},
-	  {icon="__base__/graphics/icons/copper-plate.png", draw_background=true}
+		{icon="__scrap-industry__/graphics/icons/copper-scrap.png", shift={-12, -12}, scale=0.4},
+		{icon="__base__/graphics/icons/copper-plate.png", draw_background=true}
 	},
 	category = "smelting",
 	subgroup = "production-scrap",
@@ -60,8 +60,8 @@ data:extend({
 	name = "steel-plate-from-scrap",
 	localised_name = {"recipe-name.item-from-scrap", {"item-name.steel-plate"}},
 	icons = {
-	  {icon="__scrap-industry__/graphics/icons/steel-scrap.png", shift={-12, -12}, scale=0.4},
-	  {icon="__base__/graphics/icons/steel-plate.png", draw_background=true}
+		{icon="__scrap-industry__/graphics/icons/steel-scrap.png", shift={-12, -12}, scale=0.4},
+		{icon="__base__/graphics/icons/steel-plate.png", draw_background=true}
 	},
 	category = "smelting",
 	subgroup = "production-scrap",
@@ -81,8 +81,8 @@ data:extend({
 	name = "electronic-circuit-from-scrap",
 	localised_name = {"recipe-name.item-from-scrap", {"item-name.electronic-circuit"}},
 	icons = {
-	  {icon="__scrap-industry__/graphics/icons/circuit-scrap-3.png", shift={-12, -12}, scale=0.4},
-	  {icon="__base__/graphics/icons/electronic-circuit.png", draw_background=true}
+		{icon="__scrap-industry__/graphics/icons/circuit-scrap-3.png", shift={-12, -12}, scale=0.4},
+		{icon="__base__/graphics/icons/electronic-circuit.png", draw_background=true}
 	},
 	category = mods["space-age"] and "electronics" or "crafting",
 	subgroup = "production-scrap",
@@ -95,8 +95,8 @@ data:extend({
 	hide_from_player_crafting = true,
 	energy_required = 1.5,
 	ingredients = {
-	  {type="item", name="circuit-scrap", amount=2},
-	  {type="item", name="copper-cable", amount=mods["Expensive-Mode"] and 3 or 1}
+		{type="item", name="circuit-scrap", amount=2},
+		{type="item", name="copper-cable", amount=mods["Expensive-Mode"] and 3 or 1}
 	},
 	results = {{type="item", name="electronic-circuit", amount=1}}
   },
@@ -105,8 +105,8 @@ data:extend({
 	name = "advanced-circuit-from-scrap",
 	localised_name = {"recipe-name.item-from-scrap", {"item-name.advanced-circuit"}},
 	icons = {
-	  {icon="__scrap-industry__/graphics/icons/circuit-scrap-1.png", shift={-12, -12}, scale=0.4},
-	  {icon="__base__/graphics/icons/advanced-circuit.png", draw_background=true}
+		{icon="__scrap-industry__/graphics/icons/circuit-scrap-1.png", shift={-12, -12}, scale=0.4},
+		{icon="__base__/graphics/icons/advanced-circuit.png", draw_background=true}
 	},
 	category = mods["space-age"] and "electronics" or "crafting",
 	subgroup = "production-scrap",
@@ -126,8 +126,8 @@ data:extend({
 	name = "processing-unit-from-scrap",
 	localised_name = {"recipe-name.item-from-scrap", {"item-name.processing-unit"}},
 	icons = {
-	  {icon="__scrap-industry__/graphics/icons/circuit-scrap.png", shift={-12, -12}, scale=0.4},
-	  {icon="__base__/graphics/icons/processing-unit.png", draw_background=true}
+		{icon="__scrap-industry__/graphics/icons/circuit-scrap.png", shift={-12, -12}, scale=0.4},
+		{icon="__base__/graphics/icons/processing-unit.png", draw_background=true}
 	},
 	category = mods["space-age"] and "electronics" or "crafting-with-fluid",
 	subgroup = "production-scrap",
@@ -140,9 +140,9 @@ data:extend({
 	hide_from_player_crafting = true,
 	energy_required = 30,
 	ingredients = {
-	  {type="item", name="circuit-scrap", amount=40},
-	  {type="item", name="copper-cable", amount=mods["Expensive-Mode"] and 80 or 20},
-	  {type="fluid", name="sulfuric-acid", amount=5}
+		{type="item", name="circuit-scrap", amount=40},
+		{type="item", name="copper-cable", amount=mods["Expensive-Mode"] and 80 or 20},
+		{type="fluid", name="sulfuric-acid", amount=5}
 	},
 	results = {{type="item", name="processing-unit", amount=1}}
   }
@@ -160,34 +160,34 @@ end
 if settings.startup["scrap-industry-plastic"].value then
 	data:extend({
 		{
-		  type = "recipe",
-		  name = "plastic-bar-from-bits",
-		  localised_name = {"recipe-name.plastic-bar-from-bits"},
-		  icons = {
-			{icon="__scrap-industry__/graphics/icons/plastic-bits.png", shift={-12, -12}, scale=0.4},
-			{icon="__base__/graphics/icons/plastic-bar.png", draw_background=true}
-		  },
-		  category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
-		  subgroup = "production-scrap",
-		  order = "d[crafting]-d[plastic-bar]",
-		  enabled = false,
-		  allow_productivity = true,
-		  auto_recycle = false,
-		  allow_decomposition = false,
-		  hide_from_signal_gui = false,
-		  hide_from_player_crafting = true,
-		  energy_required = 9,
-		  ingredients = {
-			{type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
-			{type="fluid", name="petroleum-gas", amount=10}
-		  },
-		  results = {{type="item", name="plastic-bar", amount=2}},
-		  crafting_machine_tint = {
-			primary = {r=1.000, g=1.000, b=1.000, a=1.000},
-			secondary = {r=0.771, g=0.771, b=0.771, a=1.000}, 
-			tertiary = {r=0.8, g=0.66, b=0.8, a=1.000},
-			quaternary = {r=0.55, g=0.5, b=0.55, a=1.000},  
-		  }
+			type = "recipe",
+			name = "plastic-bar-from-bits",
+			localised_name = {"recipe-name.plastic-bar-from-bits"},
+			icons = {
+				{icon="__scrap-industry__/graphics/icons/plastic-bits.png", shift={-12, -12}, scale=0.4},
+				{icon="__base__/graphics/icons/plastic-bar.png", draw_background=true}
+			},
+			category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
+			subgroup = "production-scrap",
+			order = "d[crafting]-d[plastic-bar]",
+			enabled = false,
+			allow_productivity = true,
+			auto_recycle = false,
+			allow_decomposition = false,
+			hide_from_signal_gui = false,
+			hide_from_player_crafting = true,
+			energy_required = 9,
+			ingredients = {
+				{type="item", name="plastic-bits", amount=mods["Expensive-Mode"] and 5 or 3},
+				{type="fluid", name="petroleum-gas", amount=10}
+			},
+			results = {{type="item", name="plastic-bar", amount=2}},
+			crafting_machine_tint = {
+				primary = {r=1.000, g=1.000, b=1.000, a=1.000},
+				secondary = {r=0.771, g=0.771, b=0.771, a=1.000}, 
+				tertiary = {r=0.8, g=0.66, b=0.8, a=1.000},
+				quaternary = {r=0.55, g=0.5, b=0.55, a=1.000},  
+			}
 		}
 	})
 	if no_scrap_from_scrap then
@@ -230,10 +230,10 @@ if settings.startup["scrap-industry-mech"].value then
 		},
 		{
 			type = "recipe",
-			name = "engine-from-scrap",
-			localised_name = {"recipe-name.engine-from-scrap"},
+			name = "engine-unit-from-scrap",
+			localised_name = {"recipe-name.item-from-scrap", {"item-name.engine-unit"}},
 			icons = {
-				{icon="__scrap-industry__/graphics/icons/mech-scrap.png", shift={-12, -12}, scale=0.4},
+				{icon="__scrap-industry__/graphics/icons/mech-scrap.png", shift={-12,-12}, scale=0.4},
 				{icon="__base__/graphics/icons/engine-unit.png", draw_background=true}
 			},
 			category = "advanced-crafting",
@@ -250,9 +250,32 @@ if settings.startup["scrap-industry-mech"].value then
 				{type="item", name="mech-scrap", amount=settings.startup["scrap-industry-mech-cost"].value},
 				{type="item", name="iron-gear-wheel", amount=1}
 			},
-			results = {
-				{type="item", name="engine-unit", amount=1}
-		  	},
+			results = {{type="item", name="engine-unit", amount=1}}
+		},
+		{
+			type = "recipe",
+			name = "electric-engine-unit-from-scrap",
+			localised_name = {"recipe-name.item-from-scrap", {"item-name.electric-engine-unit"}},
+			icons = {
+				{icon="__scrap-industry__/graphics/icons/mech-scrap.png", shift={-12,-12}, scale=0.4},
+				{icon="__base__/graphics/icons/electric-engine-unit.png", draw_background=true}
+			},
+			category = "crafting-with-fluid",
+			subgroup = "production-scrap",
+			order = "d[crafting]-xd[electric-engine]",
+			enabled = false,
+			allow_productivity = true,
+			auto_recycle = false,
+			allow_decomposition = false,
+			hide_from_signal_gui = false,
+			hide_from_player_crafting = true,
+			energy_required = 20,
+			ingredients = {
+				{type="item", name="mech-scrap", amount=settings.startup["scrap-industry-mech-cost"].value},
+				{type="fluid", name="lubricant", amount=10},
+				{type="item", name="circuit-scrap", amount=1},
+			},
+			results = {{type="item", name="electric-engine-unit", amount=1}}
 		}
 	})
 	if no_scrap_from_scrap then
