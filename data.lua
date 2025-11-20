@@ -12,6 +12,7 @@ require("prototypes.compat.space-age")
 
 require("prototypes.compat.aai-industry")
 require("prototypes.compat.bz-ores")
+require("prototypes.compat.crushing-industry")
 require("prototypes.compat.rocket-reusability")
 require("prototypes.compat.rusting-iron")
 require("prototypes.compat.inverted-quality")

@@ -1,4 +1,5 @@
 local ftech = require("__fdsl__.lib.technology")
+local fassert = require("__fdsl__.lib.assert")
 
 local global_byproduct_scale = settings.startup["scrap-industry-byproduct-scale"].value
 local global_failrate_scale = settings.startup["scrap-industry-failrate-scale"].value
@@ -263,6 +264,7 @@ for _,recipe in pairs(data.raw.recipe) do
       for scrap_name,scrap_amount in pairs(out.byproducts) do
         if scrap_name ~= excluded_result and scrap_amount > 0 then
           local scrap_metadata = ScrapIndustry.products[scrap_name]
+          fassert.ensure(scrap_metadata ~= nil, "scrap-industry.recipe-final-fixes: Scrap result `%s` does not have metadata specified with ScrapIndustry.products[scrap_name]", scrap_name)
           local halved_amount = scrap_amount / 0.5
           local random_scale = 1 + 0.12 * (1 - 2 * math.random())
           local probability = math.floor(100 * random_scale * scrap_amount / math.ceil(halved_amount)) / 100
