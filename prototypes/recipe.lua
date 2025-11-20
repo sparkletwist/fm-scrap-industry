@@ -205,16 +205,6 @@ if settings.startup["scrap-industry-mech"].value then
 		mechanical_sort_results = {
 			{type="item", name="iron-plate", amount_min=1, amount_max=2},
 			{type="item", name="iron-gear-wheel", amount=1, probability=0.5},
-		}		
-	end
-
-	local scrap_engine_results = {
-		mods["aai-industry"] and {type = "item", name = "motor", amount = 2} or {type="item", name="engine-unit", amount=1},
-		mods["aai-industry"] and {type="item", name="iron-scrap", amount_min=4, amount_max=8},
-	}
-	if no_scrap_from_scrap then
-		scrap_engine_results = {
-			mods["aai-industry"] and {type = "item", name = "motor", amount = 3} or {type="item", name="engine-unit", amount=1}
 		}
 	end
 
@@ -225,9 +215,7 @@ if settings.startup["scrap-industry-mech"].value then
 			localised_name = {"recipe-name.sort-mech-scrap"},
 			icon = "__scrap-industry__/graphics/icons/sort-mech-scrap.png",
 			subgroup = "intermediate-product",
-			order = "a[basic-intermediates]-a[iron-gear-wheel]-s[scrap]",			
-			--subgroup = "raw-material",
-			--order = "x",
+			order = "a[basic-intermediates]-a[iron-gear-wheel]-s[scrap]",
 			enabled = true,
 			allow_productivity = true,
 			auto_recycle = false,
@@ -237,8 +225,8 @@ if settings.startup["scrap-industry-mech"].value then
 			hide_from_player_crafting = false,
 			energy_required = 2,
 			ingredients = {{type="item", name="mech-scrap", amount=4}},
-			main_product = "",
 			results = mechanical_sort_results,
+			main_product = "",
 		},
 		{
 		  type = "recipe",
@@ -257,15 +245,19 @@ if settings.startup["scrap-industry-mech"].value then
 		  allow_decomposition = false,
 		  hide_from_signal_gui = false,
 		  hide_from_player_crafting = true,
-		  energy_required = mods["aai-industry"] and 6 or 20,
+		  energy_required = 20,
 		  ingredients = {
-			{type="item", name="mech-scrap", amount=mods["Expensive-Mode"] and 20 or 10},
+			{type="item", name="mech-scrap", amount=settings.startup["scrap-industry-mech-cost"].value},
+			{type="item", name="iron-gear-wheel", amount=1}
 		  },
-		  results = scrap_engine_results,
+		  results = {
+			{type="item", name="engine-unit", amount=1}
+		  },
 		}
 	})
 	if no_scrap_from_scrap then
-		ScrapIndustry.recipes["plastic-bar-from-bits"] = {ignore=true}
+		ScrapIndustry.recipes["sort-mech-scrap"] = {ignore=true}
+		ScrapIndustry.recipes["engine-from-scrap"] = {ignore=true}
 	end
 end
 
@@ -594,5 +586,5 @@ if mods["bztitanium"] then
 	})
 	if no_scrap_from_scrap then
 		ScrapIndustry.recipes["titanium-plate-from-scrap"] = {ignore=true}
-	end 
+	end
 end

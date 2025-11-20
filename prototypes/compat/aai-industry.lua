@@ -1,3 +1,5 @@
+local frep = require("__fdsl__.lib.recipe")
+
 if mods["aai-industry"] then
 	-- overrides the data in prototypes.compat.base
 	ScrapIndustry.products["sand"] = {priority=0.5}
@@ -11,10 +13,15 @@ if mods["aai-industry"] then
 
 	ScrapIndustry.items["motor"] = {scrap="iron-scrap", scale=ScrapIndustry.PRODUCT, failrate=0.02}
 	ScrapIndustry.items["electric-motor"] = {scrap={"iron-scrap", "copper-scrap"}, scale=ScrapIndustry.PRODUCT, failrate=0.02}
-	
+
 	if settings.startup["scrap-industry-mech"].value then
+		ScrapIndustry.items["motor"] = {scrap={"mech-scrap"}, scale=ScrapIndustry.PRODUCT, failrate=0.02}
+		ScrapIndustry.items["electric-motor"] = {scrap={"mech-scrap"}, scale=ScrapIndustry.UNCOMMON, failrate=0.02}
 		ScrapIndustry.items["engine-unit"] = {scrap={"mech-scrap"}, scale=ScrapIndustry.EXPENSIVE, failrate=0.01}
 		ScrapIndustry.items["electric-engine-unit"] = {scrap={"mech-scrap", "circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.01}
+
+		frep.replace_result("engine-from-scrap", "engine-unit", {type="item", name="motor", amount=2})
+		data.raw.recipe["engine-from-scrap"].energy_required = 6
 	else
 		ScrapIndustry.items["engine-unit"] = {scrap={"iron-scrap", "steel-scrap"}, scale=ScrapIndustry.EXPENSIVE, failrate=0.01}
 		ScrapIndustry.items["electric-engine-unit"] = {scrap={"iron-scrap", "steel-scrap", "circuit-scrap"}, scale=ScrapIndustry.RARE, failrate=0.01}
