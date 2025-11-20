@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.11.0
-Date: ??????
+Date: 2025-11-20
   Major Features:
     - Begin adding support for fluid ingredients producing scrap
     - Add recipe for electric engine unit from scrap
