@@ -4,6 +4,7 @@ if mods["bzlead"] then
   ScrapIndustry.products["lead-scrap"] = {priority=0.8}
   ScrapIndustry.items["lead-plate"] = {scrap="lead-scrap", scale=ScrapIndustry.COMMON, failrate=0.02, recycle=2}
   ScrapIndustry.items["lead-expansion-bolt"] = {scrap={"lead-scrap", "iron-scrap"}, scale=ScrapIndustry.COMMON, failrate=-0.01}
+  ScrapIndustry.items["pipe"] = {scrap="lead-scrap", scale=ScrapIndustry.COMMON, failrate=0.01}
   
   if mods["space-age"] then
     ScrapIndustry.items["lead-lithium-eutectic"] = {scrap={"lead-scrap"}, scale=ScrapIndustry.UNCOMMON, failrate=0.01}
