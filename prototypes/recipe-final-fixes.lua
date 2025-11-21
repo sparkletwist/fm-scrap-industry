@@ -247,8 +247,8 @@ for _,recipe in pairs(data.raw.recipe) do
         -- if there are a lot of scrap results, get rid of the least important one (biased by scrap amount)
         local lowest_priority = 1
         for scrap_name,scrap_amount in pairs(out.byproducts) do
-          local scrap_metadata = ScrapIndustry.products[scrap_name]
-          local priority = (scrap_metadata and scrap_metadata.priority or 1) + scrap_amount
+          local product_metadata = ScrapIndustry.products[scrap_name]
+          local priority = (product_metadata and product_metadata.priority or 1) + scrap_amount
           if priority < lowest_priority then
             lowest_priority = priority
             excluded_result = scrap_name
@@ -263,19 +263,19 @@ for _,recipe in pairs(data.raw.recipe) do
       end
       for scrap_name,scrap_amount in pairs(out.byproducts) do
         if scrap_name ~= excluded_result and scrap_amount > 0 then
-          local scrap_metadata = ScrapIndustry.products[scrap_name]
-          fassert.ensure(scrap_metadata ~= nil, "scrap-industry.recipe-final-fixes: Scrap result `%s` does not have metadata specified with ScrapIndustry.products[scrap_name]", scrap_name)
+          local product_metadata = ScrapIndustry.products[scrap_name]
+          local product_type = product_metadata and product_metadata.type or "item"
           local halved_amount = scrap_amount / 0.5
           local random_scale = 1 + 0.12 * (1 - 2 * math.random())
           local probability = math.floor(100 * random_scale * scrap_amount / math.ceil(halved_amount)) / 100
           local final_amount = halved_amount / 0.5
-          if scrap_metadata.type == "fluid" then
+          if product_type == "fluid" then
             final_amount = ScrapIndustry.FLUID_SCALE * final_amount
           end
           if final_amount > 1 then final_amount = math.sqrt(final_amount) end
           local amount_min = math.max(1, math.floor(0.9 * final_amount + 0.5))
           local amount_max = math.max(1, math.floor(1.1 * final_amount + 0.5))
-          local result = {type=scrap_metadata.type or "item", name=scrap_name, probability=probability, show_details_in_recipe_tooltip=false}
+          local result = {type=product_type, name=scrap_name, probability=probability, show_details_in_recipe_tooltip=false}
           if amount_min ~= amount_max then
             result.amount_min = amount_min
             result.amount_max = amount_max
