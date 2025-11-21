@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.11.3
-Date: ????
+Date: 2025-11-20
   Bugfixes:
     - Fix load error when ScrapIndustry.products[] metadata is not specified, which wasn't previously required
 ---------------------------------------------------------------------------------------------------
