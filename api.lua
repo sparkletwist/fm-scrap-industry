@@ -4,6 +4,7 @@ if not ScrapIndustry then
     products = {},
     recipes = {},
     categories = {},
+    subgroups = {},
     -- use these constants as values when defining your own scrap byproducts
     FLAVOR = 0.03,
     CHEAP = 0.08,

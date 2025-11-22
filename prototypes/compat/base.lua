@@ -83,3 +83,4 @@ ScrapIndustry.items["efficiency-module-3"] = {scrap="circuit-scrap", scale=Scrap
 ScrapIndustry.items["productivity-module-3"] = {scrap="circuit-scrap", scale=ScrapIndustry.LEGENDARY, failrate=-0.03}
 
 ScrapIndustry.categories["rocket-building"] = {ignore=true}
+ScrapIndustry.subgroups["fill-barrel"] = {ignore=true}
