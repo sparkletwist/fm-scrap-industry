@@ -306,6 +306,9 @@ for _,recipe in pairs(data.raw.recipe) do
 					local final_amount = halved_amount / 0.5
 					if product_type == "fluid" then
 						final_amount = ScrapIndustry.FLUID_SCALE * final_amount
+						if not recipe.category or recipe.category == "crafting" then
+							recipe.category = "crafting-with-fluid"
+						end
 					end
 					if final_amount > 1 then final_amount = math.sqrt(final_amount) end
 					local amount_min = math.max(1, math.floor(0.9 * final_amount + 0.5))
