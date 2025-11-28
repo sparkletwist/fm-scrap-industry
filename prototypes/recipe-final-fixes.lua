@@ -81,19 +81,6 @@ local function can_modify_recipe(recipe)
 	return true
 end
 
--- If a recipe has no item products, then only calculate byproducts from fluids or are themselves fluids
-local function check_fluid_mode(recipe, out)
-	local fluid_mode = true
-	for _,result in pairs(recipe.results) do
-		if result.type == "item" then
-			fluid_mode = false
-		end
-	end
-	if fluid_mode then
-		out.fluid_mode = true
-	end
-end
-
 -- if a recipe has an ingredient whose recipe was modified to have a % failrate, it can't be considered as an intermediate for the hand-crafting queue
 -- to resolve this, we create hidden duplicates for these recipes
 local handcraft_recipes = {}
@@ -188,6 +175,98 @@ end
 
 --------------------------------------------------------------------------------------------------
 
+-- Before replacing, figure out the maximum fluid amount a recipe can produce with and respect that before modifying
+local category_max_fluids = {}
+for _,entity in pairs(data.raw["assembling-machine"]) do
+  local fluid_box_count = 0
+  for _,fluid_box in pairs(entity.fluid_boxes or {}) do
+    -- Don't need to check input-output for the production_type, since that's only for boilers
+    if fluid_box.production_type == "output" then
+      fluid_box_count = fluid_box_count + 1
+    end
+  end
+
+  -- Update categories the entity can craft, ESPECIALLY if the machine can't accept any fluids
+  for _,category_name in pairs(entity.crafting_categories or {}) do
+    if category_name ~= "crafting" then
+      -- Get the smallest of the max fluid inputs
+      if not category_max_fluids[category_name] then
+        category_max_fluids[category_name] = fluid_box_count
+      else
+        category_max_fluids[category_name] = math.min(fluid_box_count, category_max_fluids[category_name])
+      end
+    end
+  end
+end
+
+-- If a recipe has no item products, then only calculate byproducts from fluids or are themselves fluids
+local function check_fluid_mode(recipe, out)
+	local fluid_mode = true
+	for _,result in pairs(recipe.results) do
+		if result.type == "item" then
+			fluid_mode = false
+		end
+	end
+	if fluid_mode then
+		out.fluid_mode = true
+	end
+end
+
+local function check_fluid_count(recipe, out)
+	-- If we haven't initialized the maximum number of fluids, then do so
+	if out.max_fluids == nil then
+		out.max_fluids = category_max_fluids[recipe.category]
+		for _,category in pairs(recipe.additional_categories or {}) do
+			if category_max_fluids[category] then
+				out.max_fluids = math.min(category_max_fluids[category], out.max_fluids)
+			end
+		end
+	end
+
+	-- If we haven't initialized the current number of fluid results, then do so
+	if out.fluid_count == nil then
+		out.fluid_count = 0
+		for _, result in pairs(recipe.results) do
+			if result.type == "fluid" then
+				out.fluid_count = out.fluid_count + 1
+			end
+		end
+	end
+
+	return out.fluid_count + 1 <= out.max_fluids
+end
+
+local function get_fluidbox_index(recipe, out)
+	if out.fluidbox_indices ~= nil then
+		-- If we haven't initialized the mapping of fluidbox indices, then do so
+		if next(out.fluidbox_indices) == nil then
+			for _,result in pairs(recipe.results) do
+				if result.fluidbox_index then
+					out.fluidbox_indices[result.fluidbox_index] = true
+				end
+			end
+			-- If we didn't find any fluidbox indices, then we don't need to set one
+			if next(out.fluidbox_indices) == nil then
+				out.fluidbox_indices = nil
+				return
+			end
+		end
+
+		-- Find the first fluidbox index that isn't set
+		for i=1,out.max_fluids do
+			if not out.fluidbox_indices[i] then
+				out.fluidbox_indices[i] = true
+				return i
+			end
+		end
+	else
+		-- We've checked the results and fluidbox indices aren't set
+		return nil
+	end
+end
+
+--------------------------------------------------------------------------------------------------
+
 -- exclude science packs
 local science_packs = {}
 for _,lab in pairs(data.raw.lab) do
@@ -216,6 +295,7 @@ for _,recipe in pairs(data.raw.recipe) do
 		local out = {
 			byproducts = {},
 			recipe_results = {},
+			fluidbox_indices = {},
 			total_scrap = 0,
 			success_penalty = 0
 		}
@@ -304,11 +384,19 @@ for _,recipe in pairs(data.raw.recipe) do
 					local random_scale = 1 + 0.12 * (1 - 2 * math.random())
 					local probability = math.floor(100 * random_scale * scrap_amount / math.ceil(halved_amount)) / 100
 					local final_amount = halved_amount / 0.5
+					local fluidbox_index = nil
 					if product_type == "fluid" then
 						final_amount = ScrapIndustry.FLUID_SCALE * final_amount
 						if not recipe.category or recipe.category == "crafting" then
 							recipe.category = "crafting-with-fluid"
 						end
+						-- Check if the recipe can support more fluid results
+						if not check_fluid_count(recipe, out) then
+							goto continue
+						end
+						-- Check for fluidbox indices in the results
+						fluidbox_index = get_fluidbox_index(recipe, out)
+						out.fluid_count = out.fluid_count + 1
 					end
 					if final_amount > 1 then final_amount = math.sqrt(final_amount) end
 					local amount_min = math.max(1, math.floor(0.9 * final_amount + 0.5))
@@ -323,8 +411,10 @@ for _,recipe in pairs(data.raw.recipe) do
 						result.ignored_by_productivity=result.amount
 					end
 					result.si_modified = true
+					result.fluidbox_index = fluidbox_index
 					table.insert(recipe.results, result)
 				end
+				::continue::
 			end
 		end
 
