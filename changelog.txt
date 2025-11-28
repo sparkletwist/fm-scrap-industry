@@ -2,6 +2,10 @@
 Version: 1.0.2
 Date: ????
   Changes:
+    - Unhide handcrafting circuit recipes (as appropriate) and reorder them
+  Minor Features:
+    - Don't add fluid byproducts to recipes if a machine won't be able to craft it as a result
+    - Add support for auto-defining fluidbox_index for results if other fluids in the recipe define it
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2025-11-24
