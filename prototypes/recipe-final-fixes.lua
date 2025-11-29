@@ -221,6 +221,9 @@ local function check_fluid_count(recipe, out)
 				out.max_fluids = math.min(category_max_fluids[category], out.max_fluids)
 			end
 		end
+		if out.max_fluids == nil then
+			out.max_fluids = 0
+		end
 	end
 
 	-- If we haven't initialized the current number of fluid results, then do so
