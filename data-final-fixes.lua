@@ -1,5 +1,3 @@
-require("prototypes.recipe-final-fixes")
-
 if mods["Rocs-Rusting-Iron"] then
   if data.raw.item["iron-scrap-rusty"] then
     data.raw.item["iron-scrap-rusty"].pictures = {

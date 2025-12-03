@@ -1,5 +1,3 @@
-require("api")
-
 require("prototypes.entity.fire")
 
 require("prototypes.item-groups")

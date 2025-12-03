@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.0.4
+Version: 1.1.0
 Date: ????
-  Changes:
+  Major Features:
+    - Scrap Toolkit is a new dependency that handles the logic that drove Scrappy Industry
+    - This allows other mods and modders to use scraptk without having Scrappy Industry installed
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 2025-11-28
