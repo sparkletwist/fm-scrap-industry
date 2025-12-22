@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
 Date: ????
-  Changes:
+  Compatibility:
+    - Crushing Industry: Optical fiber does not itself produce scrap unless No Mercy is enabled
+    - Crushing Industry: Optical fiber yields copper scrap and plastic bits
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 2025-12-02
