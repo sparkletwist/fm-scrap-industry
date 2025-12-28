@@ -13,7 +13,7 @@
     "scraptk",
     "? space-age",
     "fdsl >= 0.2.4",
-    "? crushing-industry >= 0.4.15",
+    "? crushing-industry >= 0.5.0",
     "(?) Rocs-Rusting-Iron >= 1.2.0",
     "(?) aai-industry",
     "(?) bzlead",
