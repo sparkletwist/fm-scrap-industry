@@ -259,3 +259,34 @@ if mods["bztitanium"] then
     }
   })
 end
+
+data:extend({
+  {
+    type = "item",
+    name = "wcu-proxy-plastic-bits",
+    icon = "__scrap-industry__/graphics/icons/plastic-bits.png",
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wcu-proxy-mech-scrap",
+    icon = "__scrap-industry__/graphics/icons/mech-scrap.png",
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wcu-proxy-si-no-mercy",
+    icon = "__scrap-industry__/graphics/no-mercy.png",
+    hidden = true,
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "wcu-proxy-volatile-lithium",
+    icon = "__scrap-industry__/graphics/icons/lithium-flame.png",
+    hidden = true,
+    stack_size = 1
+  }
+})

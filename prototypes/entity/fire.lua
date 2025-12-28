@@ -130,7 +130,7 @@ if mods["space-age"] and settings.startup["scrap-industry-volatile-lithium"].val
     fireutil.add_basic_fire_graphics_and_effects_definitions{
       type = "fire",
       name = "lithium-flame",
-      icon = (mods["base"] >= "2.0.34") and "__base__/graphics/icons/signal/signal-fire.png" or nil,
+      icon = "__scrap-industry__/graphics/icons/lithium-flame.png",
       flags = {"placeable-off-grid", "not-on-map"},
       hidden = true,
       damage_per_tick = {amount = 26 / 60, type = "fire"},

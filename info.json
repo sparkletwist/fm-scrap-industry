@@ -6,7 +6,7 @@
   "version": "1.1.2",
   "factorio_version": "2.0",
   "package": {
-    "ignore": ["thumbnail.afphoto", "**/*.afphoto", "**/*.ase", "**/*.afphoto~lock~", "**/*.pdn"]
+    "ignore": ["thumbnail.afphoto", "**/*.af", "**/*.ase", "**/*.af~lock~", "**/*.pdn"]
   },
   "dependencies": [
     "base >= 2.0.69",

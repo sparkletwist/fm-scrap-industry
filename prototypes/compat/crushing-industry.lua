@@ -1,3 +1,5 @@
+local frep = require("__fdsl__.lib.recipe")
+
 if mods["crushing-industry"] then
 	ScrapIndustry.products["sand"] = {priority=0.5}
 	ScrapIndustry.items["glass"] = {scrap="sand", scale=ScrapIndustry.CHEAP, failrate=0.03}
@@ -15,5 +17,9 @@ if mods["crushing-industry"] then
 	ScrapIndustry.items["optical-fiber"] = {scrap={"copper-scrap"}, scale=ScrapIndustry.CHEAP, failrate=0.01}
 	if settings.startup["scrap-industry-plastic"].value then
 		table.insert(ScrapIndustry.items["optical-fiber"].scrap, "plastic-bits")
+	end
+
+	if settings.startup["crushing-industry-optical-fiber"].value then
+		frep.replace_ingredient("advanced-circuit-from-scrap", "copper-cable", "optical-fiber")
 	end
 end
