@@ -21,5 +21,6 @@ if mods["crushing-industry"] then
 
 	if settings.startup["crushing-industry-optical-fiber"].value then
 		frep.replace_ingredient("advanced-circuit-from-scrap", "copper-cable", "optical-fiber")
+		frep.replace_ingredient("processing-unit-from-scrap", "copper-cable", {type="item", name="optical-fiber", amount=3})
 	end
 end
