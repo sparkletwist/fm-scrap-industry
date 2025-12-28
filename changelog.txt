@@ -2,6 +2,9 @@
 Version: 1.1.2
 Date: ????
   Changes:
+    - Added new Lithium flame icon
+  Compatibility:
+    - Crushing Industry: Optical fiber is now used in circuits from scrap recipes where appropriate
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
 Date: 2025-12-21
