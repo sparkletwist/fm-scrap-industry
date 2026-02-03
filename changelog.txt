@@ -1,11 +1,13 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.4
-Date: ????
-  Changes:
+Date: 2026-02-03
+  Bugfixes:
+    - Fix (sort of) plastic bar selecting plastic bar from bits recipe
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: 2025-12-28
   Changes:
+    - More use of optical fiber
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.2
 Date: 2025-12-28
@@ -82,7 +84,7 @@ Date: 2025-11-20
 Version: 0.10.4
 Date: 2025-11-04
   Bugfixes:
-    - Fix (sort of) gear selecting mechanical scrap recipe.
+    - Fix (sort of) gear selecting mechanical scrap recipe
 ---------------------------------------------------------------------------------------------------
 Version: 0.10.3
 Date: 2025-11-02
